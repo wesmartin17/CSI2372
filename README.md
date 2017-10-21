@@ -1,7 +1,7 @@
 # CSI2372
-#**Final project for C++ CSI2372**
+# **Final project for C++ CSI2372**
 
-##Playing Dice
+## Playing Dice
 In this year’s project, you are asked to program a console game based on a simple games of rolling dice.
 The points from a roll are recorded on a score sheet. The goal of the game is to achieve the highest score
 overall. Interestingly, the players take turns rolling up to three dice but all players can record the points
