@@ -2,6 +2,8 @@
 # **Final project for C++ CSI2372**
 
 ## Playing Dice
+
+
 In this year’s project, you are asked to program a console game based on a simple games of rolling dice.
 The points from a roll are recorded on a score sheet. The goal of the game is to achieve the highest score
 overall. Interestingly, the players take turns rolling up to three dice but all players can record the points
@@ -22,6 +24,8 @@ sheet. The score sheet needs 4 rows in our adaption: one row for each colour of 
 blue, as well as as fourth row for the failed throws. We need a maximum of fourteen columns. The bonus
 fields are marked within % while invalid fields are marked XX. Notice that since the scores have a range
 form 1-18, we need a space of two characters.
+
+
 An empty score sheet should look like this:
 Player name:
  -------------------------------
@@ -42,6 +46,7 @@ Yellow | 1| 3| 4| 5| |XX|12%13% | |
 Blue | 1| 3% % 6|XX| 7| | |10% %
  -------------------------------
 Failed throws: 1 2 3
+
 Jane Doe scored 28 points: The red row is complete and hence the right most score is used (16 points).
 The yellow row has 6 entries and the blue row has 5 entries. Two bonus columns are completed for an
 extra of 3 plus 13 points (the scores in the corresponding fields marked with %) and three failed throws
