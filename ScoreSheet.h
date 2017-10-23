@@ -8,21 +8,23 @@ using namespace std;
 	
 	struct Dice{
 		int number;
-		void print(ostream o){
+		void print(ostream& o){
 				cout<<number;
 			}
 	};
 
-class SchoreSheet{
+class ScoreSheet{
 	
 	private:
 		string name;
 		int failedAttempts;
-		int playerScore;
+		int redScore;
+		int yellowScore;
+		int blueScore;
 		
 	public:
 		ScoreSheet(string playerName);
-		void print(ostream o);
+		void print(ostream& o);
 		void score(vector<Dice> dice, Color color, int pos);
 			
 	
