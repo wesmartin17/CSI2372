@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ScoreSheet.h"
 #include <sstream>
+#include <algorithm>
 
 
 int versionSelection(){
@@ -47,10 +48,15 @@ vector<string> playersRegisteration(int numberOfPlayers){
 	vector<string> playerNames;
 	cout<<"Enter each player's name" << endl;
 	string input;
-	for(int i=0; i < numberOfPlayers; i++){
+	for(int i=0; i < numberOfPlayers; ++i){
 		cout<<"Player #" << i+1 << ": " << endl;
 		getline(cin, input);
-		playerNames.push_back(input);
+		if(std::find(playerNames.begin(), playerNames.end(), input) != playerNames.end()){
+			cout << "Player " << input << " already exists. Enter a differend name." << endl;
+			--i;
+		}else{
+			playerNames.push_back(input);
+		}
 	}
 
 	return playerNames;
