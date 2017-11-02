@@ -29,14 +29,14 @@ int playersNumberSelection(){
 	string input = "";
 	int numberPlayers = 0;
 
-	cout<<"Choose a number of players between 2 and 6" << endl;
+	cout<<"Choose a number of players between 1 and 3" << endl;
 
 	while (true) {
 	   cout << "Your selection: ";
 	   getline(cin, input);
 	   stringstream myStream(input);
 	   if (myStream >> numberPlayers){
-			 if(numberPlayers >= 2 && numberPlayers <= 6)
+			 if(numberPlayers >= 1 && numberPlayers <= 3)
 	     break;
 		 }
 	   cout << "Invalid number, please try again" << endl;
