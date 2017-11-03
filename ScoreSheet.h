@@ -6,27 +6,19 @@ using namespace std;
 
 enum Color {red, yellow, blue};
 
-struct Dice{
-	const Color dColor;
-	int number;
-	void print(ostream& o){
-			cout<<number;
-		}
-};
-
 class ScoreSheet{
 
 	private:
-		string name;
+		string playerName;
 		int failedAttempts;
 		int redScore;
 		int yellowScore;
 		int blueScore;
+		int totalScore;
 
 	public:
-		ScoreSheet(string playerName);
+		ScoreSheet(string _playerName);
 		void print(ostream& o);
-		void score(vector<Dice> dice, Color color, int pos);
-
+		void score(RollOfDice &rollOfdice, Color color, int pos=-1);
 
 };
