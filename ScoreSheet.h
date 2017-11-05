@@ -20,5 +20,9 @@ class ScoreSheet{
 		ScoreSheet(string _playerName);
 		void print(ostream& o);
 		void score(RollOfDice &rollOfdice, Color color, int pos=-1);
+		void setTotal();
+
+	protected:
+		int calcTotal();
 
 };
