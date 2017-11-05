@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include "RollOfDice.h"
+
 using namespace std;
 
 enum Color {red, yellow, blue};

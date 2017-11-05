@@ -1,3 +1,5 @@
+#include <string>
+
 class Player{
   private:
     string name;
@@ -8,4 +10,4 @@ class Player{
     void inputBeforeRoll(RollOfDice &_rollOfDice);
     void inputAfterRoll(RollOfDice &_rollOfDice);
 
-}
+};

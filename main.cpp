@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ScoreSheet.h"
+#include "RollOfDice.h"
 #include <sstream>
 #include <algorithm>
 
@@ -66,6 +67,10 @@ int main() {
 
 	// ScoreSheet s("Wes");
 	// s.print(cout);
+	
+	RollOfDice rd;
+	
+	
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
 	string* playerNames = &playersRegisteration(numberOfPlayers)[0];
