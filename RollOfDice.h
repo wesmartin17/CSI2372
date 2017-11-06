@@ -22,18 +22,21 @@ struct Dice{
 
 		Dice(const Color color);
 
-		void roll();
+		int roll();
 
 	};
 
 struct RollOfDice {
-
+	
 	std::vector<Dice> dices;
 
 	void roll();
-	RollOfDice pair();
+	
+	static RollOfDice pair(Dice d1, Dice d2);
 
 	operator int();
+	
+	std::ostream& operator<<(std::ostream& os);
 
 };
 

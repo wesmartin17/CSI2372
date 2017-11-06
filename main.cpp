@@ -3,6 +3,7 @@
 #include "RollOfDice.h"
 #include <sstream>
 #include <algorithm>
+#include <vector>
 
 
 int versionSelection(){
@@ -68,14 +69,19 @@ int main() {
 	// ScoreSheet s("Wes");
 	// s.print(cout);
 	
-	Dice d(Dice::Color::blue);
+	std::vector<Dice> d;
+	int arr[] = {0,0,0,0,0,0};int numRolls = 1000000;
+	cout<<"rolled "<<numRolls<<" times...\n";
+	for(int i = 0; i < numRolls; ++i){
+		d.push_back( Dice(Dice::Color::blue));
+		arr[d[i].face-1]++;
+	}
 	
-	cout<<d.face;
-	for(int i = 0; i < 10; ++i){
-	cout<<"\n rolling:\n";
-	d.roll();
-	cout<<d.face;
-}
+	for(int i = 0; i < 6; i++){
+		cout<<"number times a "<<(i+1)<<" was rolled: "<<arr[i]<<"\n\n";
+	}
+	
+	//Dice d(Dice::Color::blue);
 	
 	/*
 	int gameVersion = versionSelection();
