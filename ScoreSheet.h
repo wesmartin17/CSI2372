@@ -6,8 +6,6 @@
 
 using namespace std;
 
-enum Color {red, yellow, blue};
-
 class ScoreSheet{
 
 	private:
@@ -21,6 +19,6 @@ class ScoreSheet{
 	public:
 		ScoreSheet(string _playerName);
 		void print(ostream& o);
-		void score(RollOfDice &rollOfdice, Color color, int pos=-1);
+		void score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
 
 };

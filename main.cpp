@@ -68,11 +68,19 @@ int main() {
 	// ScoreSheet s("Wes");
 	// s.print(cout);
 	
-	RollOfDice rd;
+	Dice d(Dice::Color::blue);
 	
+	cout<<d.face;
+	for(int i = 0; i < 10; ++i){
+	cout<<"\n rolling:\n";
+	d.roll();
+	cout<<d.face;
+}
 	
+	/*
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
 	string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+	*/
 
 }

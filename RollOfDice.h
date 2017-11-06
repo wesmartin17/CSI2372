@@ -2,16 +2,25 @@
 #define ROLLOFDICE_H_
 
 #include <vector>
+#include <random>
+#include <iostream>
 
-enum Color { red, yellow, blue };
+
+ struct RandomDice{
+	
+	int getFace();
+		
+};
 
 struct Dice{
 		
-		const Color color;
+		enum Color { red, yellow, blue };
+				
+		Color diceColor;
 		
 		int face;
 
-		Dice(Color color);
+		Dice(const Color color);
 		
 		void roll();
 				
@@ -22,6 +31,9 @@ struct RollOfDice {
 	std::vector<Dice> dices;
 	
 	void roll();
+	RollOfDice pair();
+	
+	operator int();
 
 };
 

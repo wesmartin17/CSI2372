@@ -1,13 +1,48 @@
 #include "RollOfDice.h"
 #include <iostream>
+#include <ctime>
 
 
-void Dice::roll(){
+int RandomDice::getFace(){
+	
+	std::default_random_engine rng(std::random_device{}()); 
+    std::uniform_int_distribution<int> dist(1,6);
+    
+    return dist(rng);
 		
 }
 
+Dice::Dice(const Color color){
+	diceColor = color;
+	face = RandomDice().getFace();
+}
+
+void Dice::roll(){
+	face = RandomDice().getFace();
+}
+
 void RollOfDice::roll(){
-	for(auto it = dices.begin(); it != dices.end(); ++it){
-		std::cout<<"rolling";	
+	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
+		
+		Dice d = *it;
+		d.roll();
+		
 	}
+}
+
+RollOfDice RollOfDice::pair(){
+	RollOfDice rd();
+	//rd.dices.push_back(new Dice(Color.red)); //Not sure how this is supposed to work
+}
+
+//conversion operator to int.  is the sum of faces
+RollOfDice::operator int(){
+	
+	int sum;
+	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
+		
+		Dice d = *it;
+		sum+= d.face;
+	}	
+	return sum;	
 }
