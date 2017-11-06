@@ -5,7 +5,7 @@
 
 int RandomDice(){
 
-	static std::default_random_engine rng(std::random_device{}());
+	static std::default_random_engine rng(time(0));
   static 	std::uniform_int_distribution<int> dist(1,6);
   return dist(rng);
 
