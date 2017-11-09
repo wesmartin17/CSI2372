@@ -1,7 +1,9 @@
 #include <iostream>
 #include "ScoreSheet.h"
+#include "RollOfDice.h"
 #include <sstream>
 #include <algorithm>
+#include <vector>
 
 
 int versionSelection(){
@@ -66,8 +68,25 @@ int main() {
 
 	// ScoreSheet s("Wes");
 	// s.print(cout);
+	
+	std::vector<Dice> d;
+	int arr[] = {0,0,0,0,0,0};int numRolls = 1000000;
+	cout<<"rolled "<<numRolls<<" times...\n";
+	for(int i = 0; i < numRolls; ++i){
+		d.push_back( Dice(Dice::Color::blue));
+		arr[d[i].face-1]++;
+	}
+	
+	for(int i = 0; i < 6; i++){
+		cout<<"number times a "<<(i+1)<<" was rolled: "<<arr[i]<<"\n\n";
+	}
+	
+	//Dice d(Dice::Color::blue);
+	
+	/*
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
 	string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+	*/
 
 }

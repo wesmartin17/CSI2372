@@ -1,1 +1,10 @@
 *.exe
+Debug/
+*.win
+*.dev
+*.o
+*.sln
+*.filters
+*.layout
+*.vcxproj
+.vs/
