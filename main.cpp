@@ -72,10 +72,18 @@ int main() {
 	// int gameVersion = versionSelection();
 	// int numberOfPlayers = playersNumberSelection();
 	// string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+
+
 	QwintoRow<red> row;
 	RollOfDice rd;
-	row[2] = rd;
+	row [2] = rd;
+	
+	// try{
+	// 	row[20] = rd;
+	// }catch(const std::exception& e){
+	// 	std::cout << e.what() << endl;
+	// 	std::cout << "Please choose an available cell." << endl;
+	// }
 
-	std::cout << row[2] << endl; // = rd;
 
 }

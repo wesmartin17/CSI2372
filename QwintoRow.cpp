@@ -11,7 +11,6 @@ template<Color T>
 class QwintoRow {
 
   private:
-    int size = 9;
     RollOfDice values[9];
 
   public:
@@ -19,5 +18,13 @@ class QwintoRow {
 };
 
 template<> RollOfDice& QwintoRow<(Color)0>::operator[] (const int index){
-    return values[index];
+
+  if(index > 9 or index < 1){
+    throw std::runtime_error("Index out of range!");
+  }/*else if () {
+    // TODO: check if cell already occupied
+    throw std::runtime_error("Cell occupied!");
+  }*/
+
+  return values[index];
 }
