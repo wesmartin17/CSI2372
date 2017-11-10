@@ -1,9 +1,11 @@
 #include <iostream>
-#include "ScoreSheet.h"
-#include "RollOfDice.h"
 #include <sstream>
 #include <algorithm>
 #include <vector>
+
+#include "ScoreSheet.h"
+#include "RollOfDice.h"
+#include "QwintoRow.cpp"
 
 
 int versionSelection(){
@@ -66,8 +68,12 @@ vector<string> playersRegisteration(int numberOfPlayers){
 
 int main() {
 
-	int gameVersion = versionSelection();
-	int numberOfPlayers = playersNumberSelection();
-	string* playerNames = &playersRegisteration(numberOfPlayers)[0];
-	
+
+	// int gameVersion = versionSelection();
+	// int numberOfPlayers = playersNumberSelection();
+	// string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+	QwintoRow<red> row;
+	RollOfDice rd;
+	// row[2] = rd;
+
 }
