@@ -74,6 +74,8 @@ int main() {
 	// string* playerNames = &playersRegisteration(numberOfPlayers)[0];
 	QwintoRow<red> row;
 	RollOfDice rd;
-	// row[2] = rd;
+	row[2] = rd;
+
+	std::cout << row[2] << endl; // = rd;
 
 }
