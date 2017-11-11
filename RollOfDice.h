@@ -27,15 +27,15 @@ struct Dice{
 	};
 
 struct RollOfDice {
-	
+
 	std::vector<Dice> dices;
 
-	void roll();
-	
+	int roll();
+
 	static RollOfDice pair(Dice d1, Dice d2);
 
 	operator int();
-	
+
 	std::ostream& operator<<(std::ostream& os);
 
 };
