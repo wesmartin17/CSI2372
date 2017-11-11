@@ -69,15 +69,25 @@ vector<string> playersRegisteration(int numberOfPlayers){
 int main() {
 
 
-	// int gameVersion = versionSelection();
-	// int numberOfPlayers = playersNumberSelection();
-	// string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+	/*
+		main rountine area
+		Final stuff go here
+	*/
+	int gameVersion = versionSelection();
+	int numberOfPlayers = playersNumberSelection();
+	string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+	// end of main routine area
 
 
-	QwintoRow<red> row;
-	RollOfDice rd;
-	row [2] = rd;
-	
+	/*
+		playground area
+		prototyping stuff go here
+	*/
+
+	// QwintoRow<red> row;
+	// RollOfDice rd;
+	// row [2] = rd;
+
 	// try{
 	// 	row[20] = rd;
 	// }catch(const std::exception& e){
