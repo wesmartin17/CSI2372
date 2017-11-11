@@ -84,10 +84,27 @@ int main() {
 		prototyping stuff go here
 	*/
 
+	/////////////////////
+	// RollOfDice SUTFF//
+	/////////////////////
+	// std::vector<Dice> d;
+	// int arr[] = {0,0,0,0,0,0};int numRolls = 1000000;
+	// cout<<"rolled "<<numRolls<<" times...\n";
+	// for(int i = 0; i < numRolls; ++i){
+	// 	d.push_back( Dice(Dice::Color::blue));
+	// 	arr[d[i].face-1]++;
+	// }
+  //
+	// for(int i = 0; i < 6; i++){
+	// 	cout<<"number times a "<<(i+1)<<" was rolled: "<<arr[i]<<"\n\n";
+	// }
+
+	////////////////////
+	// QwintoRow SUTFF//
+	////////////////////
 	// QwintoRow<red> row;
 	// RollOfDice rd;
 	// row [2] = rd;
-
 	// try{
 	// 	row[20] = rd;
 	// }catch(const std::exception& e){
