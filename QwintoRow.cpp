@@ -2,6 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include "RollOfDice.h"
 
 enum Color { red, yellow, blue };
 

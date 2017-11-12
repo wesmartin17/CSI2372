@@ -3,9 +3,10 @@
 #include <algorithm>
 #include <vector>
 
-#include "ScoreSheet.h"
-#include "RollOfDice.h"
-#include "QwintoRow.cpp"
+// #include "ScoreSheet.h"
+// #include "RollOfDice.h"
+// #include "QwintoRow.cpp"
+#include "QwintoScoreSheet.cpp"
 
 
 int versionSelection(){
@@ -48,7 +49,7 @@ int playersNumberSelection(){
 	 return numberPlayers;
 }
 
-vector<string> playersRegisteration(int numberOfPlayers){
+vector<string> inputPlayersNames(int numberOfPlayers){
 	vector<string> playerNames;
 	cout<<"Enter each player's name" << endl;
 	string input;
@@ -73,9 +74,9 @@ int main() {
 		main rountine area
 		Final stuff go here
 	*/
-	// int gameVersion = versionSelection();
-	// int numberOfPlayers = playersNumberSelection();
-	// string* playerNames = &playersRegisteration(numberOfPlayers)[0];
+	int gameVersion = versionSelection();
+	int numberOfPlayers = playersNumberSelection();
+	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
 	// end of main routine area
 
 
@@ -117,6 +118,11 @@ int main() {
 	// 	std::cout << "Please choose an available cell." << endl;
 	// }
  	// std::cout << row[2].roll() << endl;
+
+	///////////////////////////
+	// QwintoScoreSheet stuff//
+	//////////////////////////
+	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 
 
 }
