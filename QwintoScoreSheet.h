@@ -12,7 +12,7 @@ class QwintoScoreSheet : public ScoreSheet{
     QwintoRow<blue> blueRow;
 
   public:
-    QwintoScoreSheet(string _playerName);
+    QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
 
 };
 

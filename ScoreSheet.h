@@ -10,6 +10,7 @@ using namespace std;
 class ScoreSheet{
 
 	private:
+		string playerName;
 		int failedAttempts;
 		int redScore;
 		int yellowScore;
@@ -17,14 +18,16 @@ class ScoreSheet{
 		int totalScore;
 
 	public:
+		ScoreSheet(string _playerName);
 		void print(ostream& o);
 		void score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
 		void setTotal();
 
 	protected:
-		string playerName;
 		int calcTotal();
 
 };
+
+ScoreSheet::ScoreSheet(string _playerName) : playerName(_playerName) {}
 
 #endif

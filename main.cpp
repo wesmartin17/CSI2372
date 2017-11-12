@@ -74,9 +74,9 @@ int main() {
 		main rountine area
 		Final stuff go here
 	*/
-	int gameVersion = versionSelection();
-	int numberOfPlayers = playersNumberSelection();
-	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
+	// int gameVersion = versionSelection();
+	// int numberOfPlayers = playersNumberSelection();
+	// const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
 	// end of main routine area
 
 
@@ -122,7 +122,7 @@ int main() {
 	///////////////////////////
 	// QwintoScoreSheet stuff//
 	//////////////////////////
-	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
+	QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 
 
 }
