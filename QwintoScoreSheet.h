@@ -7,14 +7,12 @@
 class QwintoScoreSheet : public ScoreSheet{
 
   private:
-    // enum Color { red, yellow, blue };
     QwintoRow<red> redRow;
     QwintoRow<yellow> yellowRow;
     QwintoRow<blue> blueRow;
 
   public:
-    QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { initRows(); };
-    void initRows();
+    QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
     void print();
 
 };

@@ -12,15 +12,3 @@ void QwintoScoreSheet::print(){
    redRow[7], redRow[8]);
 
 }
-
-void QwintoScoreSheet::initRows(){
-  for(int i = 0; i<9; ++i){
-    RollOfDice rd;
-    redRow[i] = rd;
-    yellowRow[i] = rd;
-    blueRow[i] = rd;
-  }
-  Dice d2 = Dice(Dice::Color::red);
-  redRow[1].dices.push_back(d2);
-  redRow[1].roll();
-}
