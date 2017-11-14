@@ -8,7 +8,7 @@ enum Color { red, yellow, blue };
 
 using namespace std;
 
-template<Color T>
+template<Color C>
 class QwintoRow {
 
   private:
@@ -18,9 +18,10 @@ class QwintoRow {
     RollOfDice& operator[] (const int index);
 };
 
-template<> RollOfDice& QwintoRow<(Color)0>::operator[] (const int index){
+template<Color C>
+RollOfDice& QwintoRow<C>::operator[] (const int index){
 
-  if(index > 9 or index < 1){
+  if(index > 9 or index < 0){
     throw std::runtime_error("Index out of range!");
   }/*else if () {
     // TODO: check if cell already occupied

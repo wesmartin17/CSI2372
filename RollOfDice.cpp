@@ -48,6 +48,7 @@ RollOfDice::operator int(){
 
 		Dice d = *it;
 		sum+= d.face;
+		std::cout<< "hi" <<  sum;
 	}
 	return sum;
 }

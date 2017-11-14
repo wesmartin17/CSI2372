@@ -4,7 +4,7 @@
 #include <vector>
 
 // #include "ScoreSheet.h"
-// #include "RollOfDice.h"
+#include "RollOfDice.cpp"
 // #include "QwintoRow.cpp"
 #include "QwintoScoreSheet.cpp"
 
@@ -123,6 +123,6 @@ int main() {
 	// QwintoScoreSheet stuff//
 	//////////////////////////
 	QwintoScoreSheet karim = QwintoScoreSheet("Karim");
-
+	karim.print();
 
 }
