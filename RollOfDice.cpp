@@ -21,20 +21,22 @@ int Dice::roll(){
 	return face;
 }
 
-void RollOfDice::roll(){
+int RollOfDice::roll(){
+	int result = 0;
 	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
 
 		Dice d = *it;
-		d.roll();
+		result += d.roll();
 
 	}
+	return result;
 }
 
 RollOfDice RollOfDice::pair(Dice d1, Dice d2){
 	RollOfDice rd;
 	rd.dices.push_back(d1);
 	rd.dices.push_back(d2);
-	
+
 	return rd;
 }
 
@@ -46,6 +48,7 @@ RollOfDice::operator int(){
 
 		Dice d = *it;
 		sum+= d.face;
+		std::cout<< "hi" <<  sum;
 	}
 	return sum;
 }
