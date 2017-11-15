@@ -7,6 +7,7 @@
 #include "RollOfDice.cpp"
 // // #include "QwintoRow.cpp"
 #include "QwintoScoreSheet.cpp"
+#include "Player.cpp"
 
 
 int versionSelection(){
@@ -74,9 +75,12 @@ int main() {
 		main rountine area
 		Final stuff go here
 	*/
+
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
 	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
+	//Player p("bitchy");
+
 	// end of main routine area
 
 
