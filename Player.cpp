@@ -6,7 +6,7 @@ Player::Player(string _name, bool _active ){
   name = _name;
 }
 
-void inputBeforerRoll(RollOfDice &_rollOfDice){
+void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   int numberOfDice;
   cin >> numberOfDice;
   //Dice::Dice = new Dice;
