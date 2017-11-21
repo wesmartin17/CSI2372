@@ -3,7 +3,7 @@
 
 std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
 	os << "Player name: " << sheet.getPlayerName() << "\n";
-  os << "\t       ----------------------------------------- " << "\n";
+  os << "\t       -------------------------------------------- " << "\n";
   os << "Red\t     ";
   for(int i=0; i<9; ++i){
     if(sheet.getRedRowRD(i) == 0){
@@ -25,7 +25,7 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
 
   os << "\n";
 
-  os << "\t     ----------------------------------------- " << "\n";
+  os << "\t   -------------------------------------------- " << "\n";
   os << "Yellow   ";
   for(int i=0; i<9; ++i){
     if(sheet.getYellowRowRD(i) == 0){
@@ -37,13 +37,39 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
         os << "  | ";
       }
     }else{
-      if(sheet.getRedRowRD(i)>9){ // Just for styling
+      if(sheet.getYellowRowRD(i)>9){ // Just for styling
         os << "  " << sheet.getYellowRowRD(i);
       }else{
         os << "   " << sheet.getYellowRowRD(i);
       }
     }
   }
+
+
+  os << "\n";
+
+  os << "      -------------------------------------------- " << "\n";
+  os << "Blue ";
+  for(int i=0; i<9; ++i){
+    if(sheet.getBlueRowRD(i) == 0){
+      if(i == 2 or i == 7 or i == 8){ // Pentagons
+        os << "  $ ";
+      }else if(i == 3){ //middle space
+        os << "  $   |XX| ";
+      }else{
+        os << "  | ";
+      }
+    }else{
+      if(sheet.getBlueRowRD(i)>9){ // Just for styling
+        os << "  " << sheet.getBlueRowRD(i);
+      }else{
+        os << "   " << sheet.getBlueRowRD(i);
+      }
+    }
+  }
+
+  os << "\n";
+  os << "      -------------------------------------------- " << "\n";
 
 	return os;
 }
