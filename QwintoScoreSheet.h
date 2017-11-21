@@ -14,7 +14,7 @@ class QwintoScoreSheet : public ScoreSheet{
   public:
     QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
     friend std::ostream& operator<<(std::ostream& os, const QwintoScoreSheet & sheet);
-
+    int getRedRowRD(int i);
 };
 
 #endif
