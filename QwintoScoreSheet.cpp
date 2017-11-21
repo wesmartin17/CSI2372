@@ -3,8 +3,8 @@
 
 std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
 	os << "Player name: " << sheet.getPlayerName() << "\n";
-  os << "\t  ----------------------------------------- " << "\n";
-  os << "Red\t";
+  os << "\t       ----------------------------------------- " << "\n";
+  os << "Red\t     ";
   for(int i=0; i<9; ++i){
     if(sheet.getRedRowRD(i) == 0){
       if(i == 1 or i == 3 or i == 4){ // Pentagons
@@ -23,6 +23,28 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
     }
   }
 
+  os << "\n";
+
+  os << "\t     ----------------------------------------- " << "\n";
+  os << "Yellow   ";
+  for(int i=0; i<9; ++i){
+    if(sheet.getYellowRowRD(i) == 0){
+      if(i == 6 or i == 7){ // Pentagons
+        os << "  $ ";
+      }else if(i == 5){ //middle space
+        os << "  |   |XX| ";
+      }else{
+        os << "  | ";
+      }
+    }else{
+      if(sheet.getRedRowRD(i)>9){ // Just for styling
+        os << "  " << sheet.getYellowRowRD(i);
+      }else{
+        os << "   " << sheet.getYellowRowRD(i);
+      }
+    }
+  }
+
 	return os;
 }
 
@@ -31,5 +53,15 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
 ///////////////////////
 int QwintoScoreSheet::getRedRowRD(int i){
   int value = int(redRow[i]);
+  return value;
+}
+
+int QwintoScoreSheet::getYellowRowRD(int i){
+  int value = int(yellowRow[i]);
+  return value;
+}
+
+int QwintoScoreSheet::getBlueRowRD(int i){
+  int value = int(yellowRow[i]);
   return value;
 }
