@@ -103,13 +103,13 @@ int main() {
 	// QwintoRow stuff//
 	////////////////////
 	// QwintoRow<red> row;
-	Dice d1 = Dice(Dice::Color::blue);
-	Dice d2 = Dice(Dice::Color::red);
-	Dice d3 = Dice(Dice::Color::red);
-	RollOfDice rd;
-	rd.dices.push_back(d1);
-	rd.dices.push_back(d2);
-	rd.dices.push_back(d3);
+	// Dice d1 = Dice(Dice::Color::blue);
+	// Dice d2 = Dice(Dice::Color::red);
+	// Dice d3 = Dice(Dice::Color::red);
+	// RollOfDice rd;
+	// rd.dices.push_back(d1);
+	// rd.dices.push_back(d2);
+	// rd.dices.push_back(d3);
 	// try{
 	// 	row[2] = rd;
 	// 	row[20] = rd;
@@ -119,15 +119,15 @@ int main() {
 	// }
  	// std::cout << row[2].roll() << endl;
 	// rd.roll();
-	rd.roll();
+	// rd.roll();
 	// cout << int(rd);
-	cout << rd << "\n";
-	cout << int(rd) << "\n";
+	// cout << rd << "\n";
+	// cout << int(rd) << "\n";
 
 	///////////////////////////
 	// QwintoScoreSheet stuff//
 	//////////////////////////
-	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
-	// karim.print();
+	QwintoScoreSheet karim = QwintoScoreSheet("Karim");
+	cout << karim;
 
 }
