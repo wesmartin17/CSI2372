@@ -27,7 +27,6 @@ int RollOfDice::roll(){
 
 		Dice d = *it;
 		result += d.roll();
-
 	}
 	return result;
 }
@@ -52,11 +51,7 @@ RollOfDice::operator int(){
 	return sum;
 }
 
-std::ostream& RollOfDice::operator<<(std::ostream& os){
-	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
-
-		Dice d = *it;
-		os<<d.face;
-	}
+std::ostream& operator<<(std::ostream& os,  RollOfDice& rd){
+	os << int(rd);
 	return os;
 }
