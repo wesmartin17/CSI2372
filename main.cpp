@@ -78,8 +78,37 @@ int main() {
 
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
-	//Player p("bitchy");
+	//const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
+
+	vector<string> asdf = inputPlayersNames(numberOfPlayers);
+	vector<string>::iterator iter;
+
+	vector<Player> players;
+
+	RollOfDice rd;
+	for(iter = asdf.begin(); iter != asdf.end(); iter++){
+		string tmp = *iter;
+		players.push_back(Player(tmp,false));
+	}
+
+	for(int i = 0;  i < players.size(); i ++){
+		players[i].inputBeforeRoll(rd);
+	}
+
+
+	// vector<Player> players;
+  //
+	// int tmp;
+  //
+	// while(tmp < numberOfPlayers){
+	// 	players.push_back(new Player(playersNames),false);
+	// 	*playersNames++;
+	// 	tmp ++;
+	// }
+  //
+	// RollOfDice rd;
+
+
 
 	// end of main routine area
 
