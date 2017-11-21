@@ -18,7 +18,6 @@ class ScoreSheet{
 
 	public:
 		ScoreSheet(string _playerName);
-		// void print(ostream& o);
 		void score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
 		void setTotal();
 

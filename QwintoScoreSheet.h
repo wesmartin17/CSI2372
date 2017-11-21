@@ -13,7 +13,6 @@ class QwintoScoreSheet : public ScoreSheet{
 
   public:
     QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
-    void print();
 
 };
 
