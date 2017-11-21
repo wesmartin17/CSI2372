@@ -74,9 +74,9 @@ int main() {
 		main rountine area
 		Final stuff go here
 	*/
-	int gameVersion = versionSelection();
-	int numberOfPlayers = playersNumberSelection();
-	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
+	// int gameVersion = versionSelection();
+	// int numberOfPlayers = playersNumberSelection();
+	// const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
 	// end of main routine area
 
 
@@ -106,7 +106,7 @@ int main() {
 	// Dice d1 = Dice(Dice::Color::blue);
 	// Dice d2 = Dice(Dice::Color::red);
 	// Dice d3 = Dice(Dice::Color::red);
-	// RollOfDice rd;
+	RollOfDice rd;
 	// rd.dices.push_back(d1);
 	// rd.dices.push_back(d2);
 	// rd.dices.push_back(d3);
@@ -118,6 +118,7 @@ int main() {
 	// 	std::cout << "Please choose an available cell." << endl;
 	// }
  	// std::cout << row[2].roll() << endl;
+	cout << int(rd);
 
 	///////////////////////////
 	// QwintoScoreSheet stuff//
