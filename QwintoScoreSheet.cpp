@@ -3,7 +3,7 @@
 
 std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
 	os << "Player name: " << sheet.getPlayerName() << "\n";
-  os << "\t       -------------------------------------------- " << "\n";
+  os << "\t       ---------------------------------------- " << "\n";
   os << "Red\t     ";
   for(int i=0; i<9; ++i){
     if(sheet.getRedRowRD(i) == 0){
@@ -29,9 +29,9 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
   os << "Yellow   ";
   for(int i=0; i<9; ++i){
     if(sheet.getYellowRowRD(i) == 0){
-      if(i == 6 or i == 7){ // Pentagons
+      if(i == 5 or i == 6){ // Pentagons
         os << "  $ ";
-      }else if(i == 5){ //middle space
+      }else if(i == 4){ //middle space
         os << "  |   |XX| ";
       }else{
         os << "  | ";
@@ -48,7 +48,7 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
 
   os << "\n";
 
-  os << "      -------------------------------------------- " << "\n";
+  os << "      ---------------------------------------------- " << "\n";
   os << "Blue ";
   for(int i=0; i<9; ++i){
     if(sheet.getBlueRowRD(i) == 0){
@@ -69,7 +69,7 @@ std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
   }
 
   os << "\n";
-  os << "      -------------------------------------------- " << "\n";
+  os << "      ------------------------------------------ " << "\n";
 
 	return os;
 }
