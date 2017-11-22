@@ -4,7 +4,7 @@
 #include "ScoreSheet.h"
 #include "QwintoRow.cpp"
 
-class QwintoScoreSheet : public ScoreSheet{
+class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
 
   private:
     QwintoRow<red> redRow;
@@ -13,7 +13,6 @@ class QwintoScoreSheet : public ScoreSheet{
 
   public:
     QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
-    friend std::ostream& operator<<(std::ostream& os, const QwintoScoreSheet & sheet);
     int getRedRowRD(int i);
     int getYellowRowRD(int i);
     int getBlueRowRD(int i);
