@@ -2,8 +2,8 @@
 #include "stdio.h"
 
 std::ostream& operator<<(std::ostream& os,  QwintoScoreSheet & sheet){
-	os << "Player name: " << sheet.getPlayerName() << "\n";
-  os << "\t       ---------------------------------------- " << "\n";
+	// os << "Player name: " << sheet.getPlayerName() << "\n";
+  // os << "\t       ---------------------------------------- " << "\n";
 
   //---- PRINTS RED ROW -----//
   os << "Red\t     ";

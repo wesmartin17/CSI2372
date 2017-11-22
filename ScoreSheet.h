@@ -15,22 +15,14 @@ class ScoreSheet{
 		int yellowScore;
 		int blueScore;
 		int totalScore;
+		string playerName;
 
 	public:
-		ScoreSheet(string _playerName);
-		void score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
-		void setTotal();
-		string getPlayerName();
+		ScoreSheet(string _playerName) : playerName(_playerName) {};
+		// virtual void score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
+		// virtual void setTotal();
+		// virtual string getPlayerName();
+		// virtual int calcTotal();
 
-	protected:
-		string playerName;
-		int calcTotal();
 };
-
-ScoreSheet::ScoreSheet(string _playerName) : playerName(_playerName) {}
-string ScoreSheet::getPlayerName(){
-	string name = playerName;
-	return name;
-}
-
 #endif
