@@ -20,7 +20,7 @@ class ScoreSheet{
 		int totalScore=0;
 		friend std::ostream& operator<<(std::ostream& os, T & sheet){
 			os << "\nPlayer name: " << sheet.playerName;
-			int score = sheet.totalScore; // TODO: Make this sheet.calcTotal
+			int score = sheet.totalScore; // TODO: Make this sheet.calcTotal()
 			if(score > 0){
 				os << "\t Points: " << score;
 			}
