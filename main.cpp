@@ -3,9 +3,7 @@
 #include <algorithm>
 #include <vector>
 
-// // #include "ScoreSheet.h"
 #include "RollOfDice.cpp"
-// // #include "QwintoRow.cpp"
 #include "QwintoScoreSheet.cpp"
 
 
@@ -118,11 +116,16 @@ int main() {
 	// 	std::cout << "Please choose an available cell." << endl;
 	// }
  	// std::cout << row[2].roll() << endl;
+	// rd.roll();
+	// rd.roll();
+	// cout << int(rd);
+	// cout << rd << "\n";
+	// cout << int(rd) << "\n";
 
 	///////////////////////////
 	// QwintoScoreSheet stuff//
 	//////////////////////////
 	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
-	// karim.print();
+	// cout << karim;
 
 }
