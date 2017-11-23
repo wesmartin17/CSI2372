@@ -1,12 +1,9 @@
-#include "Player.h"
-#include <iostream>
-using namespace std;
+#include "qwintoPlayer.h"
 
-Player::Player(string _name, bool _active ){
-  name = _name;
-}
+QwintoPlayer(string _name) : Player(string _name){}
 
-void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
+
+void inputBeforeRoll(RollOfDice &_rollOfDice){
   string tmp = "";
   vector<string> refinedSelection;
   while(tmp != "yes"){

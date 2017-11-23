@@ -7,8 +7,9 @@ class Player{
     bool active;
 
   public:
-    Player(string _name, bool _active=false);
-    void inputBeforeRoll(RollOfDice &_rollOfDice);
-    void inputAfterRoll(RollOfDice &_rollOfDice);
+    Player(string _name){name = _name;};
+    virtual void inputBeforeRoll(RollOfDice &_rollOfDice);
+    //virtual void inputAfterRoll(RollOfDice &_rollOfDice);
+//    ~Player();
 
 };
