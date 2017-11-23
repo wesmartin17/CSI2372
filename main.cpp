@@ -5,7 +5,7 @@
 
 #include "RollOfDice.cpp"
 #include "QwintoScoreSheet.cpp"
-#include "Player.cpp"
+#include "qwintoPlayer.cpp"
 
 
 int versionSelection(){
@@ -142,21 +142,20 @@ int main() {
 	/////////////////////
 	/// Player stuff ////
 	/////////////////////
-	RollOfDice rd;
-	for(int i = 0;  i < players.size(); i ++){
-		players[i].inputBeforeRoll(rd);
-	}
-	vector<Player> players;
-
-	int tmp;
-
-	while(tmp < numberOfPlayers){
-		players.push_back(new Player(playersNames),false);
-		*playersNames++;
-		tmp ++;
-	}
-
-	RollOfDice rd;
+	// RollOfDice rd;
+	// for(int i = 0;  i < players.size(); i ++){
+	// 	players[i].inputBeforeRoll(rd);
+	// }
+  //
+	// int tmp;
+  //
+	// while(tmp < numberOfPlayers){
+	// 	players.push_back(new Player(playersNames),false);
+	// 	*playersNames++;
+	// 	tmp ++;
+	// }
+  //
+	// RollOfDice rd;
 
 
 }
