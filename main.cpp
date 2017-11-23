@@ -91,7 +91,7 @@ int main() {
 
 	/*
 		playground area
-		prototyping stuff go here
+		Prototyping stuff go here
 	*/
 
 	/////////////////////
