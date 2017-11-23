@@ -5,6 +5,7 @@
 
 #include "RollOfDice.cpp"
 #include "QwintoScoreSheet.cpp"
+#include "Player.cpp"
 
 
 int versionSelection(){
@@ -65,6 +66,15 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 	return playerNames;
 }
 
+vector<Player> createPlayers(int numberOfPlayers){
+	vector<string> names = inputPlayersNames(numberOfPlayers);
+	vector<Player> players;
+	for(int i=0; i<names.size(); ++i){
+		players.push_back(Player(names[i]));
+	}
+	return players;
+}
+
 int main() {
 
 
@@ -72,15 +82,16 @@ int main() {
 		main rountine area
 		Final stuff go here
 	*/
+
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
+	vector<Player> players = createPlayers(numberOfPlayers);
 	// end of main routine area
 
 
 	/*
 		playground area
-		prototyping stuff go here
+		Prototyping stuff go here
 	*/
 
 	/////////////////////
@@ -127,5 +138,25 @@ int main() {
 	//////////////////////////
 	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 	// cout << karim;
+
+	/////////////////////
+	/// Player stuff ////
+	/////////////////////
+	RollOfDice rd;
+	for(int i = 0;  i < players.size(); i ++){
+		players[i].inputBeforeRoll(rd);
+	}
+	vector<Player> players;
+
+	int tmp;
+
+	while(tmp < numberOfPlayers){
+		players.push_back(new Player(playersNames),false);
+		*playersNames++;
+		tmp ++;
+	}
+
+	RollOfDice rd;
+
 
 }
