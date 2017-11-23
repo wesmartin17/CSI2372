@@ -36,7 +36,7 @@ struct RollOfDice {
 
 	operator int();
 
-	std::ostream& operator<<(std::ostream& os);
+	friend std::ostream& operator<<(std::ostream& os, const RollOfDice & rd);
 
 };
 

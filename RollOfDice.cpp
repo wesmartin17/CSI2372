@@ -27,7 +27,6 @@ int RollOfDice::roll(){
 
 		Dice d = *it;
 		result += d.roll();
-
 	}
 	return result;
 }
@@ -43,21 +42,16 @@ RollOfDice RollOfDice::pair(Dice d1, Dice d2){
 //conversion operator to int.  is the sum of faces
 RollOfDice::operator int(){
 
-	int sum;
+	int sum = 0;
 	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
 
 		Dice d = *it;
 		sum+= d.face;
-		std::cout<< "hi" <<  sum;
 	}
 	return sum;
 }
 
-std::ostream& RollOfDice::operator<<(std::ostream& os){
-	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
-
-		Dice d = *it;
-		os<<d.face;
-	}
+std::ostream& operator<<(std::ostream& os,  RollOfDice& rd){
+	os << int(rd);
 	return os;
 }
