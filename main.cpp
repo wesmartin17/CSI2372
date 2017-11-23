@@ -66,6 +66,15 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 	return playerNames;
 }
 
+vector<Player> createPlayers(int numberOfPlayers){
+	vector<string> names = inputPlayersNames(numberOfPlayers);
+	vector<Player> players;
+	for(int i=0; i<names.size(); ++i){
+		players.push_back(Player(names[i]));
+	}
+	return players;
+}
+
 int main() {
 
 
@@ -76,38 +85,7 @@ int main() {
 
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	//const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
-
-	vector<string> asdf = inputPlayersNames(numberOfPlayers);
-	vector<string>::iterator iter;
-
-	vector<Player> players;
-
-	RollOfDice rd;
-	for(iter = asdf.begin(); iter != asdf.end(); iter++){
-		string tmp = *iter;
-		players.push_back(Player(tmp,false));
-	}
-
-	for(int i = 0;  i < players.size(); i ++){
-		players[i].inputBeforeRoll(rd);
-	}
-
-
-	// vector<Player> players;
-  //
-	// int tmp;
-  //
-	// while(tmp < numberOfPlayers){
-	// 	players.push_back(new Player(playersNames),false);
-	// 	*playersNames++;
-	// 	tmp ++;
-	// }
-  //
-	// RollOfDice rd;
-
-
-
+	vector<Player> players = createPlayers(numberOfPlayers);
 	// end of main routine area
 
 
@@ -160,5 +138,25 @@ int main() {
 	//////////////////////////
 	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 	// cout << karim;
+
+	/////////////////////
+	/// Player stuff ////
+	/////////////////////
+	RollOfDice rd;
+	for(int i = 0;  i < players.size(); i ++){
+		players[i].inputBeforeRoll(rd);
+	}
+	vector<Player> players;
+
+	int tmp;
+
+	while(tmp < numberOfPlayers){
+		players.push_back(new Player(playersNames),false);
+		*playersNames++;
+		tmp ++;
+	}
+
+	RollOfDice rd;
+
 
 }
