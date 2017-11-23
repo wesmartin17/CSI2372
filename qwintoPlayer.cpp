@@ -1,9 +1,9 @@
 #include "qwintoPlayer.h"
 
-QwintoPlayer(string _name) : Player(string _name){}
 
 
-void inputBeforeRoll(RollOfDice &_rollOfDice){
+
+void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   string tmp = "";
   vector<string> refinedSelection;
   while(tmp != "yes"){

@@ -2,6 +2,6 @@
 
 class QwintoPlayer : public Player{
 
-  QwintoPlayer::Player(string _name);
+  QwintoPlayer(string _name) : Player(_name){};
 
 };
