@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <vector>
 
-#include "RollOfDice.cpp"
+// #include "RollOfDice.cpp"
 #include "QwintoScoreSheet.cpp"
 #include "QwintoPlayer.cpp"
 
@@ -66,11 +66,11 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 	return playerNames;
 }
 
-vector<Player> createPlayers(int numberOfPlayers){
+vector<QwintoPlayer> createPlayers(int numberOfPlayers){
 	vector<string> names = inputPlayersNames(numberOfPlayers);
-	vector<Player> players;
+	vector<QwintoPlayer> players;
 	for(int i=0; i<names.size(); ++i){
-		players.push_back(Player(names[i]));
+		players.push_back(QwintoPlayer(names[i]));
 	}
 	return players;
 }
@@ -85,7 +85,7 @@ int main() {
 
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	vector<Player> players = createPlayers(numberOfPlayers);
+	vector<QwintoPlayer> players = createPlayers(numberOfPlayers);
 	// end of main routine area
 
 

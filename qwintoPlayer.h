@@ -2,6 +2,7 @@
 
 class QwintoPlayer : public Player{
 
-  QwintoPlayer(string _name) : Player(_name){};
+  public:
+    QwintoPlayer(string _name) : Player(_name){};
 
 };

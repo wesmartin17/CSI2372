@@ -1,6 +1,8 @@
 #include <string>
+#include "RollOfDice.cpp"
 
 class Player{
+  
   private:
     // ScoreSheet scoreSheet;
     string name;
