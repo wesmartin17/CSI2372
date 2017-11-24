@@ -5,7 +5,7 @@
 
 #include "RollOfDice.cpp"
 #include "QwintoScoreSheet.cpp"
-#include "qwintoPlayer.cpp"
+#include "QwintoPlayer.cpp"
 
 
 int versionSelection(){
