@@ -66,11 +66,12 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 	return playerNames;
 }
 
-vector<QwintoPlayer> createPlayers(int numberOfPlayers){
+vector<QwintoPlayer> createQwintoPlayers(int numberOfPlayers){
 	vector<string> names = inputPlayersNames(numberOfPlayers);
 	vector<QwintoPlayer> players;
 	for(int i=0; i<names.size(); ++i){
-		players.push_back(QwintoPlayer(names[i]));
+		QwintoScoreSheet _scoreSheet = QwintoScoreSheet(names[i]);
+		players.push_back(QwintoPlayer(names[i], _scoreSheet));
 	}
 	return players;
 }
@@ -85,7 +86,7 @@ int main() {
 
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	vector<QwintoPlayer> players = createPlayers(numberOfPlayers);
+	vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
 	// end of main routine area
 
 

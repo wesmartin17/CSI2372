@@ -5,7 +5,7 @@ class Player{
 
   private:
     // ScoreSheet scoreSheet;
-    string name;
+    string name; 
     bool active;
 
   public:
