@@ -53,3 +53,11 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   }
 
 }
+
+// QwintoScoreSheet QwintoPlayer::getScoreSheet(){
+//   return scoreSheet;
+// }
+
+void QwintoPlayer::print(){
+  std::cout << scoreSheet;
+}

@@ -86,8 +86,13 @@ int main() {
 
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
-	// end of main routine area
+	if(gameVersion==1){
+		vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
+	}// TODO ELSE CREATE QWIXX PLAYERS
+
+	/*
+		end of main routine area 
+	*/
 
 
 	/*
@@ -157,6 +162,6 @@ int main() {
 	// }
   //
 	// RollOfDice rd;
-
+	// players[0].print();
 
 }
