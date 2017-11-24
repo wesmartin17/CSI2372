@@ -1,4 +1,6 @@
+#include "QwintoScoreSheet.cpp"
 #include "Player.h"
+
 
 class QwintoPlayer : public Player{
 
