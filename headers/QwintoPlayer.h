@@ -1,4 +1,4 @@
-#include "QwintoScoreSheet.cpp"
+#include "../Classes/QwintoScoreSheet.cpp"
 #include "Player.h"
 
 

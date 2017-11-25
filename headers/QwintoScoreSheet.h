@@ -2,7 +2,7 @@
 #define QWINTO_SS_
 
 #include "ScoreSheet.h"
-#include "QwintoRow.cpp"
+#include "../Classes/QwintoRow.cpp"
 
 class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
 

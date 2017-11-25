@@ -5,7 +5,7 @@
 
 // #include "RollOfDice.cpp"
 // #include "QwintoScoreSheet.cpp"
-#include "QwintoPlayer.cpp"
+#include "Classes/QwintoPlayer.cpp"
 
 
 int versionSelection(){
@@ -94,7 +94,7 @@ int main() {
 
 			for(int i=0; i<numberOfPlayers; ++i){
 				players[i].active = true; // next player takes a turn i.e., becomes active
-				std::cout << "\n" << names[i] << " it's YOUR turn!!";
+				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
 				RollOfDice rd;
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
 				std::cout << "Your rolled a [" << rd.roll() << "]"; // roll dice and show result

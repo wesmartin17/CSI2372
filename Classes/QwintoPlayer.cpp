@@ -1,4 +1,4 @@
-#include "QwintoPlayer.h"
+#include "../headers/QwintoPlayer.h"
 
 void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   string tmp = "";

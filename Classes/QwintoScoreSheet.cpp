@@ -1,7 +1,5 @@
-#include "QwintoScoreSheet.h"
+#include "../headers/QwintoScoreSheet.h"
 #include "stdio.h"
-
-
 
 template <class QwintoScoreSheet>
 void ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){

@@ -1,7 +1,6 @@
-#include "RollOfDice.h"
+#include "../headers/RollOfDice.h"
 #include <iostream>
 #include <ctime>
-
 
 int RandomDice(){
 
