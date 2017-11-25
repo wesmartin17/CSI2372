@@ -17,7 +17,7 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     int getYellowRowRD(int i);
     int getBlueRowRD(int i);
     template<Color C>
-    QwintoRow<C> getRedRow(){
+    QwintoRow<C> getRow(){
     	switch(C){
     		case red: return redRow; break;
     		case yellow: return yellowRow; break;

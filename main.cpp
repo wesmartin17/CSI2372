@@ -90,12 +90,13 @@ int main() {
 		// while(true){ // while game is not over
 
 			for(int i=0; i<numberOfPlayers; ++i){
+				players[i].active = true;
 				std::cout << "\n" << names[i] << " it's YOUR turn!!";
 				std::cout << "\nHere's what your sheet looks like: ";
 				std::cout << scoreSheets[i] << endl;
-				players[i].active = true;
+				// players[i].inputBeforeRoll();
 
-				
+				players[i].active = false;
 			}
 
 		// }
