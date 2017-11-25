@@ -20,13 +20,18 @@ class QwintoRow {
 
 template<Color C>
 RollOfDice& QwintoRow<C>::operator[] (const int index){
-
-  if(index > 9 or index < 0){
-    throw std::runtime_error("Index out of range!");
-  }/*else if () {
-    // TODO: check if cell already occupied
-    throw std::runtime_error("Cell occupied!");
-  }*/
-
-  return values[index];
+  string input = "";
+  int i = index;
+  if(index > 8 or index < 0){
+    while(i > 8 or i < 0){
+      cout << "Index " << index << " is invalid!\n";
+      cout << "Enter a position between 0-8" << endl;
+      getline(cin, input);
+      stringstream myStream(input);
+      if(!(myStream >> i)){
+        cout << "Invalid input!" << endl;
+      }
+    }
+  }
+  return values[i];
 }
