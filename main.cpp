@@ -88,7 +88,7 @@ int main() {
 		}
 
 		/*
-			while end condition is not reached
+			TODO while end condition is not reached
 		*/
 		// while(true){
 
@@ -100,6 +100,8 @@ int main() {
 				std::cout << "Your rolled a [" << rd.roll() << "]"; // roll dice and show result
 				std::cout << "\nHere's what your sheet looks like: ";
 				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
+				std::cout << "What would you like to do?" << endl; // get input from active player after roll
+				// players[i].inputAfterRoll(rd); <--- TODO
 
 				players[i].active = false;
 			}
