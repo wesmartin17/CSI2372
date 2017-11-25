@@ -6,7 +6,7 @@
 
 class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
 
-  private:
+  protected:
     QwintoRow<red> redRow;
     QwintoRow<yellow> yellowRow;
     QwintoRow<blue> blueRow;
@@ -16,6 +16,14 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     int getRedRowRD(int i);
     int getYellowRowRD(int i);
     int getBlueRowRD(int i);
+    template<Color C>
+    QwintoRow<C> getRedRow(){
+    	switch(C){
+    		case red: return redRow; break;
+    		case yellow: return yellowRow; break;
+    		case blue: return blueRow; break;
+    	}
+    };
 
 };
 

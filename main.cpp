@@ -66,15 +66,6 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 	return playerNames;
 }
 
-vector<QwintoPlayer> createQwintoPlayers(int numberOfPlayers){
-	vector<string> names = inputPlayersNames(numberOfPlayers);
-	vector<QwintoPlayer> players;
-	for(int i=0; i<names.size(); ++i){
-		QwintoScoreSheet _scoreSheet = QwintoScoreSheet(names[i]);
-		players.push_back(QwintoPlayer(names[i], _scoreSheet));
-	}
-	return players;
-}
 
 int main() {
 
@@ -87,11 +78,20 @@ int main() {
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
 	if(gameVersion==1){
-		vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
-	}// TODO ELSE CREATE QWIXX PLAYERS
+		vector<string> names = inputPlayersNames(numberOfPlayers);
+		vector<QwintoScoreSheet> scoreSheets;
+		vector<QwintoPlayer> players;
+		for(int i=0; i<names.size(); ++i){
+			QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
+			scoreSheets.push_back(scoreSheet);
+			players.push_back(QwintoPlayer(names[i], scoreSheet));
+		}
+	}else{
+		cout << "Qwixx isn't implemented yet!" << endl;
+	}
 
 	/*
-		end of main routine area 
+		end of main routine area
 	*/
 
 
