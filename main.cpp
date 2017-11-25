@@ -86,6 +86,21 @@ int main() {
 			scoreSheets.push_back(scoreSheet);
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
+
+		// while(true){ // while game is not over
+
+			for(int i=0; i<numberOfPlayers; ++i){
+				std::cout << "\n" << names[i] << " it's YOUR turn!!";
+				std::cout << "\nHere's what your sheet looks like: ";
+				std::cout << scoreSheets[i] << endl;
+				players[i].active = true;
+
+				
+			}
+
+		// }
+
+
 	}else{
 		cout << "Qwixx isn't implemented yet!" << endl;
 	}
