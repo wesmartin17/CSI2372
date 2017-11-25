@@ -3,8 +3,6 @@
 #include <algorithm>
 #include <vector>
 
-// #include "RollOfDice.cpp"
-// #include "QwintoScoreSheet.cpp"
 #include "Classes/QwintoPlayer.cpp"
 
 
@@ -86,12 +84,9 @@ int main() {
 			scoreSheets.push_back(scoreSheet);
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
-
 		/*
-			TODO while end condition is not reached
+			TODO:	WHILE (GAME NOT OVER){
 		*/
-		// while(true){
-
 			for(int i=0; i<numberOfPlayers; ++i){
 				players[i].active = true; // next player takes a turn i.e., becomes active
 				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
@@ -103,10 +98,13 @@ int main() {
 				std::cout << "What would you like to do?" << endl; // get input from active player after roll
 				// players[i].inputAfterRoll(rd); <--- TODO
 
-				players[i].active = false;
+				players[i].active = false; // mark player as inactive and go to next player
 			}
+		/*
+		}	GAME IS OVER
+			TODO:	Calculate scores and show winner
+		*/
 
-		// }
 
 
 	}else{
