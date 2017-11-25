@@ -1,14 +1,17 @@
+#include "RollOfDice.cpp"
 #include <string>
 
 class Player{
+
   private:
-    ScoreSheet scoreSheet;
+    // ScoreSheet scoreSheet;
     string name;
-    bool active;
 
   public:
-    Player(string _name, bool _active=false);
-    void inputBeforeRoll(RollOfDice &_rollOfDice);
-    void inputAfterRoll(RollOfDice &_rollOfDice);
+    bool active;
+    Player(string _name){name = _name;};
+    virtual void inputBeforeRoll(RollOfDice &_rollOfDice);
+    //virtual void inputAfterRoll(RollOfDice &_rollOfDice);
+   // ~Player();
 
 };

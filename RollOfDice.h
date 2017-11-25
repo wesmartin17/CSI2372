@@ -20,7 +20,7 @@ struct Dice{
 
 		int face;
 
-		Dice(const Color color);
+		Dice(Color color);
 
 		int roll();
 

@@ -1,6 +1,14 @@
 #include "QwintoScoreSheet.h"
 #include "stdio.h"
 
+
+
+template <class QwintoScoreSheet>
+void ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
+
+
+}
+
 template <class QwintoScoreSheet>
 std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreSheet & sheet){
 	//---- PRINTS RED ROW -----//

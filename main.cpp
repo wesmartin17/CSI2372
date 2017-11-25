@@ -3,8 +3,9 @@
 #include <algorithm>
 #include <vector>
 
-#include "RollOfDice.cpp"
-#include "QwintoScoreSheet.cpp"
+// #include "RollOfDice.cpp"
+// #include "QwintoScoreSheet.cpp"
+#include "QwintoPlayer.cpp"
 
 
 int versionSelection(){
@@ -65,6 +66,7 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 	return playerNames;
 }
 
+
 int main() {
 
 
@@ -72,15 +74,53 @@ int main() {
 		main rountine area
 		Final stuff go here
 	*/
+
 	int gameVersion = versionSelection();
 	int numberOfPlayers = playersNumberSelection();
-	const string* playersNames = &inputPlayersNames(numberOfPlayers)[0];
-	// end of main routine area
+	if(gameVersion==1){
+		vector<string> names = inputPlayersNames(numberOfPlayers);
+		vector<QwintoScoreSheet> scoreSheets;
+		vector<QwintoPlayer> players;
+		for(int i=0; i<names.size(); ++i){
+			QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
+			scoreSheets.push_back(scoreSheet);
+			players.push_back(QwintoPlayer(names[i], scoreSheet));
+		}
+
+		/*
+			TODO while end condition is not reached
+		*/
+		// while(true){
+
+			for(int i=0; i<numberOfPlayers; ++i){
+				players[i].active = true; // next player takes a turn i.e., becomes active
+				std::cout << "\n" << names[i] << " it's YOUR turn!!";
+				RollOfDice rd;
+				players[i].inputBeforeRoll(rd); // get input from active player before roll
+				std::cout << "Your rolled a [" << rd.roll() << "]"; // roll dice and show result
+				std::cout << "\nHere's what your sheet looks like: ";
+				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
+				std::cout << "What would you like to do?" << endl; // get input from active player after roll
+				// players[i].inputAfterRoll(rd); <--- TODO
+
+				players[i].active = false;
+			}
+
+		// }
+
+
+	}else{
+		cout << "Qwixx isn't implemented yet!" << endl;
+	}
+
+	/*
+		end of main routine area
+	*/
 
 
 	/*
 		playground area
-		prototyping stuff go here
+		Prototyping stuff go here
 	*/
 
 	/////////////////////
@@ -127,5 +167,26 @@ int main() {
 	//////////////////////////
 	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 	// cout << karim;
+
+	/////////////////////
+	/// Player stuff ////
+	/////////////////////
+	// RollOfDice rd;
+	// for(int i = 0;  i < players.size(); i ++){
+	// 	players[i].inputBeforeRoll(rd);
+	// }
+  //
+	// int tmp;
+  //
+	// while(tmp < numberOfPlayers){
+	// 	players.push_back(new Player(playersNames),false);
+	// 	*playersNames++;
+	// 	tmp ++;
+	// }
+  //
+	// RollOfDice rd;
+	// players[0].print();
+	// QwintoScoreSheet scorSheet = QwintoScoreSheet("Karim");
+	// scorSheetK.print();
 
 }

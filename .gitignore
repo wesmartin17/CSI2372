@@ -8,3 +8,4 @@ Debug/
 *.layout
 *.vcxproj
 .vs/
+compile.txt
