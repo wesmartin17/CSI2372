@@ -97,7 +97,7 @@ int main() {
 				std::cout << "\n" << names[i] << " it's YOUR turn!!";
 				RollOfDice rd;
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
-				std::cout << "Your rolled a [" << rd.roll(); << "]"; // roll dice and show result 
+				std::cout << "Your rolled a [" << rd.roll() << "]"; // roll dice and show result
 				std::cout << "\nHere's what your sheet looks like: ";
 				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
 
@@ -163,7 +163,6 @@ int main() {
 	///////////////////////////
 	// QwintoScoreSheet stuff//
 	//////////////////////////
-<<<<<<< current
 	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 	// cout << karim;
 
@@ -185,9 +184,7 @@ int main() {
   //
 	// RollOfDice rd;
 	// players[0].print();
-=======
-	QwintoScoreSheet scorSheetK = QwintoScoreSheet("Karim");
-	scorSheetK.print();
->>>>>>> before discard
+	// QwintoScoreSheet scorSheet = QwintoScoreSheet("Karim");
+	// scorSheetK.print();
 
 }
