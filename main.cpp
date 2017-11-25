@@ -87,14 +87,19 @@ int main() {
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
 
-		// while(true){ // while game is not over
+		/*
+			while end condition is not reached
+		*/
+		// while(true){
 
 			for(int i=0; i<numberOfPlayers; ++i){
-				players[i].active = true;
+				players[i].active = true; // next player takes a turn i.e., becomes active
 				std::cout << "\n" << names[i] << " it's YOUR turn!!";
+				RollOfDice rd;
+				players[i].inputBeforeRoll(rd); // get input from active player before roll
+				std::cout << "Your rolled a [" << rd.roll(); << "]"; // roll dice and show result 
 				std::cout << "\nHere's what your sheet looks like: ";
-				std::cout << scoreSheets[i] << endl;
-				// players[i].inputBeforeRoll();
+				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
 
 				players[i].active = false;
 			}
@@ -158,6 +163,7 @@ int main() {
 	///////////////////////////
 	// QwintoScoreSheet stuff//
 	//////////////////////////
+<<<<<<< current
 	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
 	// cout << karim;
 
@@ -179,5 +185,9 @@ int main() {
   //
 	// RollOfDice rd;
 	// players[0].print();
+=======
+	QwintoScoreSheet scorSheetK = QwintoScoreSheet("Karim");
+	scorSheetK.print();
+>>>>>>> before discard
 
 }
