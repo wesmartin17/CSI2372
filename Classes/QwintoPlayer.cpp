@@ -10,7 +10,7 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
     vector<string>::iterator it;
     string input = "";
 
-    while(input != "done"){
+    while(input != "done" || (input != "pass" && active == false)){
       cin >> input;
       selection.push_back(input);
     }
@@ -52,5 +52,33 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 
 
 void Player::inputAfterRoll(RollOfDice &_rollOfDice){
-  
+
+  cout<<"Please select the row you would like to place: "<<endl;
+  vector<string> selection;
+  vector<string>::iterator it;
+  string input = "";
+
+  while(true){
+    input = "";
+    cin >> input;
+    if(input == "red" || input == "blue" || input == "yellow")
+      break;
+  }
+
+  cout << "Please select your column: \n";
+
+  int col = 0;
+  cin.ignore();
+  while(true){
+    cout << "Your selection: ";
+    getline(cin, input);
+    stringstream myStream(input);
+    if (myStream >> col){
+      if(col > 0 && col <= 9) //this should be replaced with bool scoresheet.score
+        //scoresheet.score(col);
+    }
+    cout << "Invalid number, please try again" << endl;
+  }
+
+
 }
