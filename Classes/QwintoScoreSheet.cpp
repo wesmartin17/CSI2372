@@ -2,7 +2,7 @@
 #include "stdio.h"
 
 template <class QwintoScoreSheet>
-void ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
+bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 
 }
@@ -12,7 +12,7 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	//---- PRINTS RED ROW -----//
 	os << "\nRed\t     ";
 	for(int i=0; i<9; ++i){
-	  if(sheet.getRedRowRD(i) == 0){
+	  if(sheet.redRow[i] == 0){
 	    if(i == 1 or i == 3 or i == 4){ // pentagons
 	      os << "  $ ";
 	    }else if(i == 2){ //middle space
@@ -21,10 +21,10 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	      os << "  | ";
 	    }
 	  }else{
-	    if(sheet.getRedRowRD(i)>9){ // just for styling
-	      os << "  " << sheet.getRedRowRD(i);
+	    if(sheet.redRow[i]>9){ // just for styling
+	      os << "  " << sheet.redRow[i];
 	    }else{
-	      os << "   " << sheet.getRedRowRD(i);
+	      os << "   " << sheet.redRow[i];
 	    }
 	  }
 	}
@@ -33,7 +33,7 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	os << "\t   -------------------------------------------- " << "\n";
 	os << "Yellow   ";
 	for(int i=0; i<9; ++i){
-	  if(sheet.getYellowRowRD(i) == 0){
+	  if(sheet.yellowRow[i] == 0){
 	    if(i == 5 or i == 6){ // pentagons
 	      os << "  $ ";
 	    }else if(i == 4){ //middle space
@@ -42,10 +42,10 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	      os << "  | ";
 	    }
 	  }else{
-	    if(sheet.getYellowRowRD(i)>9){ // just for styling
-	      os << "  " << sheet.getYellowRowRD(i);
+	    if(sheet.yellowRow[i]>9){ // just for styling
+	      os << "  " << sheet.yellowRow[i];
 	    }else{
-	      os << "   " << sheet.getYellowRowRD(i);
+	      os << "   " << sheet.yellowRow[i];
 	    }
 	  }
 	}
@@ -54,7 +54,7 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	os << "      ---------------------------------------------- " << "\n";
 	os << "Blue ";
 	for(int i=0; i<9; ++i){
-	  if(sheet.getBlueRowRD(i) == 0){
+	  if(sheet.blueRow[i] == 0){
 	    if(i == 2 or i == 7 or i == 8){ // pentagons
 	      os << "  $ ";
 	    }else if(i == 3){ //middle space
@@ -63,32 +63,14 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	      os << "  | ";
 	    }
 	  }else{
-	    if(sheet.getBlueRowRD(i)>9){ // just for styling
-	      os << "  " << sheet.getBlueRowRD(i);
+	    if(sheet.blueRow[i]>9){ // just for styling
+	      os << "  " << sheet.blueRow[i];
 	    }else{
-	      os << "   " << sheet.getBlueRowRD(i);
+	      os << "   " << sheet.blueRow[i];
 	    }
 	  }
 	}
 	os << "\n";
 	os << "      ------------------------------------------ " << "\n";
 return os;
-}
-
-///////////////////////
-//// Row Getters //////
-///////////////////////
-int QwintoScoreSheet::getRedRowRD(int i){
-  int value = int(redRow[i]);
-  return value;
-}
-
-int QwintoScoreSheet::getYellowRowRD(int i){
-  int value = int(yellowRow[i]);
-  return value;
-}
-
-int QwintoScoreSheet::getBlueRowRD(int i){
-  int value = int(yellowRow[i]);
-  return value;
 }
