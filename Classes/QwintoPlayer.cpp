@@ -49,3 +49,8 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   }
 
 }
+
+
+void Player::inputAfterRoll(RollOfDice &_rollOfDice){
+  
+}

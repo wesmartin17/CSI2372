@@ -96,7 +96,8 @@ int main() {
 				std::cout << "\nHere's what your sheet looks like: ";
 				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
 				std::cout << "What would you like to do?" << endl; // get input from active player after roll
-				// players[i].inputAfterRoll(rd); <--- TODO
+        // TODO: Implement inputAfterRoll
+				players[i].inputAfterRoll(rd);
 
 				players[i].active = false; // mark player as inactive and go to next player
 			}
