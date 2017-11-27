@@ -73,41 +73,7 @@ int main() {
 		Final stuff go here
 	*/
 
-	// int gameVersion = versionSelection();
-	// int numberOfPlayers = playersNumberSelection();
-	// if(gameVersion==1){
-	// 	vector<string> names = inputPlayersNames(numberOfPlayers);
-	// 	vector<QwintoScoreSheet> scoreSheets;
-	// 	vector<QwintoPlayer> players;
-	// 	for(int i=0; i<names.size(); ++i){
-	// 		QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
-	// 		scoreSheets.push_back(scoreSheet);
-	// 		players.push_back(QwintoPlayer(names[i], scoreSheet));
-	// 	}
-	// 	/*
-	// 		TODO:	WHILE (GAME NOT OVER){
-	// 	*/
-			for(int i=0; i<numberOfPlayers; ++i){
-				players[i].active = true; // next player takes a turn i.e., becomes active
-				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
-				RollOfDice rd;
-				players[i].inputBeforeRoll(rd); // get input from active player before roll
-				std::cout << "Your rolled a [" << rd.roll() << "]"; // roll dice and show result
-				std::cout << "\nHere's what your sheet looks like: ";
-				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
-				std::cout << "What would you like to do?" << endl; // get input from active player after roll
-				players[i].inputAfterRoll(rd);
-
-				players[i].active = false; // mark player as inactive and go to next player
-			}
-	// 	/*
-	// 	}	GAME IS OVER
-	// 		TODO:	Calculate scores and show winner
-	// 	*/
-  //
-	// }else{
-	// 	cout << "Qwixx isn't implemented yet!" << endl;
-	// }
+uu
 
 	/*
 		end of main routine area
