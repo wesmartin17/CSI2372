@@ -3,9 +3,34 @@
 
 template <class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
+	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
+	RollOfDice* row;
+	switch (color) {
+		case Dice::Color::red: row = qt->redRow.values; break;
+		case Dice::Color::yellow: row = qt->yellowRow.values; break;
+		case Dice::Color::blue: row = qt->blueRow.values; break;
+	}
+	if(pos > 8 or pos < 0){
+		std::cout << "Invalid input: #" << pos
+							<< ":\nYou must select location cell number between 1 and 9" << endl;
+		return false;
+	}else if(int(row[pos]) != 0){
+		std::cout << "Invalid input: #" << pos
+							<< ":\nCell #" << pos << " already has value " << int(row[pos]) << endl;
+		return false;
+	}else{
+		for(int i=0; i<pos; ++i){
+			if(int(row[i]) > int(rollOfdice)){
+				std::cout << "Invalid input: #" << pos
+									<< ":\nCell #" << i << " is right of " << pos << " and holds value [" << int(row[i]) << "], large than your current roll" << endl;
+				return false;
+			}
+		}
+	}
+	row[pos] = rollOfdice;
+	return true;
+	}
 
-
-}
 
 template <class QwintoScoreSheet>
 std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreSheet & sheet){
