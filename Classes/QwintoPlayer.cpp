@@ -28,7 +28,7 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
     for(vector<string>::iterator i = refinedSelection.begin(); i!= refinedSelection.end(); i++ ){
       cout<<"["<<*i<<"  dice]\n";
     }
-    cout<<"type \"yes\" to confirm roll"<<endl;
+    cout<<"type \"yes\" to confirm roll:"<<endl;
 
     cin>>tmp;
   }
@@ -53,7 +53,8 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 
 void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
-  cout<<"Please select the row you would like to place: "<<endl;
+  cout<<"Please select the row color and the column number you would like to place ["<< _rollOfDice << "] in:"<<endl;
+  cout<<"(e.g. red #3):"<<endl;
   vector<string> selection;
   vector<string>::iterator it;
   string input = "";
