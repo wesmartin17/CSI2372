@@ -93,9 +93,10 @@ int main() {
 				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
 				RollOfDice rd;
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
-				std::cout << "Your rolled a [" << rd.roll() << "]"; // roll dice and show result
-				std::cout << "\nHere's what your sheet looks like: ";
+				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << rd.roll() << "] !!\n"; // roll dice and show result
+				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
+				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
 				std::cout << "What would you like to do?" << endl; // get input from active player after roll
         // TODO: Implement inputAfterRoll
 				players[i].inputAfterRoll(rd);

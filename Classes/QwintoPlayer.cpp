@@ -5,8 +5,8 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   vector<string> refinedSelection;
   while(tmp!="yes"){
     refinedSelection.clear();
-    cout<<"Please select the dice you would like to roll: (type \"done\" when finished): "<<endl;
-    cout<<"e.g. red blue yellow done "<<endl;
+    cout<<"Please select the dice you would like to roll, type \"done\" when finished: "<<endl;
+    cout<<"(e.g. red blue yellow done):"<<endl;
     vector<string> selection;
     vector<string>::iterator it;
     string input = "";
