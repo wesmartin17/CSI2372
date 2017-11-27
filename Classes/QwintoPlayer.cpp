@@ -53,8 +53,8 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 
 void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
-  cout<<"Please select the row color and the column number you would like to place ["<< _rollOfDice << "] in:"<<endl;
-  cout<<"(e.g. red #3):"<<endl;
+  cout<<"Please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished:"<<endl;
+  cout<<"(e.g. red 3 done):"<<endl;
   vector<string> selection;
   vector<string>::iterator it;
   string input = "";
