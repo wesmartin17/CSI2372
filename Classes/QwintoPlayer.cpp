@@ -74,11 +74,11 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     getline(cin, input);
     stringstream myStream(input);
     if (myStream >> col){
-      if(col > 0 && col <= 9) //this should be replaced with bool scoresheet.score
-        //scoresheet.score(col);
+      if(col > 0 && col <= 9){ //this should be replaced with bool scoresheet.score
+        return;
+        // bool success = scoresheet.score(_rollOfDice, Dice::Color:red, col); // this should be replaced with color decision
+      }
+      cout << "Invalid number, please try again" << endl;
     }
-    cout << "Invalid number, please try again" << endl;
   }
-
-
 }
