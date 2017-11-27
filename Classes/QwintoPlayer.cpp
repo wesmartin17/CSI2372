@@ -6,6 +6,7 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   while(tmp!="yes"){
     refinedSelection.clear();
     cout<<"Please select the dice you would like to roll: (type \"done\" when finished): "<<endl;
+    cout<<"e.g. red blue yellow done "<<endl;
     vector<string> selection;
     vector<string>::iterator it;
     string input = "";
@@ -23,12 +24,11 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
       else if(*it == "yellow" || *it == "y")
         refinedSelection.push_back("yellow");
     }
-
-    cout<<"type \"yes\" to confirm roll of: "<<endl;
+    cout<<"Rolling: "<<endl;
     for(vector<string>::iterator i = refinedSelection.begin(); i!= refinedSelection.end(); i++ ){
-      cout<<*i<<endl;
-
+      cout<<"["<<*i<<"  dice]\n";
     }
+    cout<<"type \"yes\" to confirm roll"<<endl;
 
     cin>>tmp;
   }
