@@ -95,7 +95,8 @@ int main() {
 				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
 				RollOfDice rd;
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
-				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << rd.roll() << "] !!\n"; // roll dice and show result
+				rd.roll(); // roll the dice
+				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
 				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
@@ -196,18 +197,21 @@ int main() {
 	// for(int i = 0;  i < players.size(); i ++){
 	// 	players[i].inputBeforeRoll(rd);
 	// }
-  //
 	// int tmp;
-  //
 	// while(tmp < numberOfPlayers){
 	// 	players.push_back(new Player(playersNames),false);
 	// 	*playersNames++;
 	// 	tmp ++;
 	// }
-  //
 	// RollOfDice rd;
+	// QwintoScoreSheet ss = QwintoScoreSheet("bob");
+	// rd.dices.push_back(Dice::Color::red);
+	// rd.roll();
+	// ss.score(rd, Dice::Color::red, 1);
+	// cout << ss;
+
 	// players[0].print();
-	// QwintoScoreSheet scorSheet = QwintoScoreSheet("Karim");
-	// scorSheetK.print();
+	// QwintoScoreSheet scoreSheet = QwintoScoreSheet("Karim");
+	// scoreSheetK.print();
 
 }
