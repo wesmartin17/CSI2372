@@ -86,8 +86,10 @@ int main() {
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
 		/*
-			TODO:	WHILE (GAME NOT OVER){
+			TODO:	Check for game over
 		*/
+		bool gameOver = false;
+		while(!gameOver){
 			for(int i=0; i<numberOfPlayers; ++i){
 				players[i].active = true; // next player takes a turn i.e., becomes active
 				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
@@ -100,9 +102,15 @@ int main() {
 				std::cout << "What would you like to do?" << endl; // get input from active player after roll
         // TODO: Implement inputAfterRoll
 				players[i].inputAfterRoll(rd);
-
+				for(int j = 0; j <numberOfPlayers; ++j){
+					if(players[j].active == false){
+						cout<<scoreSheets[j];
+						players[j].inputAfterRoll(rd);
+					}
+				}
 				players[i].active = false; // mark player as inactive and go to next player
 			}
+		}
 		/*
 		}	GAME IS OVER
 			TODO:	Calculate scores and show winner

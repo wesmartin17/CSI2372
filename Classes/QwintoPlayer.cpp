@@ -54,7 +54,10 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 void Player::inputAfterRoll(RollOfDice &_rollOfDice){
   QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scorSheet.score(~~~)
 
-  cout<<"Please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished:"<<endl;
+  cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished";
+  if(!active)
+    cout<<"(You can also type \"pass\"):";
+  cout<<endl;
   cout<<"(e.g. red 3 done):"<<endl;
   vector<string> selection;
   vector<string>::iterator it;
@@ -67,6 +70,8 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     input = "";
     while(input != "done"){
       cin >> input;
+      if(input == "pass")
+        return;
       selection.push_back(input);
     }
 
