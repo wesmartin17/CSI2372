@@ -98,7 +98,7 @@ int main() {
 				rd.roll(); // roll the dice
 				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
 				std::cout << "\nHere's what your sheet currently looks like: ";
-				std::cout << scoreSheets[i] << endl; // print scoresheet of active player
+				std::cout << players[i].scoreSheet << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
 				std::cout << "What would you like to do?" << endl; // get input from active player after roll
         // TODO: Implement inputAfterRoll
