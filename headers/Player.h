@@ -4,7 +4,6 @@
 class Player{
 
   private:
-    // ScoreSheet scoreSheet;
     string name;
 
   public:

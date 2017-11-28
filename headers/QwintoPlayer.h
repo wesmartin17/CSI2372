@@ -4,9 +4,7 @@
 
 class QwintoPlayer : public Player{
 
-  private:
-    QwintoScoreSheet scoreSheet;
-
   public:
+    QwintoScoreSheet scoreSheet;
     QwintoPlayer(string _name, QwintoScoreSheet _scoreSheet) : Player(_name), scoreSheet(_scoreSheet){};
 };
