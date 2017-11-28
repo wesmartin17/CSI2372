@@ -78,11 +78,8 @@ int main() {
 	int numberOfPlayers = playersNumberSelection();
 	if(gameVersion==1){
 		vector<string> names = inputPlayersNames(numberOfPlayers);
-		vector<QwintoScoreSheet> scoreSheets;
 		vector<QwintoPlayer> players;
 		for(int i=0; i<names.size(); ++i){
-			QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
-			scoreSheets.push_back(scoreSheet);
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
 		/*
@@ -105,7 +102,7 @@ int main() {
 				players[i].inputAfterRoll(rd);
 				for(int j = 0; j <numberOfPlayers; ++j){
 					if(players[j].active == false){
-						cout<<scoreSheets[j];
+						cout << players[j].scoreSheet << endl;
 						players[j].inputAfterRoll(rd);
 					}
 				}
