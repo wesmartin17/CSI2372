@@ -53,34 +53,43 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 
 void Player::inputAfterRoll(RollOfDice &_rollOfDice){
   QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scorSheet.score(~~~)
-  
-  cout<<"Please select the row color you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished:"<<endl;
-  cout<<"(e.g. red 3 done):"<<endl;
-  vector<string> selection;
-  vector<string>::iterator it;
-  string input = "";
 
-  while(true){
-    input = "";
-    cin >> input;
-    if(input == "red" || input == "blue" || input == "yellow")
-      break;
-  }
+  cout<<"Please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished:"<<endl;
+    cout<<"(e.g. red 3 done):"<<endl;
+    vector<string> selection;
+    vector<string>::iterator it;
+    string input = "";
 
-  cout << "Please select your column: \n";
+    bool enteredValid;
 
-  int col = 0;
-  cin.ignore();
-  while(true){
-    cout << "Your selection: ";
-    getline(cin, input);
-    stringstream myStream(input);
-    if (myStream >> col){
-      if(col > 0 && col <= 9){ //this should be replaced with bool scoresheet.score
-        return;
-        // bool success = scoresheet.score(_rollOfDice, Dice::Color:red, col); // this should be replaced with color decision
+    cin.ignore();
+    while(!enteredValid){
+      while(input != "done"){
+        cin >> input;
+        selection.push_back(input);
       }
-      cout << "Invalid number, please try again" << endl;
+
+      stringstream asdf(selection.end()[-2]);
+      int x = 0;
+      asdf >> x;
+
+      //cout<<"end-2: "<<selection.end()[-2]<<" end-1: "<<selection.end()[-1];
+      if(selection.end()[-3] == "red"){
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
+          enteredValid = true;
+      }
+      else if(selection.end()[-3] == "blue"){
+          if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
+        enteredValid = true;
+      }
+      else if(selection.end()[-3] == "yellow"){
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
+          enteredValid = true;
+      }
+      else{
+        cout<<"invalid entry";
+        input = "";
+      }
     }
-  }
+
 }
