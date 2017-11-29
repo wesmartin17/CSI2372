@@ -107,18 +107,24 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
           enteredValid = true;
       }
       else if(selection.end()[-3] == "blue" && hasBlue){
-          if(qp->scoreSheet.score(_rollOfDice,Dice::Color::blue,x))
-        enteredValid = true;
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::blue,x))
+          enteredValid = true;
       }
       else if(selection.end()[-3] == "yellow" && hasYellow){
         if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x))
           enteredValid = true;
       }
-      else{
-        cout<<"invalid entry"<<endl;
+
+      if(!enteredValid){
         input = "";
+        cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished";
+        if(!active)
+          cout<<"(You can also type \"pass\"):";
+        cout<<endl;
+        cout<<"(e.g. red 3 done):"<<endl;
         selection.clear();
       }
+
     }
     else{
       cout<<"invalid entry"<<endl;
