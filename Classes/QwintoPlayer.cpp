@@ -52,6 +52,27 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 
 
 void Player::inputAfterRoll(RollOfDice &_rollOfDice){
+
+  bool hasRed = false, hasBlue = false, hasYellow = false;
+
+  for(std::vector<Dice>::iterator i = _rollOfDice.dices.begin(); i != _rollOfDice.dices.end(); ++i){
+    Dice d = *i;
+    switch(d.diceColor){
+      case Dice::Color::red :
+        hasRed = true;
+        break;
+      case Dice::Color::blue :
+        hasBlue = true;
+        break;
+      case Dice::Color::yellow :
+        hasYellow = true;
+        break;
+    }
+  }
+
+
+
+
   QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scorSheet.score(~~~)
 
   cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished";
@@ -70,31 +91,39 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     input = "";
     while(input != "done"){
       cin >> input;
-      if(input == "pass")
+      if(input == "pass" && active == false)
         return;
       selection.push_back(input);
     }
 
-    stringstream asdf(selection.end()[-2]);
-    int x = 0;
-    asdf >> x;
+    if(selection.size() >= 3){
+      stringstream asdf(selection.end()[-2]);
+      int x = 0;
+      asdf >> x;
 
-    //cout<<"end-2: "<<selection.end()[-2]<<" end-1: "<<selection.end()[-1];
-    if(selection.end()[-3] == "red"){
-      if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
-        enteredValid = true;
-    }
-    else if(selection.end()[-3] == "blue"){
+      //cout<<"end-2: "<<selection.end()[-2]<<" end-1: "<<selection.end()[-1];
+      if(selection.end()[-3] == "red" && hasRed){
         if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
-      enteredValid = true;
-    }
-    else if(selection.end()[-3] == "yellow"){
-      if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
+          enteredValid = true;
+      }
+      else if(selection.end()[-3] == "blue" && hasBlue){
+          if(qp->scoreSheet.score(_rollOfDice,Dice::Color::blue,x))
         enteredValid = true;
+      }
+      else if(selection.end()[-3] == "yellow" && hasYellow){
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x))
+          enteredValid = true;
+      }
+      else{
+        cout<<"invalid entry"<<endl;
+        input = "";
+        selection.clear();
+      }
     }
     else{
-      cout<<"invalid entry";
+      cout<<"invalid entry"<<endl;
       input = "";
+      selection.clear();
     }
   }
 

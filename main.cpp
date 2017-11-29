@@ -80,6 +80,7 @@ int main() {
 		vector<string> names = inputPlayersNames(numberOfPlayers);
 		vector<QwintoPlayer> players;
 		for(int i=0; i<names.size(); ++i){
+			QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
 		/*
