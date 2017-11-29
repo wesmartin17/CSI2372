@@ -72,7 +72,7 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
   QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scoreSheet.score(~~~)
 
-  cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished\n";
+  cout<<name<<", please select the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in.\nType \"done\" when finished\n";
   cout<<"(e.g. red 3 done)"<< endl;
   if(!active){
     cout <<"NOTE: You can type \"pass\" to skip with no penalty ";
@@ -82,7 +82,6 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     cout<<"NOTE: You can type \"fail\" to mark a failed throw ";
     cout << "(e.g. fail done):" << endl;
   }
-
   cout<<endl;
   vector<string> selection;
   vector<string>::iterator it;
@@ -110,25 +109,31 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
       //cout<<"end-2: "<<selection.end()[-2]<<" end-1: "<<selection.end()[-1];
       if(selection.end()[-3] == "red" && hasRed){
-        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x-1))
           enteredValid = true;
       }
       else if(selection.end()[-3] == "blue" && hasBlue){
-        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::blue,x))
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::blue,x-1))
           enteredValid = true;
       }
       else if(selection.end()[-3] == "yellow" && hasYellow){
-        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x))
+        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x-1))
           enteredValid = true;
       }
 
       if(!enteredValid){
         input = "";
-        cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished";
-        if(!active)
-          cout<<"(You can also type \"pass\"):";
+        cout<<name<<", please select the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in.\nType \"done\" when finished\n";
+        cout<<"(e.g. red 3 done)"<< endl;
+        if(!active){
+          cout <<"NOTE: You can type \"pass\" to skip with no penalty ";
+          cout << "(e.g. pass done):" << endl;
+        }
+        if(active){
+          cout<<"NOTE: You can type \"fail\" to mark a failed throw ";
+          cout << "(e.g. fail done):" << endl;
+        }
         cout<<endl;
-        cout<<"(e.g. red 3 done):"<<endl;
         selection.clear();
       }
 
