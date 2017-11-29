@@ -94,11 +94,13 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     input = "";
     while(input != "done"){
       cin >> input;
-      if(input == "pass" && active == false)
+      if(input == "pass" && active == false){
         return;
-      if(input == "fail" && active == true)
+      }
+      if(input == "fail" && active == true){
         qp->scoreSheet.score(_rollOfDice, Dice::Color::red, -5); // failed throw
         return;
+      }
       selection.push_back(input);
     }
 

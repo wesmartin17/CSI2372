@@ -98,9 +98,10 @@ int main() {
 				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << players[i].scoreSheet << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
-				std::cout << "What would you like to do?\n" << endl; // get input from active player after roll
-        // TODO: Implement inputAfterRoll
-				players[i].inputAfterRoll(rd);
+				std::cout << "What would you like to do?\n" << endl;
+				players[i].inputAfterRoll(rd);  // get input from active player after roll
+				if(players[i].scoreSheet.failedAttempts >= 4)
+					gameOver = true;
 				for(int j = 0; j <numberOfPlayers; ++j){
 					if(players[j].active == false){
 						cout << players[j].scoreSheet << endl;

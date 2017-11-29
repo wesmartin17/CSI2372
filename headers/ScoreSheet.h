@@ -12,6 +12,7 @@ template<class T>
 class ScoreSheet{
 
 	private:
+		int totalScore=0;
 		string playerName;
 		friend std::ostream& operator<<(std::ostream& os, T & sheet){
 			os << "\nPlayer name: " << sheet.playerName;
@@ -25,7 +26,6 @@ class ScoreSheet{
 		};
 
 	public:
-		int totalScore=0;
 		int failedAttempts=0;
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
 		virtual ostream& print(std::ostream& os, T & sheet);
