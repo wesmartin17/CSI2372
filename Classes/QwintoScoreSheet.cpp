@@ -18,15 +18,16 @@ bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color col
 		std::cout << "Invalid input: #" << pos
 							<< ":\nCell #" << pos << " already has value " << int(row[pos]) << endl;
 		return false;
-	}else{
-		for(int i=0; i<pos; ++i){
-			if(int(row[i]) > int(rollOfdice)){
-				std::cout << "Invalid input: #" << pos
-									<< ":\nCell #" << i << " is right of " << pos << " and holds value [" << int(row[i]) << "], large than your current roll" << endl;
-				return false;
-			}
+	}
+	for(int i=0; i<9; ++i){
+		if((int(row[i]) <= int(rollOfdice)) and (row[i]!=0)){
+			std::cout << "Invalid input: #" << pos
+								<< ":\nCell #" << i << " is right of cell #" << pos << " and holds [" << int(row[i]) << "] \n"
+								<< "["<<int(row[i])<<"] is <= "<< "["<<int(rollOfdice)<<"] "<< endl;
+			return false;
 		}
 	}
+
 	row[pos] = rollOfdice;
 	return true;
 	}
