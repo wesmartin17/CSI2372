@@ -70,16 +70,20 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     }
   }
 
+  QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scoreSheet.score(~~~)
 
+  cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished\n";
+  cout<<"(e.g. red 3 done)"<< endl;
+  if(!active){
+    cout <<"NOTE: You can type \"pass\" to skip with no penalty ";
+    cout << "(e.g. pass done):" << endl;
+  }
+  if(active){
+    cout<<"NOTE: You can type \"fail\" to mark a failed throw ";
+    cout << "(e.g. fail done):" << endl;
+  }
 
-
-  QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scorSheet.score(~~~)
-
-  cout<<name<<", please select the row color and the column number you would like to place ["<< _rollOfDice << "] in, type \"done\" when finished";
-  if(!active)
-    cout<<"(You can also type \"pass\"):";
   cout<<endl;
-  cout<<"(e.g. red 3 done):"<<endl;
   vector<string> selection;
   vector<string>::iterator it;
   string input = "";
@@ -92,6 +96,9 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     while(input != "done"){
       cin >> input;
       if(input == "pass" && active == false)
+        return;
+      if(input == "fail" && active == true)
+        qp->scoreSheet.score(_rollOfDice, Dice::Color::red, -5); // failed throw
         return;
       selection.push_back(input);
     }

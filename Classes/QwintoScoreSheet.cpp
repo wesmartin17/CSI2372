@@ -3,6 +3,14 @@
 
 template <class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
+
+	if(pos == -5){
+		std::cout << "Failed Throw!" << endl;
+		this->failedAttempts += 1;
+		std::cout << "You have: " << this->failedAttempts << " failed throws." << endl;
+		return true;
+	}
+
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
 	RollOfDice* row;
 	switch (color) {

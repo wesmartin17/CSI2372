@@ -98,7 +98,7 @@ int main() {
 				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << players[i].scoreSheet << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
-				std::cout << "What would you like to do?" << endl; // get input from active player after roll
+				std::cout << "What would you like to do?\n" << endl; // get input from active player after roll
         // TODO: Implement inputAfterRoll
 				players[i].inputAfterRoll(rd);
 				for(int j = 0; j <numberOfPlayers; ++j){
