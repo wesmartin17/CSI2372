@@ -34,68 +34,127 @@ bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color col
 
 template <class QwintoScoreSheet>
 std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreSheet & sheet){
+
 	//---- PRINTS RED ROW -----//
-	os << "\nRed\t     ";
+	os << "\nRed\t          ";
 	for(int i=0; i<9; ++i){
 	  if(sheet.redRow[i] == 0){
-	    if(i == 1 or i == 3 or i == 4){ // pentagons
-	      os << "  $ ";
-	    }else if(i == 2){ //middle space
-	      os << "  $   |XX| ";
-	    }else{
-	      os << "  | ";
-	    }
+			if(i==8){
+				os << "|    |"; // last
+			}else if(i==1 or i==2 or i==4 or i==5){
+				os << "$    "; // pentagons
+			}else if(i==3){
+				os << "|XX|    "; // middle
+			}else{
+				os << "|    "; // everything else
+			}
 	  }else{
-	    if(sheet.redRow[i]>9){ // just for styling
-	      os << "  " << sheet.redRow[i];
-	    }else{
-	      os << "   " << sheet.redRow[i];
-	    }
-	  }
+			if(sheet.redRow[i]>9){ // for styling
+				if(i==8){
+					os << "| "<< sheet.redRow[i]<< " |"; // last
+				}else if(i==1 or i==2 or i==4 or i==5){
+					os << "$ "<< sheet.redRow[i] <<" "; // pentagons
+				}else if(i==3){
+					os << "|XX| "<< sheet.redRow[i] <<" "; // middle
+				}else{
+					os << "| "<< sheet.redRow[i] <<" "; // everything else
+				}
+			}else{
+				if(i==8){
+					os << "| "<< sheet.redRow[i]<< "  |"; // last
+				}else if(i==1 or i==2 or i==4 or i==5){
+					os << "$ "<< sheet.redRow[i] <<"  "; // pentagons
+				}else if(i==3){
+					os << "|XX| "<< sheet.redRow[i] <<"  "; // middle
+				}else{
+					os << "| "<< sheet.redRow[i] <<"  "; // everything else
+				}
+			}
+		}
+
 	}
-	os << "\n";
+
 	//---- PRINTS YELLOW ROW -----//
-	os << "\t   -------------------------------------------- " << "\n";
-	os << "Yellow   ";
+	os << "\n\t     ------------------------------------------------- ";
+	os << "\nYellow       ";
 	for(int i=0; i<9; ++i){
 	  if(sheet.yellowRow[i] == 0){
-	    if(i == 5 or i == 6){ // pentagons
-	      os << "  $ ";
-	    }else if(i == 4){ //middle space
-	      os << "  |   |XX| ";
-	    }else{
-	      os << "  | ";
-	    }
+			if(i==8){
+				os << "|    |"; // last
+			}else if(i==6 or i==7){
+				os << "$    "; // pentagons
+			}else if(i==5){
+				os << "|XX|    "; // middle
+			}else{
+				os << "|    "; // everything else
+			}
 	  }else{
-	    if(sheet.yellowRow[i]>9){ // just for styling
-	      os << "  " << sheet.yellowRow[i];
-	    }else{
-	      os << "   " << sheet.yellowRow[i];
-	    }
-	  }
+			if(sheet.yellowRow[i]>9){ // for styling
+				if(i==8){
+					os << "| "<< sheet.yellowRow[i] << " |"; // last
+				}else if(i==6 or i==7){
+					os << "$ "<< sheet.yellowRow[i] <<" "; // pentagons
+				}else if(i==5){
+					os << "|XX| "<< sheet.yellowRow[i] <<" "; // middle
+				}else{
+					os << "| "<< sheet.yellowRow[i] <<" "; // everything else
+				}
+			}else{
+				if(i==8){
+					os << "| "<< sheet.yellowRow[i] << "  |"; // last
+				}else if(i==6 or i==7){
+					os << "$ "<< sheet.yellowRow[i] <<"  "; // pentagons
+				}else if(i==5){
+					os << "|XX| "<< sheet.yellowRow[i] <<"  "; // middle
+				}else{
+					os << "| "<< sheet.yellowRow[i] <<"  "; // everything else
+				}
+			}
+		}
+
 	}
 	os << "\n";
+
 	//---- PRINTS BLUE ROW -----//
-	os << "      ---------------------------------------------- " << "\n";
-	os << "Blue ";
+	os << "\t------------------------------------------------- ";
+	os << "\nBlue    ";
 	for(int i=0; i<9; ++i){
 	  if(sheet.blueRow[i] == 0){
-	    if(i == 2 or i == 7 or i == 8){ // pentagons
-	      os << "  $ ";
-	    }else if(i == 3){ //middle space
-	      os << "  $   |XX| ";
-	    }else{
-	      os << "  | ";
-	    }
+			if(i==8){
+				os << "$    $"; // last is pentagon
+			}else if(i==2 or i==3){
+				os << "$    "; // pentagons
+			}else if(i==4){
+				os << "|XX|    "; // middle
+			}else{
+				os << "|    "; // everything else
+			}
 	  }else{
-	    if(sheet.blueRow[i]>9){ // just for styling
-	      os << "  " << sheet.blueRow[i];
-	    }else{
-	      os << "   " << sheet.blueRow[i];
-	    }
-	  }
+			if(sheet.blueRow[i]>9){ // for styling
+				if(i==8){
+					os << "$ "<< sheet.blueRow[i] << " $"; // last
+				}else if(i==2 or i==3){
+					os << "$ "<< sheet.blueRow[i] <<" "; // pentagons
+				}else if(i==4){
+					os << "|XX| "<< sheet.blueRow[i] <<" "; // middle
+				}else{
+					os << "| "<< sheet.blueRow[i] <<" "; // everything else
+				}
+			}else{
+				if(i==8){
+					os << "$ "<< sheet.blueRow[i] << "  $"; // last
+				}else if(i==2 or i==3){
+					os << "$ "<< sheet.blueRow[i] <<"  "; // pentagons
+				}else if(i==4){
+					os << "|XX| "<< sheet.blueRow[i] <<"  "; // middle
+				}else{
+					os << "| "<< sheet.blueRow[i] <<"  "; // everything else
+				}
+			}
+		}
+
 	}
 	os << "\n";
-	os << "      ------------------------------------------ " << "\n";
-return os;
+	os << "\t------------------------------------------------- ";
+	return os;
 }
