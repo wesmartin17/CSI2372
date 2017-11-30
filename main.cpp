@@ -97,7 +97,7 @@ int main() {
 				rd.roll(); // roll the dice
 				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
 
-				if(players[i].scoreSheet.failedAttempts >= 4){
+				if(!players[i].scoreSheet){
 					std::cout << "Ooops... "<< names[i] << ", looks like your rolled a" << int(rd)
 										<<  ". You can't place that anywhere and this is your 4th failed throw.\nThe game will end as a result." << endl;
 					gameOver = true;
@@ -109,7 +109,7 @@ int main() {
 				std::cout << "What would you like to do?\n" << endl;
 				players[i].inputAfterRoll(rd);  // get input from active player after roll
 
-				if(players[i].scoreSheet.twoRows()){
+				if(!players[i].scoreSheet){
 					std::cout << names[i] << ", looks like your filled TWO ENTIRE ROWS. Good job.\nThe game will end as a result." << endl;
 					gameOver = true;
 				}
@@ -118,7 +118,7 @@ int main() {
 					if(players[j].active == false){
 						cout << players[j].scoreSheet << endl;
 						players[j].inputAfterRoll(rd);
-						if(players[j].scoreSheet.twoRows()){
+						if(!players[i].scoreSheet){
 							std::cout << names[j] << ", looks like your filled two entire rows. GOOD JOB!\nThe game will end as a result." << endl;
 							gameOver = true;
 						}

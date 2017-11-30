@@ -25,6 +25,10 @@ class ScoreSheet{
 			return os;
 		};
 
+		friend bool operator not(T & sheet){
+			return sheet.notOperator();
+		}
+
 	public:
 		int failedAttempts=0;
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
@@ -33,6 +37,7 @@ class ScoreSheet{
 		virtual bool twoRows();
 		virtual int setTotal();
 		virtual int calcTotal();
+		virtual bool notOperator();
 
 };
 #endif

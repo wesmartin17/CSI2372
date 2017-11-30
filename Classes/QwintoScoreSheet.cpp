@@ -195,27 +195,28 @@ bool ScoreSheet<QwintoScoreSheet>::twoRows(){
 	return zeroes<=1;
 }
 
+
 template <class QwintoScoreSheet>
 int ScoreSheet<QwintoScoreSheet>::calcTotal(){
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
 	int total = 0;
-	// TODO: calc total
 
 	int redZeroes = 0;
+	int yellowZeroes = 0;
+	int blueZeroes = 0;
+
 	for(int i=0; i<9; i++){
 		if(qt->redRow[i]==0){
 			redZeroes += 1;
 		}
 	}
 
-	int yellowZeroes = 0;
 	for(int i=0; i<9; i++){
 		if(qt->yellowRow[i]==0){
 			yellowZeroes += 1;
 		}
 	}
 
-	int blueZeroes = 0;
 	for(int i=0; i<9; i++){
 		if(qt->blueRow[i]==0){
 			blueZeroes += 1;
@@ -283,10 +284,24 @@ int ScoreSheet<QwintoScoreSheet>::calcTotal(){
 	return total;
 }
 
+
 template <class QwintoScoreSheet>
 int ScoreSheet<QwintoScoreSheet>::setTotal(){
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
 	int total = qt->calcTotal();
 	this->totalScore = total;
 	return total;
+}
+
+
+template<class QwintoScoreSheet>
+bool ScoreSheet<QwintoScoreSheet>::notOperator(){
+	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
+	if(qt->failedAttempts >= 4){
+		return true;
+	}
+	if(qt->twoRows()){
+		return true;
+	}
+	return false;
 }
