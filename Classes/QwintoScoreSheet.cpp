@@ -198,8 +198,88 @@ bool ScoreSheet<QwintoScoreSheet>::twoRows(){
 template <class QwintoScoreSheet>
 int ScoreSheet<QwintoScoreSheet>::calcTotal(){
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
-	int total =0;
+	int total = 0;
 	// TODO: calc total
+
+	int redZeroes = 0;
+	for(int i=0; i<9; i++){
+		if(qt->redRow[i]==0){
+			redZeroes += 1;
+		}
+	}
+
+	int yellowZeroes = 0;
+	for(int i=0; i<9; i++){
+		if(qt->yellowRow[i]==0){
+			yellowZeroes += 1;
+		}
+	}
+
+	int blueZeroes = 0;
+	for(int i=0; i<9; i++){
+		if(qt->blueRow[i]==0){
+			blueZeroes += 1;
+		}
+	}
+
+	/*
+		Full rows:
+		+ Right-most value for full rows
+		+ 1 per non-zero for not full rows
+	*/
+	// Red
+	if(redZeroes == 0){
+		total += qt->redRow[8];
+	}else{
+		total += 9 - redZeroes;
+	}
+
+	// Yellow
+	if(yellowZeroes == 0){
+		total += qt->yellowRow[8];
+	}else{
+		total += 9 - yellowZeroes;
+	}
+
+	// Blue
+	if(blueZeroes == 0){
+		total += qt->blueRow[8];
+	}else{
+		total += 9 - blueZeroes;
+	}
+
+	/*
+		Pentagons: If column is full
+		+ red: #1 and #4
+		+ yellow: #6
+		+ blue: #2 and #9
+	*/
+	// Red #1
+	if(qt->redRow[1]!=0 and qt->yellowRow[2]!=0 and qt->blueRow[3]!=0)
+		total += qt->redRow[1];
+
+	// Red #4
+	if(qt->redRow[4]!=0 and qt->yellowRow[5]!=0 and qt->blueRow[6]!=0)
+		total += qt->redRow[4];
+
+	// Yellow #6
+	if(qt->redRow[5]!=0 and qt->yellowRow[6]!=0 and qt->blueRow[7]!=0)
+		total += qt->yellowRow[6];
+
+	// Blue #2
+	if(qt->redRow[0]!=0 and qt->yellowRow[1]!=0 and qt->blueRow[2]!=0)
+		total += qt->blueRow[2];
+
+	// Blue #9
+	if(qt->redRow[6]!=0 and qt->yellowRow[7]!=0 and qt->blueRow[8]!=0)
+		total += qt->blueRow[9];
+
+	/*
+		Failed throws:
+		-5 * failed throws
+	*/
+	total -= 5*(qt->failedAttempts);
+
 	return total;
 }
 
