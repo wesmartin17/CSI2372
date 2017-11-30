@@ -121,11 +121,17 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
       else if(selection.end()[-3] == "yellow" && hasYellow){
         if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x-1))
           enteredValid = true;
+      else{
+        cout<<"invalid entry"<<endl;
+        input = "";
+        selection.clear();
+      }
       }
 
       if(!enteredValid){
         input = "";
-        cout<<name<<", please select the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in.\nType \"done\" when finished\n";
+        cout<<endl<<name<<", THAT WAS AN INVALID SELECTION.\n"<<qp->scoreSheet<<endl;
+        cout<<endl<<name<<"Now please select the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in.\nType \"done\" when finished\n";
         cout<<"(e.g. red 3 done)"<< endl;
         if(!active){
           cout <<"NOTE: You can type \"pass\" to skip with no penalty ";

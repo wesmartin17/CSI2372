@@ -91,6 +91,7 @@ int main() {
 			for(int i=0; i<numberOfPlayers; ++i){
 				players[i].active = true; // next player takes a turn i.e., becomes active
 				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
+				std::cout<<players[i].scoreSheet<<endl;
 				RollOfDice rd;
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
 				rd.roll(); // roll the dice
