@@ -194,3 +194,19 @@ bool ScoreSheet<QwintoScoreSheet>::twoRows(){
 
 	return zeroes<=1;
 }
+
+template <class QwintoScoreSheet>
+int ScoreSheet<QwintoScoreSheet>::calcTotal(){
+	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
+	int total =0;
+	// TODO: calc total
+	return total;
+}
+
+template <class QwintoScoreSheet>
+int ScoreSheet<QwintoScoreSheet>::setTotal(){
+	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
+	int total = qt->calcTotal();
+	this->totalScore = total;
+	return total;
+}

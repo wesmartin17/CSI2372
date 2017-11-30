@@ -31,9 +31,8 @@ class ScoreSheet{
 		virtual ostream& print(std::ostream& os, T & sheet);
 		virtual bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
 		virtual bool twoRows();
-		
-		// virtual void setTotal();
-		// virtual int calcTotal();
+		virtual int setTotal();
+		virtual int calcTotal();
 
 };
 #endif
