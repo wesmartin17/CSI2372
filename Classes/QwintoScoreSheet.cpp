@@ -167,3 +167,30 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	os << "\t------------------------------------------------- ";
 	return os;
 }
+
+
+template <class QwintoScoreSheet>
+bool ScoreSheet<QwintoScoreSheet>::twoRows(){
+	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
+
+	int zeroes = 0;
+	for(int i=0; i<9; i++){
+		if(qt->redRow[i]==0){
+			zeroes += 1;
+		}
+	}
+
+	for(int i=0; i<9; i++){
+		if(qt->yellowRow[i]==0){
+			zeroes += 1;
+		}
+	}
+
+	for(int i=0; i<9; i++){
+		if(qt->blueRow[i]==0){
+			zeroes += 1;
+		}
+	}
+
+	return zeroes<=1;
+}

@@ -95,17 +95,32 @@ int main() {
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
 				rd.roll(); // roll the dice
 				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
+
+				if(players[i].scoreSheet.failedAttempts >= 4){
+					std::cout << "Ooops... "<< names[i] << ", looks like your rolled a" << int(rd)
+										<<  ". You can't place that anywhere and this is your 4th failed throw.\nThe game will end as a result." << endl;
+					gameOver = true;
+				}
+
 				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << players[i].scoreSheet << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
 				std::cout << "What would you like to do?\n" << endl;
 				players[i].inputAfterRoll(rd);  // get input from active player after roll
-				if(players[i].scoreSheet.failedAttempts >= 4)
+
+				if(players[i].scoreSheet.twoRows()){
+					std::cout << names[i] << ", looks like your filled TWO ENTIRE ROWS. Good job.\nThe game will end as a result." << endl;
 					gameOver = true;
+				}
+
 				for(int j = 0; j <numberOfPlayers; ++j){
 					if(players[j].active == false){
 						cout << players[j].scoreSheet << endl;
 						players[j].inputAfterRoll(rd);
+						if(players[j].scoreSheet.twoRows()){
+							std::cout << names[j] << ", looks like your filled two entire rows. GOOD JOB!\nThe game will end as a result." << endl;
+							gameOver = true;
+						}
 					}
 				}
 				players[i].active = false; // mark player as inactive and go to next player

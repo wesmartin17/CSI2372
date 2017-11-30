@@ -30,8 +30,9 @@ class ScoreSheet{
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
 		virtual ostream& print(std::ostream& os, T & sheet);
 		virtual bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
+		virtual bool twoRows();
+		
 		// virtual void setTotal();
-		// virtual string getPlayerName();
 		// virtual int calcTotal();
 
 };
