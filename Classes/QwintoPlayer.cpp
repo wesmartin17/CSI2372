@@ -95,11 +95,11 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     while(input != "done"){
       cin >> input;
       if(input == "pass" && active == false){
-        return;
+        enteredValid = true;
       }
       if(input == "fail" && active == true){
-        qp->scoreSheet.score(_rollOfDice, Dice::Color::red, -5); // failed throw
-        return;
+        qp->scoreSheet.failedAttempts += 1; // failed throw
+        enteredValid = true;
       }
       selection.push_back(input);
     }
@@ -121,11 +121,11 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
       else if(selection.end()[-3] == "yellow" && hasYellow){
         if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x-1))
           enteredValid = true;
-      else{
-        cout<<"invalid entry"<<endl;
-        input = "";
-        selection.clear();
-      }
+        else{
+          cout<<"invalid entry"<<endl;
+          input = "";
+          selection.clear();
+        }
       }
 
       if(!enteredValid){
@@ -147,7 +147,7 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
     }
     else{
-      cout<<"invalid entry"<<endl;
+      // cout<<"invalid entry"<<endl;
       input = "";
       selection.clear();
     }

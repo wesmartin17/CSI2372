@@ -298,9 +298,11 @@ template<class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::notOperator(){
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
 	if(qt->failedAttempts >= 4){
+		std::cout << "This is your fourth and last failed throw :(" << endl;
 		return true;
 	}
 	if(qt->twoRows()){
+		std::cout << "Looks like you filled two entire rows. Good Job!!" << endl;
 		return true;
 	}
 	return false;
