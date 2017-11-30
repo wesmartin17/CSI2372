@@ -4,13 +4,6 @@
 template <class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
-	if(pos == -5){
-		std::cout << "Failed Throw!" << endl;
-		this->failedAttempts += 1;
-		std::cout << "You have: " << this->failedAttempts << " failed throws." << endl;
-		return true;
-	}
-
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
 	RollOfDice* row;
 	switch (color) {
@@ -165,6 +158,13 @@ std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreS
 	}
 	os << "\n";
 	os << "\t------------------------------------------------- ";
+	if(sheet.failedAttempts.size() > 0){
+		os << "\nFailed throws: ";
+		for(int i = 0; i<sheet.failedAttempts.size(); ++i){
+			os << sheet.failedAttempts[i] << " ";
+		}
+	}
+	os << "\n";
 	return os;
 }
 
@@ -279,7 +279,7 @@ int ScoreSheet<QwintoScoreSheet>::calcTotal(){
 		Failed throws:
 		-5 * failed throws
 	*/
-	total -= 5*(qt->failedAttempts);
+	total -= 5*(qt->failedAttempts.size());
 
 	return total;
 }
@@ -297,7 +297,7 @@ int ScoreSheet<QwintoScoreSheet>::setTotal(){
 template<class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::notOperator(){
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
-	if(qt->failedAttempts >= 4){
+	if(qt->failedAttempts.size() >= 4){
 		std::cout << "This is your fourth and last failed throw :(" << endl;
 		return true;
 	}

@@ -30,7 +30,7 @@ class ScoreSheet{
 		}
 
 	public:
-		int failedAttempts=0;
+		std::vector<RollOfDice> failedAttempts;
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
 		virtual ostream& print(std::ostream& os, T & sheet);
 		virtual bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);

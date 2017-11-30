@@ -91,7 +91,6 @@ int main() {
 			for(int i=0; i<numberOfPlayers; ++i){
 				players[i].active = true; // next player takes a turn i.e., becomes active
 				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
-				std::cout<<players[i].scoreSheet<<endl;
 				RollOfDice rd;
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
 				rd.roll(); // roll the dice
@@ -109,7 +108,7 @@ int main() {
 				players[i].inputAfterRoll(rd);  // get input from active player after roll
 
 				if(!players[i].scoreSheet){
-					std::cout << names[i] << "The game will end as a result." << endl;
+					std::cout << "The game will end as a result." << endl;
 					gameOver = true;
 				}
 
@@ -118,7 +117,7 @@ int main() {
 						cout << players[j].scoreSheet << endl;
 						players[j].inputAfterRoll(rd);
 						if(!players[i].scoreSheet){
-							std::cout << names[j] << "The game will end as a result." << endl;
+							std::cout << "The game will end as a result." << endl;
 							gameOver = true;
 						}
 					}

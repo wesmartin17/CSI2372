@@ -82,7 +82,6 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
     cout<<"NOTE: You can type \"fail\" to mark a failed throw ";
     cout << "(e.g. fail done):" << endl;
   }
-  cout<<endl;
   vector<string> selection;
   vector<string>::iterator it;
   string input = "";
@@ -98,7 +97,7 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
         enteredValid = true;
       }
       if(input == "fail" && active == true){
-        qp->scoreSheet.failedAttempts += 1; // failed throw
+        qp->scoreSheet.failedAttempts.push_back(_rollOfDice); // failed throw
         enteredValid = true;
       }
       selection.push_back(input);
