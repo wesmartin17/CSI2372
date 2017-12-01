@@ -24,7 +24,7 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
       else if(*it == "yellow" || *it == "y")
         refinedSelection.push_back("yellow");
     }
-    cout<<"Rolling: "<<endl;
+    cout<<"\nRolling: "<<endl;
     for(vector<string>::iterator i = refinedSelection.begin(); i!= refinedSelection.end(); i++ ){
       cout<<"["<<*i<<"  dice]\n";
     }

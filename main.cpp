@@ -95,23 +95,15 @@ int main() {
 				players[i].inputBeforeRoll(rd); // get input from active player before roll
 				rd.roll(); // roll the dice
 				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
-
-				if(!players[i].scoreSheet){
-					std::cout << "The game will end as a result." << endl;
-					gameOver = true;
-				}
-
 				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << players[i].scoreSheet << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
 				std::cout << "What would you like to do?\n" << endl;
 				players[i].inputAfterRoll(rd);  // get input from active player after roll
-
 				if(!players[i].scoreSheet){
 					std::cout << "The game will end as a result." << endl;
 					gameOver = true;
 				}
-
 				for(int j = 0; j <numberOfPlayers; ++j){
 					if(players[j].active == false){
 						cout << players[j].scoreSheet << endl;
@@ -126,9 +118,25 @@ int main() {
 			}
 		}
 		/*
-		}	GAME IS OVER
-			TODO:	Calculate scores and show winner
+			GAME IS OVER
 		*/
+		QwintoPlayer winner = players[0]; // placeholder value
+		string winnerName = names[0]; // placeholder value
+		int winnerScore = -100; // placeholder value
+		int score = winnerScore; // placeholder value
+
+		for(int i = 0; i <numberOfPlayers; ++i){
+			score = players[i].scoreSheet.setTotal(); // Calculate score for each player
+			std::cout << players[i].scoreSheet; // Show score sheet for each player
+			if(winnerScore < score){
+				winnerScore = score;
+				winner = players[i];
+				winnerName = names[i];
+			}
+		}
+		// Announce winner.
+		std::cout << "Congradulations to " << winnerName << " for winning the game with " << winnerScore << " points!" << endl;
+
 
 	}else{
 		cout << "Qwixx isn't implemented yet!" << endl;

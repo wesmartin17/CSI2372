@@ -224,7 +224,6 @@ int ScoreSheet<QwintoScoreSheet>::calcTotal(){
 	}
 
 	/*
-		Full rows:
 		+ Right-most value for full rows
 		+ 1 per non-zero for not full rows
 	*/
@@ -232,21 +231,21 @@ int ScoreSheet<QwintoScoreSheet>::calcTotal(){
 	if(redZeroes == 0){
 		total += qt->redRow[8];
 	}else{
-		total += 9 - redZeroes;
+		total += (9 - redZeroes);
 	}
 
 	// Yellow
 	if(yellowZeroes == 0){
 		total += qt->yellowRow[8];
 	}else{
-		total += 9 - yellowZeroes;
+		total += (9 - yellowZeroes);
 	}
 
 	// Blue
 	if(blueZeroes == 0){
 		total += qt->blueRow[8];
 	}else{
-		total += 9 - blueZeroes;
+		total += (9 - blueZeroes);
 	}
 
 	/*
