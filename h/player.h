@@ -1,5 +1,6 @@
-#include "../Classes/RollOfDice.cpp"
-#include <string>
+#ifndef PLAYER_
+#define PLAYER_
+#include "../cpp/RollOfDice.cpp"
 
 class Player{
 
@@ -11,6 +12,7 @@ class Player{
     Player(string _name){name = _name;};
     virtual void inputBeforeRoll(RollOfDice &_rollOfDice);
     virtual void inputAfterRoll(RollOfDice &_rollOfDice);
-   // ~Player();
-
+    // virtual ~Player()=0;
 };
+
+#endif

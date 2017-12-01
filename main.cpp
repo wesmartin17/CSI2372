@@ -2,10 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
-
-#include "Classes/QwintoPlayer.cpp"
-
-
+#include "cpp/QwintoPlayer.cpp"
 
 int versionSelection(){
 	string input = "";

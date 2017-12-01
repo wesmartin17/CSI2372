@@ -6,9 +6,9 @@
 #include <iostream>
 
 
- struct RandomDice{
+struct RandomDice{
 
-	static int value;
+  static int value;
 
 };
 

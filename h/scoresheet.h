@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-#include "RollOfDice.h"
+#include "rollOfdice.h"
 
 using namespace std;
 
@@ -14,6 +14,7 @@ class ScoreSheet{
 	private:
 		int totalScore=0;
 		string playerName;
+
 		friend std::ostream& operator<<(std::ostream& os, T & sheet){
 			os << "\nPlayer name: " << sheet.playerName;
 			int score = sheet.totalScore; // TODO: Make this sheet.calcTotal()
@@ -38,6 +39,7 @@ class ScoreSheet{
 		virtual int setTotal();
 		virtual int calcTotal();
 		virtual bool notOperator();
-
+		// virtual ~ScoreSheet()=0;
 };
+
 #endif
