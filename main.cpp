@@ -5,6 +5,7 @@
 #include "cpp/QwintoPlayer.cpp"
 
 int versionSelection(){
+
 	string input = "";
 	int gameVersion = 0;
 
@@ -26,6 +27,7 @@ int versionSelection(){
 }
 
 int playersNumberSelection(){
+
 	string input = "";
 	int numberPlayers = 0;
 
@@ -45,12 +47,12 @@ int playersNumberSelection(){
 }
 
 vector<QwintoPlayer> createQwintoPlayers(int numberOfPlayers){
-	// vector<string> playerNames;
 
 	vector<QwintoPlayer> players;
 	std::vector<string> playerNames;
 	cout<<"Enter each player's name" << endl;
 	string input;
+
 	for(int i=0; i < numberOfPlayers; ++i){
 		cout<<"Player #" << i+1 << ": " << endl;
 		getline(cin, input);
@@ -68,20 +70,20 @@ vector<QwintoPlayer> createQwintoPlayers(int numberOfPlayers){
 
 int main() {
 
-	int gameVersion = versionSelection();
-	int numberOfPlayers = playersNumberSelection();
-
 	/*
 		main rountine area
 	*/
 
-	if(gameVersion==1){// PLAYING QWINTO
+	int gameVersion = versionSelection(); // Ask player to choose a version
+	int numberOfPlayers = playersNumberSelection(); // Ask player to choose number of players
 
-		// Create Qwinto Players
+	if(gameVersion==1){ // PLAYING QWINTO
+
+		// Create Corresponding Players
 		vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
 
 		/*
-			While game not over
+			While end condition is not reached
 		*/
 		bool gameOver = false;
 		while(!gameOver){
@@ -98,10 +100,10 @@ int main() {
 				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
 				std::cout << "\nHere's what your sheet currently looks like: ";
 				std::cout << activePlayer->scoreSheet << endl; // print scoresheet of active player
-				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
+				std::cout << "Your rolled a [" << int(rd) << "]\n";
 				std::cout << "What would you like to do?\n" << endl;
 				activePlayer->inputAfterRoll(rd);  // get input from active player after roll
-				if(!activePlayer->scoreSheet){
+				if(!activePlayer->scoreSheet){ // End condition met by active player
 					std::cout << "The game will end as a result." << endl;
 					gameOver = true;
 					break;
@@ -112,7 +114,7 @@ int main() {
 					if(!inactivePlayer->active){
 						cout << inactivePlayer->scoreSheet << endl;
 						inactivePlayer->inputAfterRoll(rd);
-						if(!inactivePlayer->scoreSheet){
+						if(!inactivePlayer->scoreSheet){ // End condition met by inactive player
 							std::cout << "The game will end as a result." << endl;
 							gameOver = true;
 							break;
@@ -133,7 +135,7 @@ int main() {
 		for(int i = 0; i <numberOfPlayers; ++i){
 			score = players[i].scoreSheet.setTotal(); // Calculate score for each player
 			std::cout << players[i].scoreSheet; // Show score sheet for each player
-			if(winnerScore < score){
+			if(winnerScore < score){ 
 				winnerScore = score;
 				winner = players[i];
 				winnerName = players[i].name;
