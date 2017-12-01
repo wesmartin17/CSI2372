@@ -44,8 +44,11 @@ int playersNumberSelection(){
 	 return numberPlayers;
 }
 
-vector<string> inputPlayersNames(int numberOfPlayers){
-	vector<string> playerNames;
+vector<QwintoPlayer> createQwintoPlayers(int numberOfPlayers){
+	// vector<string> playerNames;
+
+	vector<QwintoPlayer> players;
+	std::vector<string> playerNames;
 	cout<<"Enter each player's name" << endl;
 	string input;
 	for(int i=0; i < numberOfPlayers; ++i){
@@ -56,30 +59,26 @@ vector<string> inputPlayersNames(int numberOfPlayers){
 			--i;
 		}else{
 			playerNames.push_back(input);
+			players.push_back(QwintoPlayer(input, QwintoScoreSheet(input)));
 		}
 	}
-
-	return playerNames;
+	return players;
 }
 
 
 int main() {
 
+	int gameVersion = versionSelection();
+	int numberOfPlayers = playersNumberSelection();
 
 	/*
 		main rountine area
-		Final stuff go here
 	*/
 
-	int gameVersion = versionSelection();
-	int numberOfPlayers = playersNumberSelection();
-	if(gameVersion==1){
-		vector<string> names = inputPlayersNames(numberOfPlayers);
-		vector<QwintoPlayer> players;
-		for(int i=0; i<names.size(); ++i){
-			QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
-			players.push_back(QwintoPlayer(names[i], scoreSheet));
-		}
+	if(gameVersion==1){// PLAYING QWINTO
+
+		// Create Qwinto Players
+		vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
 
 		/*
 			While game not over
@@ -87,8 +86,8 @@ int main() {
 		bool gameOver = false;
 		while(!gameOver){
 
-			//Loop over players
-			vector<QwintoPlayer>::iterator activePlayer;
+
+			vector<QwintoPlayer>::iterator activePlayer; //Loop over qwinto players
 			for(activePlayer = players.begin(); activePlayer<players.end(); activePlayer++){
 
 				activePlayer->active = true; // next player takes a turn i.e., becomes active
@@ -127,7 +126,7 @@ int main() {
 			GAME IS OVER
 		*/
 		QwintoPlayer winner = players[0]; // placeholder value
-		string winnerName = names[0]; // placeholder value
+		string winnerName = winner.name; // placeholder value
 		int winnerScore = -100; // placeholder value
 		int score = winnerScore; // placeholder value
 
@@ -151,94 +150,5 @@ int main() {
 	/*
 		end of main routine area
 	*/
-
-
-	/*
-		playground area
-		Prototyping stuff go here
-	*/
-
-	/////////////////////
-	// RollOfDice stuff//
-	/////////////////////
-	// std::vector<Dice> d;
-	// int arr[] = {0,0,0,0,0,0};int numRolls = 1000000;
-	// cout<<"rolled "<<numRolls<<" times...\n";
-	// for(int i = 0; i < numRolls; ++i){
-	// 	d.push_back( Dice(Dice::Color::blue));
-	// 	arr[d[i].face-1]++;
-	// }
-	// for(int i = 0; i < 6; i++){
-	// 	cout<<"number times a "<<(i+1)<<" was rolled: "<<arr[i]<<"\n\n";
-	// }
-
-	////////////////////
-	// QwintoRow stuff//
-	////////////////////
-	// QwintoRow<red> row;
-	// Dice d1 = Dice(Dice::Color::blue);
-	// Dice d2 = Dice(Dice::Color::red);
-	// Dice d3 = Dice(Dice::Color::red);
-	// RollOfDice rd;
-	// rd.dices.push_back(d1);
-	// rd.dices.push_back(d2);
-	// rd.dices.push_back(d3);
-	// try{
-	// 	row[2] = rd;
-	// 	row[20] = rd;
-	// }catch(const std::exception& e){
-	// 	std::cout << e.what() << endl;
-	// 	std::cout << "Please choose an available cell." << endl;
-	// }
- 	// std::cout << row[2].roll() << endl;
-	// rd.roll();
-	// rd.roll();
-	// cout << int(rd);
-	// cout << rd << "\n";
-	// cout << int(rd) << "\n";
-
-	///////////////////////////
-	// QwintoScoreSheet stuff//
-	//////////////////////////
-	// QwintoScoreSheet karim = QwintoScoreSheet("Karim");
-	// cout << karim;
-	// Dice d1 = Dice(Dice::Color::blue);
-	// Dice d2 = Dice(Dice::Color::red);
-	// Dice d3 = Dice(Dice::Color::red);
-	// RollOfDice rd;
-	// rd.dices.push_back(d1);
-	// rd.dices.push_back(d2);
-	// rd.dices.push_back(d3);
-	// rd.roll();
-	// cout << rd << endl;
-	// karim.score(rd, Dice::Color::red, 1);
-	// cout << karim;
-	// karim.score(rd, Dice::Color::red, 1);
-	// karim.score(rd, Dice::Color::blue, 3);
-
-
-	/////////////////////
-	/// Player stuff ////
-	/////////////////////
-	// RollOfDice rd;
-	// for(int i = 0;  i < players.size(); i ++){
-	// 	activePlayer->inputBeforeRoll(rd);
-	// }
-	// int tmp;
-	// while(tmp < numberOfPlayers){
-	// 	players.push_back(new Player(playersNames),false);
-	// 	playersNames++;
-	// 	tmp ++;
-	// }
-	// RollOfDice rd;
-	// QwintoScoreSheet ss = QwintoScoreSheet("bob");
-	// rd.dices.push_back(Dice::Color::red);
-	// rd.roll();
-	// ss.score(rd, Dice::Color::red, 1);
-	// cout << ss;
-
-	// players[0].print();
-	// QwintoScoreSheet scoreSheet = QwintoScoreSheet("Karim");
-	// scoreSheetK.print();
 
 }
