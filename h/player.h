@@ -4,10 +4,8 @@
 
 class Player{
 
-  private:
-    string name;
-
   public:
+    string name;
     bool active;
     Player(string _name){name = _name;};
     virtual void inputBeforeRoll(RollOfDice &_rollOfDice);

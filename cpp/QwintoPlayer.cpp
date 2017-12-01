@@ -5,8 +5,7 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   vector<string> refinedSelection;
   while(tmp!="yes"){
     refinedSelection.clear();
-    cout<<"Please select the dice you would like to roll, type \"done\" when finished: "<<endl;
-    cout<<"(e.g. red blue yellow done):"<<endl;
+    cout<<"Please select the dice you would like to roll. Enter \"done\" when finished (e.g. red blue yellow done):"<<endl;
     vector<string> selection;
     vector<string>::iterator it;
     string input = "";
@@ -24,11 +23,12 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
       else if(*it == "yellow" || *it == "y")
         refinedSelection.push_back("yellow");
     }
+
     cout<<"\nRolling: "<<endl;
     for(vector<string>::iterator i = refinedSelection.begin(); i!= refinedSelection.end(); i++ ){
       cout<<"["<<*i<<"  dice]\n";
     }
-    cout<<"type \"yes\" to confirm roll:"<<endl;
+    cout<<"Enter \"yes\" to confirm roll:"<<endl;
 
     cin>>tmp;
   }
@@ -72,15 +72,13 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
   QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scoreSheet.score(~~~)
 
-  cout<<name<<", please select the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in.\nType \"done\" when finished\n";
-  cout<<"(e.g. red 3 done)"<< endl;
+  cout<<name<<", you have two options:\n";
+  cout << "-Enter the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in. Enter \"done\" when finished (e.g. red 3 done)"<< endl;
   if(!active){
-    cout <<"NOTE: You can type \"pass\" to skip with no penalty ";
-    cout << "(e.g. pass done):" << endl;
+    cout <<"-Enter \"pass\" to skip with no penalty. Enter \"done\" when finished (e.g. pass done)" << endl;
   }
-  if(active){
-    cout<<"NOTE: You can type \"fail\" to mark a failed throw ";
-    cout << "(e.g. fail done):" << endl;
+  else if(active){
+    cout<<"-Enter \"fail\" to mark a failed throw if you can't score anywhere. Enter \"done\" when finished (e.g. fail done)" << endl;
   }
   vector<string> selection;
   vector<string>::iterator it;
@@ -130,15 +128,13 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
       if(!enteredValid){
         input = "";
         cout<<endl<<name<<", THAT WAS AN INVALID SELECTION.\n"<<qp->scoreSheet<<endl;
-        cout<<endl<<name<<"Now please select the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in.\nType \"done\" when finished\n";
-        cout<<"(e.g. red 3 done)"<< endl;
+        cout<<endl<<name<<"Now please do one of the following:" <<endl;
+        cout << "-Enter the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in. Enter \"done\" when finished (e.g. red 3 done)"<< endl;
         if(!active){
-          cout <<"NOTE: You can type \"pass\" to skip with no penalty ";
-          cout << "(e.g. pass done):" << endl;
+          cout <<"-Enter \"pass\" to skip with no penalty. Enter \"done\" when finished (e.g. pass done)" << endl;
         }
         if(active){
-          cout<<"NOTE: You can type \"fail\" to mark a failed throw ";
-          cout << "(e.g. fail done):" << endl;
+          cout<<"-Enter \"fail\" to mark a failed throw if you can't score anywhere. Enter \"done\" when finished (e.g. fail done)" << endl;
         }
         cout<<endl;
         selection.clear();

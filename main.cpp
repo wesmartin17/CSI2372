@@ -80,38 +80,47 @@ int main() {
 			QwintoScoreSheet scoreSheet = QwintoScoreSheet(names[i]);
 			players.push_back(QwintoPlayer(names[i], scoreSheet));
 		}
+
 		/*
-			TODO:	Check for game over
+			While game not over
 		*/
 		bool gameOver = false;
 		while(!gameOver){
-			for(int i=0; i<numberOfPlayers; ++i){
-				players[i].active = true; // next player takes a turn i.e., becomes active
-				std::cout << "\n" << names[i] << " it's YOUR turn!!" << endl;
+
+			//Loop over players
+			vector<QwintoPlayer>::iterator activePlayer;
+			for(activePlayer = players.begin(); activePlayer<players.end(); activePlayer++){
+
+				activePlayer->active = true; // next player takes a turn i.e., becomes active
+				std::cout << "\n" << activePlayer->name << " it's YOUR turn!!" << endl;
 				RollOfDice rd;
-				players[i].inputBeforeRoll(rd); // get input from active player before roll
+				activePlayer->inputBeforeRoll(rd); // get input from active player before roll
 				rd.roll(); // roll the dice
 				std::cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
 				std::cout << "\nHere's what your sheet currently looks like: ";
-				std::cout << players[i].scoreSheet << endl; // print scoresheet of active player
+				std::cout << activePlayer->scoreSheet << endl; // print scoresheet of active player
 				std::cout << "Your rolled a [" << int(rd) << "]\n"; // roll dice and show result
 				std::cout << "What would you like to do?\n" << endl;
-				players[i].inputAfterRoll(rd);  // get input from active player after roll
-				if(!players[i].scoreSheet){
+				activePlayer->inputAfterRoll(rd);  // get input from active player after roll
+				if(!activePlayer->scoreSheet){
 					std::cout << "The game will end as a result." << endl;
 					gameOver = true;
+					break;
 				}
-				for(int j = 0; j <numberOfPlayers; ++j){
-					if(players[j].active == false){
-						cout << players[j].scoreSheet << endl;
-						players[j].inputAfterRoll(rd);
-						if(!players[i].scoreSheet){
+
+				vector<QwintoPlayer>::iterator inactivePlayer;
+				for(inactivePlayer = players.begin(); inactivePlayer<players.end(); inactivePlayer++){
+					if(!inactivePlayer->active){
+						cout << inactivePlayer->scoreSheet << endl;
+						inactivePlayer->inputAfterRoll(rd);
+						if(!inactivePlayer->scoreSheet){
 							std::cout << "The game will end as a result." << endl;
 							gameOver = true;
+							break;
 						}
 					}
 				}
-				players[i].active = false; // mark player as inactive and go to next player
+				activePlayer->active = false; // mark player as inactive and go to next player
 			}
 		}
 		/*
@@ -128,7 +137,7 @@ int main() {
 			if(winnerScore < score){
 				winnerScore = score;
 				winner = players[i];
-				winnerName = names[i];
+				winnerName = players[i].name;
 			}
 		}
 		// Announce winner.
@@ -213,12 +222,12 @@ int main() {
 	/////////////////////
 	// RollOfDice rd;
 	// for(int i = 0;  i < players.size(); i ++){
-	// 	players[i].inputBeforeRoll(rd);
+	// 	activePlayer->inputBeforeRoll(rd);
 	// }
 	// int tmp;
 	// while(tmp < numberOfPlayers){
 	// 	players.push_back(new Player(playersNames),false);
-	// 	*playersNames++;
+	// 	playersNames++;
 	// 	tmp ++;
 	// }
 	// RollOfDice rd;
