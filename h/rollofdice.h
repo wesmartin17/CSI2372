@@ -1,11 +1,6 @@
 #ifndef ROLLOFDICE_H_
 #define ROLLOFDICE_H_
 
-#include <vector>
-#include <random>
-#include <iostream>
-
-
 struct RandomDice{
 
   static int value;

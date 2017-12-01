@@ -1,9 +1,5 @@
 #ifndef SCORE_SHEET_
 #define SCORE_SHEET_
-
-#include <string>
-#include <iostream>
-
 #include "rollOfdice.h"
 
 using namespace std;
@@ -17,7 +13,7 @@ class ScoreSheet{
 
 		friend std::ostream& operator<<(std::ostream& os, T & sheet){
 			os << "\nPlayer name: " << sheet.playerName;
-			int score = sheet.totalScore; // TODO: Make this sheet.calcTotal()
+			int score = sheet.totalScore;
 			if(score > 0){
 				os << "\t Points: " << score;
 			}
@@ -28,7 +24,7 @@ class ScoreSheet{
 
 		friend bool operator not(T & sheet){
 			return sheet.notOperator();
-		}
+		};
 
 	public:
 		std::vector<RollOfDice> failedAttempts;

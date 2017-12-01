@@ -146,7 +146,6 @@ void Player::inputAfterRoll(RollOfDice &_rollOfDice){
 
     }
     else{
-      // cout<<"invalid entry"<<endl;
       input = "";
       selection.clear();
     }
