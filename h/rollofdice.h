@@ -35,4 +35,5 @@ struct RollOfDice {
 
 };
 
+#include "../cpp/RollOfDice.cpp"
 #endif

@@ -2,7 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
-#include "cpp/QwintoPlayer.cpp"
+#include "h/player.h"
 
 int versionSelection(){
 
@@ -135,7 +135,7 @@ int main() {
 		for(int i = 0; i <numberOfPlayers; ++i){
 			score = players[i].scoreSheet.setTotal(); // Calculate score for each player
 			cout << players[i].scoreSheet; // Show score sheet for each player
-			if(winnerScore < score){ 
+			if(winnerScore < score){
 				winnerScore = score;
 				winner = players[i];
 				winnerName = players[i].name;
