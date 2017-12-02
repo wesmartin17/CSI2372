@@ -1,4 +1,4 @@
-void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
+void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
   string tmp = "";
   vector<string> refinedSelection;
   while(tmp!="yes"){
@@ -49,7 +49,7 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
 }
 
 
-void Player::inputAfterRoll(RollOfDice &_rollOfDice){
+void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
 
   bool hasRed = false, hasBlue = false, hasYellow = false;
 

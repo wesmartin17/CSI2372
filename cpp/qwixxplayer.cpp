@@ -1,6 +1,4 @@
-#include "../h/qwixxplayer.h"
-
-void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
+void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 
   QwixxPlayer *qp = dynamic_cast<QwixxPlayer*>(this); // can be used like this : qp->scoreSheet.score(~~~)
 
@@ -36,13 +34,13 @@ void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
       asdf >> x;
 
       if(x > 0){
-        switch(selection.end()[-3]){
-          case("red"):
-            if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
-              validSelection = true;
-              break;
-            /* ENTER IN THE REST!*/
-        }
+        // switch(selection.end()[-3]){
+        //   case("red"):
+        //     if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
+        //       validSelection = true;
+        //       break;
+        //     /* ENTER IN THE REST!*/
+        // }
       }
 
     }

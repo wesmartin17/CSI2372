@@ -6,7 +6,9 @@ class QwixxPlayer : public Player{
   public:
     QwixxScoreSheet scoreSheet;
     QwixxPlayer(string _name, QwixxScoreSheet _scoreSheet) : Player(_name), scoreSheet(_scoreSheet){};
+    void inputBeforeRoll(RollOfDice &_rollOfDice);
+
 };
 
-// TODO #include "../cpp/QwixxPlayer.cpp"
+#include "../cpp/qwixxplayer.cpp"
 #endif
