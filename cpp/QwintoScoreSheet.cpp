@@ -1,7 +1,3 @@
-#include "../h/qwintoscoresheet.h"
-
-#include "../h/rollOfdice.h"
-
 template <class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 

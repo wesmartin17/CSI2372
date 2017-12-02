@@ -1,5 +1,3 @@
-#include "../h/qwintoplayer.h"
-
 void Player::inputBeforeRoll(RollOfDice &_rollOfDice){
   string tmp = "";
   vector<string> refinedSelection;

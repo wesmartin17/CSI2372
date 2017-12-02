@@ -2,9 +2,8 @@
 #define SCORE_SHEET_
 #include "rollofdice.h"
 
-enum Color { red, yellow, blue, green, white };
 
-using namespace std;
+enum Color { red, yellow, blue, green, white };
 
 template<class T>
 class ScoreSheet{

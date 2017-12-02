@@ -1,7 +1,6 @@
 #ifndef QWIXX_P_
 #define QWIXX_P_
 
-
 class QwixxPlayer : public Player{
 
   public:

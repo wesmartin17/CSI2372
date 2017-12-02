@@ -1,9 +1,6 @@
 #ifndef QWINTO_SS_
 #define QWINTO_SS_
 
-
-using namespace std;
-
 template<Color C>
 class QwintoRow {
 
