@@ -2,7 +2,10 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include <ctime>
+
 #include "h/player.h"
+
 
 int versionSelection(){
 

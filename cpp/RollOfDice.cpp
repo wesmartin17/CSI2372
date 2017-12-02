@@ -1,7 +1,7 @@
 int RandomDice(){
 
-	static std::default_random_engine rng(time(0));
-  static 	std::uniform_int_distribution<int> dist(1,6);
+	static default_random_engine rng(time(0));
+  static uniform_int_distribution<int> dist(1,6);
   return dist(rng);
 
 }
@@ -18,7 +18,7 @@ int Dice::roll(){
 
 int RollOfDice::roll(){
 	int result = 0;
-	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
+	for(vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
 
 		Dice d = *it;
 		result += d.roll();
@@ -38,7 +38,7 @@ RollOfDice RollOfDice::pair(Dice d1, Dice d2){
 RollOfDice::operator int(){
 
 	int sum = 0;
-	for(std::vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
+	for(vector<Dice>::iterator it = dices.begin(); it != dices.end(); ++it){
 
 		Dice d = *it;
 		sum+= d.face;
@@ -46,7 +46,7 @@ RollOfDice::operator int(){
 	return sum;
 }
 
-std::ostream& operator<<(std::ostream& os,  RollOfDice& rd){
+ostream& operator<<(ostream& os,  RollOfDice& rd){
 	os << int(rd);
 	return os;
 }

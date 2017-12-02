@@ -1,6 +1,5 @@
 #ifndef ROLLOFDICE_H_
 #define ROLLOFDICE_H_
-#include <ctime>
 
 using namespace std;
 
@@ -26,7 +25,7 @@ struct Dice{
 
 struct RollOfDice {
 
-	std::vector<Dice> dices;
+	vector<Dice> dices;
 
 	int roll();
 
@@ -34,7 +33,7 @@ struct RollOfDice {
 
 	operator int();
 
-	friend std::ostream& operator<<(std::ostream& os, const RollOfDice & rd);
+	friend ostream& operator<<(ostream& os, const RollOfDice & rd);
 
 };
 

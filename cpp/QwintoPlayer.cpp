@@ -31,17 +31,17 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
     cin>>tmp;
   }
 
-  if(std::find(refinedSelection.begin(), refinedSelection.end(), "red") != refinedSelection.end()) {
+  if(find(refinedSelection.begin(), refinedSelection.end(), "red") != refinedSelection.end()) {
     Dice d1 = Dice(Dice::Color::red);
     _rollOfDice.dices.push_back(d1);
   }
 
-  if(std::find(refinedSelection.begin(), refinedSelection.end(), "yellow") != refinedSelection.end()) {
+  if(find(refinedSelection.begin(), refinedSelection.end(), "yellow") != refinedSelection.end()) {
     Dice d2 = Dice(Dice::Color::yellow);
     _rollOfDice.dices.push_back(d2);
   }
 
-  if(std::find(refinedSelection.begin(), refinedSelection.end(), "blue") != refinedSelection.end()) {
+  if(find(refinedSelection.begin(), refinedSelection.end(), "blue") != refinedSelection.end()) {
     Dice d3 = Dice(Dice::Color::blue);
     _rollOfDice.dices.push_back(d3);
   }
@@ -53,7 +53,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
 
   bool hasRed = false, hasBlue = false, hasYellow = false;
 
-  for(std::vector<Dice>::iterator i = _rollOfDice.dices.begin(); i != _rollOfDice.dices.end(); ++i){
+  for(vector<Dice>::iterator i = _rollOfDice.dices.begin(); i != _rollOfDice.dices.end(); ++i){
     Dice d = *i;
     switch(d.diceColor){
       case Dice::Color::red :

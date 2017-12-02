@@ -9,17 +9,17 @@ bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color col
 		case Dice::Color::blue: row = qt->blueRow.values; break;
 	}
 	if(pos > 8 or pos < 0){
-		std::cout << "Invalid input: #" << pos
+		cout << "Invalid input: #" << pos
 							<< ":\nYou must select location cell number between 1 and 9" << endl;
 		return false;
 	}else if(int(row[pos]) != 0){
-		std::cout << "Invalid input: #" << pos
+		cout << "Invalid input: #" << pos
 							<< ":\nCell #" << pos << " already has value " << int(row[pos]) << endl;
 		return false;
 	}
 	for(int i=0; i<9; ++i){
 		if((int(row[i]) <= int(rollOfdice)) and (row[i]!=0) and (pos<=i)){
-			std::cout << "Invalid input: #" << pos
+			cout << "Invalid input: #" << pos
 								<< ":\nCell #" << i << " is right of cell #" << pos << " and holds [" << int(row[i]) << "] \n"
 								<< "["<<int(row[i])<<"] is <= "<< "["<<int(rollOfdice)<<"] "<< endl;
 			return false;
@@ -32,7 +32,7 @@ bool ScoreSheet<QwintoScoreSheet>::score(RollOfDice &rollOfdice, Dice::Color col
 
 
 template <class QwintoScoreSheet>
-std::ostream& ScoreSheet<QwintoScoreSheet>::print(std::ostream& os, QwintoScoreSheet & sheet){
+ostream& ScoreSheet<QwintoScoreSheet>::print(ostream& os, QwintoScoreSheet & sheet){
 
 	//---- PRINTS RED ROW -----//
 	os << "\nRed\t          ";
@@ -294,11 +294,11 @@ template<class QwintoScoreSheet>
 bool ScoreSheet<QwintoScoreSheet>::notOperator(){
 	QwintoScoreSheet *qt = dynamic_cast<QwintoScoreSheet*>(this);
 	if(qt->failedAttempts.size() >= 4){
-		std::cout << "\nThis was your fourth and last failed throw :(" << endl;
+		cout << "\nThis was your fourth and last failed throw :(" << endl;
 		return true;
 	}
 	if(qt->twoRows()){
-		std::cout << "\nLooks like you filled two entire rows. Good Job!!" << endl;
+		cout << "\nLooks like you filled two entire rows. Good Job!!" << endl;
 		return true;
 	}
 	return false;
