@@ -1,7 +1,8 @@
 int RandomDice(){
 
-	static std::default_random_engine rng(time(0));
-  static std::uniform_int_distribution<int> dist(1,6);
+	unsigned long seed = static_cast<unsigned long>(time(0));
+	static default_random_engine rng(seed);
+  static uniform_int_distribution<int> dist(1,6);
   return dist(rng);
 
 }
