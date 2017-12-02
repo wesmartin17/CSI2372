@@ -2,9 +2,6 @@
 #define QWIXX_SS_
 #include "scoresheet.h"
 
-
-using namespace std;
-
 template<Color C>
 class QwixxRow{
 
