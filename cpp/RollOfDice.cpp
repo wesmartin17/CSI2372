@@ -1,6 +1,3 @@
-#include "../h/rollofdice.h"
-#include <ctime>
-
 int RandomDice(){
 
 	static std::default_random_engine rng(time(0));

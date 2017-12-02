@@ -1,5 +1,8 @@
 #ifndef ROLLOFDICE_H_
 #define ROLLOFDICE_H_
+#include <ctime>
+
+using namespace std;
 
 struct RandomDice{
 
@@ -9,7 +12,7 @@ struct RandomDice{
 
 struct Dice{
 
-		enum Color { red, yellow, blue };
+		enum Color { red, yellow, blue, green, white };
 
 		Color diceColor;
 
