@@ -5,6 +5,7 @@
 #include <ctime>
 #include <stdio.h>
 #include <functional>
+#include <random>
 #include "h/player.h"
 
 
