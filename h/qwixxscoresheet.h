@@ -2,7 +2,6 @@
 #define QWIXX_SS_
 #include "scoresheet.h"
 
-enum Color {red, yellow, green, blue, white, };
 
 using namespace std;
 
@@ -10,13 +9,13 @@ template<Color C>
 class QwixxRow{
 
   public:
-    RollOfDice[11];
+    RollOfDice values[11];
     RollOfDice& operator[] (const int index);
 
 };
 
 template<Color C>
-RollofDice& QwixxRow<C>::operator[](int index){
+RollOfDice& QwixxRow<C>::operator[](int index){
   return values[index];
 }
 
@@ -29,4 +28,6 @@ class QwixxScoreSheet : public ScoreSheet<QwixxScoreSheet>{
     QwixxRow<blue> blueRow;
     QwixxScoreSheet(string _playerName) : ScoreSheet(_playerName){ };
 };
+
+// TODO #include "../cpp/QwixxScoreSheet.cpp"
 #endif

@@ -1,6 +1,8 @@
 #ifndef SCORE_SHEET_
 #define SCORE_SHEET_
-#include "rollOfdice.h"
+#include "rollofdice.h"
+
+enum Color { red, yellow, blue, green, white };
 
 using namespace std;
 
@@ -38,4 +40,7 @@ class ScoreSheet{
 		// virtual ~ScoreSheet()=0;
 };
 
+
+#include "qwintoscoresheet.h"
+#include "qwixxscoresheet.h"
 #endif
