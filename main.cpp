@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <vector>
 #include <ctime>
-#include <stdio>
+#include <stdio.h>
 #include <functional>
 #include "h/player.h"
 
