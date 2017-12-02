@@ -72,6 +72,26 @@ vector<QwintoPlayer> createQwintoPlayers(int numberOfPlayers){
 	return players;
 }
 
+vector<QwixxPlayer> createQwixxPlayers(int numberOfPlayers){
+
+	vector<QwixxPlayer> players;
+	vector<string> playerNames;
+	cout<<"Enter each player's name" << endl;
+	string input;
+
+	for(int i=0; i < numberOfPlayers; ++i){
+		cout<<"Player #" << i+1 << ": " << endl;
+		getline(cin, input);
+		if(find(playerNames.begin(), playerNames.end(), input) != playerNames.end()){
+			cout << "Player " << input << " already exists. Enter a differend name." << endl;
+			--i;
+		}else{
+			playerNames.push_back(input);
+			players.push_back(QwixxPlayer(input, QwixxScoreSheet(input)));
+		}
+	}
+	return players;
+}
 
 int main() {
 
@@ -150,8 +170,47 @@ int main() {
 		cout << "Congradulations to " << winnerName << " for winning the game with " << winnerScore << " points!" << endl;
 
 
-	}else{
-		cout << "Qwixx isn't implemented yet!" << endl;
+	}else{//PLAYING QWIXX
+			vector<QwixxPlayer> players = createQwixxPlayers(numberOfPlayers);
+
+			bool gameOver = false;
+			while(!gameOver){
+							vector<QwixxPlayer>::iterator activePlayer; //Loop over qwinto players
+							for(activePlayer = players.begin(); activePlayer<players.end(); activePlayer++){
+
+								activePlayer->active = true; // next player takes a turn i.e., becomes active
+								cout << "\n" << activePlayer->name << " it's YOUR turn!!" << endl;
+								RollOfDice rd;
+								cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
+								cout << "\nHere's what your sheet currently looks like: ";
+								cout << activePlayer->scoreSheet << endl; // print scoresheet of active player
+								activePlayer->inputBeforeRoll(rd); // get input from active player before roll
+								rd.roll(); // roll the dice
+								cout << "Your rolled a [" << int(rd) << "]\n";
+								cout << "What would you like to do?\n" << endl;
+								activePlayer->inputAfterRoll(rd);  // get input from active player after roll
+								if(!activePlayer->scoreSheet){ // End condition met by active player
+									cout << "The game will end as a result." << endl;
+									gameOver = true;
+									break;
+								}
+
+								vector<QwixxPlayer>::iterator inactivePlayer;
+								for(inactivePlayer = players.begin(); inactivePlayer<players.end(); inactivePlayer++){
+									if(!inactivePlayer->active){
+										cout << inactivePlayer->scoreSheet << endl;
+										inactivePlayer->inputAfterRoll(rd);
+										if(!inactivePlayer->scoreSheet){ // End condition met by inactive player
+											cout << "The game will end as a result." << endl;
+											gameOver = true;
+											break;
+										}
+									}
+								}
+								activePlayer->active = false; // mark player as inactive and go to next player
+							}
+				}
+
 	}
 
 	/*
