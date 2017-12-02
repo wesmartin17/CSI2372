@@ -1,6 +1,6 @@
 #ifndef QWINTO_SS_
 #define QWINTO_SS_
-#include "ScoreSheet.h"
+#include "scoresheet.h"
 
 enum Color { red, yellow, blue };
 
