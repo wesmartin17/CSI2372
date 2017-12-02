@@ -1,7 +1,5 @@
 #ifndef QWINTO_P_
-#define QWINTO_PP_
-#include "../cpp/QwintoScoreSheet.cpp"
-#include "Player.h"
+#define QWINTO_P_
 
 class QwintoPlayer : public Player{
 
@@ -10,4 +8,5 @@ class QwintoPlayer : public Player{
     QwintoPlayer(string _name, QwintoScoreSheet _scoreSheet) : Player(_name), scoreSheet(_scoreSheet){};
 };
 
+#include "../cpp/QwintoPlayer.cpp"
 #endif

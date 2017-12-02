@@ -1,6 +1,6 @@
 #ifndef PLAYER_
 #define PLAYER_
-#include "../cpp/RollOfDice.cpp"
+#include "scoresheet.h"
 
 class Player{
 
@@ -13,4 +13,6 @@ class Player{
     // virtual ~Player()=0;
 };
 
+#include "qwintoplayer.h"
+#include "qwixxplayer.h"
 #endif

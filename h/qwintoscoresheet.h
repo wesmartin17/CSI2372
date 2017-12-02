@@ -1,8 +1,6 @@
 #ifndef QWINTO_SS_
 #define QWINTO_SS_
-#include "scoresheet.h"
 
-enum Color { red, yellow, blue };
 
 using namespace std;
 
@@ -29,4 +27,5 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
 
 };
 
+#include "../cpp/QwintoScoreSheet.cpp"
 #endif
