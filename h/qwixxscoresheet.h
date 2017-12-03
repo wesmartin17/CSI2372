@@ -6,7 +6,7 @@ template<Color C>
 class QwixxRow{
 
   public:
-    RollOfDice values[11];
+    RollOfDice values[12];
     RollOfDice& operator[] (const int index);
 
 };

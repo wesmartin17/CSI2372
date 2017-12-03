@@ -26,37 +26,107 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 ostream& QwixxScoreSheet::print(ostream& os){
 
-  //---- PRINTS RED ROW -----//
-	os << "\n\t------------------------------------------------- ";
+	os << "\n\t----------------------------------------------------------- ";
+
+	//---- PRINTS RED ROW -----//
 	os << "\nRed\t";
 	for(int i=2; i<14; ++i){
-    if(redRow[i] == 0){
+    if(redRow[i-2] == 0){
       if(i>9){ // for styling
-        os << "| "<<i<<" "; // last
+				if(i==13){
+					os << "| U  "; // last
+				}else{
+        	os << "| "<<i<<" "; // 10, 11, 12
+				}
       }else{
-        if(i==13){
-          os << "| U  "; // last
-
-        }else{
-          os << "| "<<i<<"  "; // last
-        }
+      	os << "| "<<i<<"  "; // 2-9
       }
     }else{
-      if(redRow[i]>9){ // for styling
-        os << "| "<<redRow[i]<<" "; // last
+      if(redRow[i-2]>9){ // for styling
+        os << "| "<<redRow[i-2]<<" ";
       }else{
-        os << "| "<<redRow[i]<<"  "; // last
+        os << "| "<<redRow[i-2]<<"  ";
       }
     }
 
 	}
-	os << "\n";
+	os << "\n\t----------------------------------------------------------- ";
 
+	//---- PRINTS YELLOW ROW -----//
+	os << "\nYellow\t";
+	for(int i=2; i<14; ++i){
+    if(yellowRow[i-2] == 0){
+      if(i>9){ // for styling
+				if(i==13){
+					os << "| U  "; // last
+				}else{
+        	os << "| "<<i<<" "; // 10, 11, 12
+				}
+      }else{
+      	os << "| "<<i<<"  "; // 2-9
+      }
+    }else{
+      if(yellowRow[i-2]>9){ // for styling
+        os << "| "<<yellowRow[i-2]<<" ";
+      }else{
+        os << "| "<<yellowRow[i-2]<<"  ";
+      }
+    }
 
+	}
+	os << "\n\t----------------------------------------------------------- ";
 
-	os << "\t------------------------------------------------- ";
+	//---- PRINTS GREEN ROW -----//
+	os << "\nGreen\t";
+	int j=0;
+	for(int i=12; i>0; --i){
+    if(greenRow[j] == 0){
+      if(i>9){ // for styling
+      	os << "| "<<i<<" "; // 10, 11, 12
+      }else{
+				if(i==1){
+					os << "| U  "; // last
+				}else{
+      		os << "| "<<i<<"  "; // 2-9
+				}
+      }
+    }else{
+      if(greenRow[j]>9){ // for styling
+        os << "| "<<greenRow[j]<<" ";
+      }else{
+        os << "| "<<greenRow[j]<<"  ";
+      }
+    }
+		++j;
+	}
+	os << "\n\t----------------------------------------------------------- ";
 
+	//---- PRINTS BLUE ROW -----//
+	os << "\nBlue\t";
+	j=0;
+	for(int i=12; i>0; --i){
+    if(blueRow[j] == 0){
+      if(i>9){ // for styling
+      	os << "| "<<i<<" "; // 10, 11, 12
+      }else{
+				if(i==1){
+					os << "| U  "; // last
+				}else{
+      		os << "| "<<i<<"  "; // 2-9
+				}
+      }
+    }else{
+      if(blueRow[j]>9){ // for styling
+        os << "| "<<blueRow[j]<<" ";
+      }else{
+        os << "| "<<blueRow[j]<<"  ";
+      }
+    }
+		++j;
+	}
+	os << "\n\t----------------------------------------------------------- ";
 
+	//---- PRINTS FAILED THROWS -----//
 	if(failedAttempts.size() > 0){
 		os << "\nFailed throws: ";
 		for(int i = 0; i<failedAttempts.size(); ++i){
@@ -96,6 +166,7 @@ bool QwixxScoreSheet::notOperator(){
 
 bool QwixxScoreSheet::twoRows(){
 
+	//TODO implement twoRoes
 	int zeroes = 0;
 	for(int i=0; i<9; i++){
 		if(redRow[i]==0){

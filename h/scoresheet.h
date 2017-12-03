@@ -17,7 +17,6 @@ class ScoreSheet{
 			if(score != 0){
 				os << "\t Points: " << score;
 			}
-			os << "\n\t          ------------------------------------------------- ";
 			sheet.print(os);
 			return os;
 		};

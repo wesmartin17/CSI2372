@@ -31,6 +31,8 @@ bool QwintoScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos)
 
 ostream& QwintoScoreSheet::print(ostream& os){
 
+	os << "\n\t          ------------------------------------------------- ";
+
 	//---- PRINTS RED ROW -----//
 	os << "\nRed\t          ";
 	for(int i=0; i<9; ++i){
