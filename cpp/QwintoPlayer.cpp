@@ -68,8 +68,6 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
     }
   }
 
-  QwintoPlayer *qp = dynamic_cast<QwintoPlayer*>(this); // can be used like this : qp->scoreSheet.score(~~~)
-
   cout<<name<<", you have two options:\n";
   cout << "-Enter the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in. Enter \"done\" when finished (e.g. red 3 done)"<< endl;
   if(!active){
@@ -93,7 +91,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
         enteredValid = true;
       }
       if(input == "fail" && active == true){
-        qp->scoreSheet.failedAttempts.push_back(_rollOfDice); // failed throw
+        scoreSheet.failedAttempts.push_back(_rollOfDice); // failed throw
         enteredValid = true;
       }
       selection.push_back(input);
@@ -106,15 +104,15 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
 
       //cout<<"end-2: "<<selection.end()[-2]<<" end-1: "<<selection.end()[-1];
       if(selection.end()[-3] == "red" && hasRed){
-        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x-1))
+        if(scoreSheet.score(_rollOfDice,Dice::Color::red,x-1))
           enteredValid = true;
       }
       else if(selection.end()[-3] == "blue" && hasBlue){
-        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::blue,x-1))
+        if(scoreSheet.score(_rollOfDice,Dice::Color::blue,x-1))
           enteredValid = true;
       }
       else if(selection.end()[-3] == "yellow" && hasYellow){
-        if(qp->scoreSheet.score(_rollOfDice,Dice::Color::yellow,x-1))
+        if(scoreSheet.score(_rollOfDice,Dice::Color::yellow,x-1))
           enteredValid = true;
         else{
           cout<<"invalid entry"<<endl;
@@ -125,7 +123,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
 
       if(!enteredValid){
         input = "";
-        cout<<endl<<name<<", THAT WAS AN INVALID SELECTION.\n"<<qp->scoreSheet<<endl;
+        cout<<endl<<name<<", THAT WAS AN INVALID SELECTION.\n"<<scoreSheet<<endl;
         cout<<endl<<name<<"Now please do one of the following:" <<endl;
         cout << "-Enter the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in. Enter \"done\" when finished (e.g. red 3 done)"<< endl;
         if(!active){

@@ -1,7 +1,5 @@
 void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 
-  QwixxPlayer *qp = dynamic_cast<QwixxPlayer*>(this); // can be used like this : qp->scoreSheet.score(~~~)
-
   bool validSelection = false;
   vector<string> selection;
 
@@ -22,7 +20,7 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
       }
       else if (input == "fail" && active){
         selection.push_back(input);
-        qp->scoreSheet.failedAttempts.push_back(_rollOfDice);
+        scoreSheet.failedAttempts.push_back(_rollOfDice);
         validSelection = true;
       }
 

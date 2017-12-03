@@ -9,7 +9,6 @@ template<class T>
 class ScoreSheet{
 
 	private:
-		int totalScore=0;
 		string playerName;
 
 		friend ostream& operator<<(ostream& os, T & sheet){
@@ -19,7 +18,7 @@ class ScoreSheet{
 				os << "\t Points: " << score;
 			}
 			os << "\n\t          ------------------------------------------------- ";
-			sheet.print(os, sheet);
+			sheet.print(os);
 			return os;
 		};
 
@@ -28,14 +27,15 @@ class ScoreSheet{
 		};
 
 	public:
+		int totalScore=0;
 		vector<RollOfDice> failedAttempts;
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
-		virtual ostream& print(ostream& os, T & sheet);
-		virtual bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
-		virtual bool twoRows();
-		virtual int setTotal();
-		virtual int calcTotal();
-		virtual bool notOperator();
+		virtual ostream& print(ostream& os) = 0;
+		virtual bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1) = 0;
+		virtual bool twoRows() = 0;
+		virtual int setTotal() = 0;
+		virtual int calcTotal() = 0;
+		virtual bool notOperator() = 0;
 		// virtual ~ScoreSheet()=0;
 };
 
