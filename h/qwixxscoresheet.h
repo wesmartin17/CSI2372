@@ -33,5 +33,5 @@ class QwixxScoreSheet : public ScoreSheet<QwixxScoreSheet>{
 
 };
 
-#include "../cpp/QwixxScoreSheet.cpp"
+#include "../cpp/Qwixx/QwixxScoreSheet.cpp"
 #endif

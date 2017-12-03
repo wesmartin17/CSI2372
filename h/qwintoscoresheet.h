@@ -26,10 +26,10 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     bool twoRows();
     int setTotal();
     int calcTotal();
-  
+
     ostream& print(ostream& os);
 
 };
 
-#include "../cpp/QwintoScoreSheet.cpp"
+#include "../cpp/Qwinto/QwintoScoreSheet.cpp"
 #endif

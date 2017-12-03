@@ -11,5 +11,5 @@ class QwintoPlayer : public Player{
 
 };
 
-#include "../cpp/QwintoPlayer.cpp"
+#include "../cpp/Qwinto/QwintoPlayer.cpp"
 #endif
