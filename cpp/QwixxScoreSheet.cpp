@@ -59,6 +59,7 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 		return false;
 	}
 
+	// GOOD TO SCORE
 	row[pos] = rollOfdice;
 
 	// check if should lock row
