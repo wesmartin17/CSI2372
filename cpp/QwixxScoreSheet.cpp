@@ -1,25 +1,77 @@
 bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 	RollOfDice* row;
+	int realpos = pos;
 	switch (color) {
-		case Dice::Color::red: row = redRow.values; break;
-		case Dice::Color::yellow: row = yellowRow.values; break;
-    case Dice::Color::green: row = greenRow.values; break;
-		case Dice::Color::blue: row = blueRow.values; break;
+		case Dice::Color::red:{
+			row = redRow.values;
+			realpos = pos - 2; // 2 thourgh 12
+			break;
+		}
+		case Dice::Color::yellow:{
+			row = yellowRow.values;
+			realpos = pos - 2; // 2 through 12
+			break;
+		}
+		case Dice::Color::green:{
+			row = greenRow.values;
+			realpos = 12 - pos; // 12 through 2
+			break;
+		}
+		case Dice::Color::blue:{
+			row = blueRow.values;
+			realpos = 12 - pos; // 12 through 2
+			break;
+		}
 	}
-	if(pos > 11 or pos < 0){
+	// out of range
+	if(realpos > 11 or realpos < 0){
 		cout << "Invalid input: #" << pos
-							<< ":\nYou must select location cell number between 1 and 9" << endl;
+							<< ":\nYou must select location cell number between 2 and 11" << endl;
 		return false;
-	}else if(int(row[pos]) != 0){
+	}
+	// taken
+	if(int(row[realpos]) != 0){
 		cout << "Invalid input: #" << pos
-							<< ":\nCell #" << pos << " already has value " << int(row[pos]) << endl;
+							<< ":\nCell #" << pos << " already has value " << int(row[realpos]) << endl;
 		return false;
 	}
 
-  // TODO implement score
+	// left of double-white-dice score
+	for(int i=0; i<=realpos; ++i){
+		int whiteCount = 0;
+		for(vector<Dice>::iterator it = row[realpos].dices.begin(); it != row[realpos].dices.end(); ++it){
+			if(it->diceColor == Dice::Color::white){
+				whiteCount++;
+			}
+		}
+		if(whiteCount>1){
+			cout << "Invalid input: #" << pos
+				<< ":\nCell #" << i << " is right of cell #" << pos << " and holds a value scored by two white dice";
+			return false;
+		}
+	}
+
+	// locked row
+	if(row[12]!=0){
+		cout << "Invalid input: #" << pos
+			<< "This row is locked because it contains 5 scores";
+		return false;
+	}
 
 	row[pos] = rollOfdice;
+
+	// check if should lock row
+	int rowCount = 0;
+	for(int i=0; i<12; ++i){
+		if(row[i]!=0){
+			rowCount++;
+		}
+	}
+	if(rowCount==5){
+		row[12] = rollOfdice;
+	}
+
 	return true;
 	}
 
