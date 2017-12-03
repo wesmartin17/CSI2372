@@ -164,6 +164,7 @@ bool QwixxScoreSheet::notOperator(){
 	return false;
 }
 
+
 bool QwixxScoreSheet::twoRows(){
 
 	//TODO implement twoRoes
