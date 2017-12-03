@@ -1,53 +1,37 @@
 void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 
   bool validSelection = false;
-  vector<string> selection;
+
+  cout<<name<<", Please enter the color you would like to enter the white dice ["<<int(_rollOfDice)<<"] in.";
+  if(!active)
+    cout<<"(Or you can pass)"<<endl;
+  else
+    cout<<"(Or you can fail)"<<endl;
 
   while(!validSelection){
-      selection.clear();
-
-    cout<<"Please enter the color and column you would like to enter the white dice [placeholder whitedice] in.";
-    if(!active)
-      cout<<"(Or you can pass)"<<endl;
+  string input = "";
+    cin>>input;
+    if(input == "pass" && !active){
+      validSelection = true;
+    }
+    else if (input == "fail" && active){
+      scoreSheet.failedAttempts.push_back(_rollOfDice);
+      validSelection = true;
+    }
+    else if(input == "red")
+      if(scoreSheet.score(_rollOfDice,Dice::Color::red,int(_rollOfDice)))
+          validSelection = true;
+    else if(input == "yellow")
+      if(scoreSheet.score(_rollOfDice,Dice::Color::yellow,int(_rollOfDice)))
+        validSelection = true;
+    else if(input == "green")
+      if(scoreSheet.score(_rollOfDice,Dice::Color::green,int(_rollOfDice)))
+        validSelection = true;
+    else if(input == "blue")
+      if(scoreSheet.score(_rollOfDice,Dice::Color::blue,int(_rollOfDice)))
+        validSelection = true;
     else
-      cout<<"(Or you can fail)"<<endl;
-
-    string input = "";
-    while (input != "done"){
-      cin>>input;
-      if(input == "pass" && !active){
-        validSelection = true;
-      }
-      else if (input == "fail" && active){
-        selection.push_back(input);
-        scoreSheet.failedAttempts.push_back(_rollOfDice);
-        validSelection = true;
-      }
-
-    }
-
-    if(selection.size() >=3){
-      stringstream asdf(selection.end()[-2]);
-      int x = -1;
-      asdf >> x;
-
-      if(x > 0){
-        // switch(selection.end()[-3]){
-        //   case("red"):
-        //     if(qp->scoreSheet.score(_rollOfDice,Dice::Color::red,x))
-        //       validSelection = true;
-        //       break;
-        //     /* ENTER IN THE REST!*/
-        // }
-      }
-
-    }
-
-    if(!validSelection){
       cout<<name<<", THAT WAS IN INVALID SELECTION!"<<endl<<endl;
-    }
-
   }
-
 
 }
