@@ -96,11 +96,11 @@ ostream& QwixxScoreSheet::print(ostream& os){
       	os << "| "<<i<<"  "; // 2-9
       }
     }else{
-      if(redRow[i-2]>9){ // for styling
-        os << "| "<<redRow[i-2]<<" ";
-      }else{
-        os << "| "<<redRow[i-2]<<"  ";
-      }
+			if(i==13){
+				os << "| L ";
+			}else{
+				os << "| XX ";
+			}
     }
 
 	}
@@ -120,11 +120,11 @@ ostream& QwixxScoreSheet::print(ostream& os){
       	os << "| "<<i<<"  "; // 2-9
       }
     }else{
-      if(yellowRow[i-2]>9){ // for styling
-        os << "| "<<yellowRow[i-2]<<" ";
-      }else{
-        os << "| "<<yellowRow[i-2]<<"  ";
-      }
+			if(i==13){
+				os << "| L ";
+			}else{
+				os << "| XX ";
+			}
     }
 
 	}
@@ -145,11 +145,11 @@ ostream& QwixxScoreSheet::print(ostream& os){
 				}
       }
     }else{
-      if(greenRow[j]>9){ // for styling
-        os << "| "<<greenRow[j]<<" ";
-      }else{
-        os << "| "<<greenRow[j]<<"  ";
-      }
+			if(i==13){
+				os << "| L ";
+			}else{
+				os << "| XX ";
+			}
     }
 		++j;
 	}
@@ -170,11 +170,11 @@ ostream& QwixxScoreSheet::print(ostream& os){
 				}
       }
     }else{
-      if(blueRow[j]>9){ // for styling
-        os << "| "<<blueRow[j]<<" ";
-      }else{
-        os << "| "<<blueRow[j]<<"  ";
-      }
+			if(i==13){
+				os << "| L ";
+			}else{
+				os << "| XX ";
+			}
     }
 		++j;
 	}
