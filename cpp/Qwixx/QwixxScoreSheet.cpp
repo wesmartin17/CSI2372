@@ -2,25 +2,26 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 	RollOfDice* row;
 	int realpos = pos;
+
 	switch (color) {
 		case Dice::Color::red:{
 			row = redRow.values;
-			realpos = pos - 2; // 2 thourgh 12
+			realpos = rollOfdice - 2; // 2 thourgh 12
 			break;
 		}
 		case Dice::Color::yellow:{
 			row = yellowRow.values;
-			realpos = pos - 2; // 2 through 12
+			realpos = rollOfdice - 2; // 2 through 12
 			break;
 		}
 		case Dice::Color::green:{
 			row = greenRow.values;
-			realpos = 12 - pos; // 12 through 2
+			realpos = 12 - rollOfdice; // 12 through 2
 			break;
 		}
 		case Dice::Color::blue:{
 			row = blueRow.values;
-			realpos = 12 - pos; // 12 through 2
+			realpos = 12 - rollOfdice; // 12 through 2
 			break;
 		}
 	}
@@ -33,7 +34,7 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 	// taken
 	if(int(row[realpos]) != 0){
 		cout << "Invalid input: #" << pos
-							<< ":\nCell #" << pos << " already has value " << int(row[realpos]) << endl;
+							<< ":\nCell #" << pos << " has been scored already" << endl;
 		return false;
 	}
 
@@ -46,16 +47,16 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 			}
 		}
 		if(whiteCount>1){
-			cout << "Invalid input: #" << pos
-				<< ":\nCell #" << i << " is right of cell #" << pos << " and holds a value scored by two white dice";
+			cout << "Invalid input: #" << int(rollOfdice)
+				   << ":\nA cell in this row is right of cell #" << rollOfdice << " and holds a score by two white dice";
 			return false;
 		}
 	}
 
 	// locked row
 	if(row[12]!=0){
-		cout << "Invalid input: #" << pos
-			<< "This row is locked because it contains 5 scores";
+		cout << "Invalid input: #" << int(rollOfdice)
+				<< "This row is locked because it contains 5 scores already";
 		return false;
 	}
 
