@@ -21,6 +21,13 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     QwintoRow<yellow> yellowRow;
     QwintoRow<blue> blueRow;
     QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
+    bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
+    bool notOperator();
+    bool twoRows();
+    int setTotal();
+    int calcTotal();
+  
+    ostream& print(ostream& os);
 
 };
 

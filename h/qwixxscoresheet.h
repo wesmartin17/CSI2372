@@ -24,7 +24,14 @@ class QwixxScoreSheet : public ScoreSheet<QwixxScoreSheet>{
     QwixxRow<green> greenRow;
     QwixxRow<blue> blueRow;
     QwixxScoreSheet(string _playerName) : ScoreSheet(_playerName){ };
+    bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
+    bool twoRows();
+    bool notOperator();
+    int setTotal();
+    int calcTotal();
+    ostream& print(ostream& os);
+
 };
 
-// TODO #include "../cpp/QwixxScoreSheet.cpp"
+#include "../cpp/QwixxScoreSheet.cpp"
 #endif
