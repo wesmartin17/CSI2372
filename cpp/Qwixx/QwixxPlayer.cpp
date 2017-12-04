@@ -35,3 +35,58 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
   }
 
 }
+
+
+void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
+  cout<<name<<", Please enter the name of the colored dice you would like to score (or type fail): "<<endl;
+  bool validSelection = false, scored = false;
+  string input;
+  int selectedColorDice;
+  while(!scored){
+    while(!validSelection){
+      input = "";
+      cin >> input;
+      if(input =="fail"){
+        //TODO score a fail
+        validSelection = true;
+      }
+      else if(input == "red"){
+        selectedColorDice = 0;
+        validSelection = true;
+      }
+      else if(input == "yellow"){
+        selectedColorDice = 1;
+        validSelection = true;
+      }
+      else if(input == "green"){
+        selectedColorDice = 2;
+        validSelection = true;
+      }
+      else if(input == "blue"){
+        selectedColorDice = 3;
+        validSelection = true;
+      }
+      else{
+        cout<<"INVALID SELECTION! (please type one of: red yellow green blue)";
+      }
+
+    }
+
+    validSelection = false;
+
+    while(!validSelection){
+      input = "";
+      int selection = 0;
+      // CHECK THIS NOT SURE IF WORKING
+      cout << "Please enter 1 for white dice [" << _rollOfDice.dices[0].face <<"] or enter 2 for white dice ["<< _rollOfDice.dices[1].face << endl;
+      cin >> input;
+      stringstream asdf(input);
+      if(asdf>>selection && (selection == 1 || selection == 2))
+        validSelection = true;
+    }
+
+    // cout<<
+
+  }
+
+}
