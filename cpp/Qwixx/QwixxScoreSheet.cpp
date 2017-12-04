@@ -2,26 +2,25 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 	RollOfDice* row;
 	int realpos = pos;
-
 	switch (color) {
 		case Dice::Color::red:{
 			row = redRow.values;
-			realpos = rollOfdice - 2; // 2 thourgh 12
+			realpos = int(rollOfdice) - 2; // 2 thourgh 12
 			break;
 		}
 		case Dice::Color::yellow:{
 			row = yellowRow.values;
-			realpos = rollOfdice - 2; // 2 through 12
+			realpos = int(rollOfdice) - 2; // 2 through 12
 			break;
 		}
 		case Dice::Color::green:{
 			row = greenRow.values;
-			realpos = 12 - rollOfdice; // 12 through 2
+			realpos = 12 - int(rollOfdice); // 12 through 2
 			break;
 		}
 		case Dice::Color::blue:{
 			row = blueRow.values;
-			realpos = 12 - rollOfdice; // 12 through 2
+			realpos = 12 - int(rollOfdice); // 12 through 2
 			break;
 		}
 	}
@@ -61,7 +60,7 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 	}
 
 	// GOOD TO SCORE
-	row[pos] = rollOfdice;
+	row[realpos] = rollOfdice;
 
 	// check if should lock row
 	int rowCount = 0;
