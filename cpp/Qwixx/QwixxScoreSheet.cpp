@@ -24,6 +24,17 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 			break;
 		}
 	}
+
+	int rdWhiteDice = 0;
+	for(vector<Dice>::iterator it = rollOfdice.dices.begin(); it != rollOfdice.dices.end(); ++it){
+		if(it->diceColor == Dice::Color::white){
+			rdWhiteDice ++;
+		}
+	}
+	if(rdWhiteDice==2){
+		realpos = int(rollOfdice.dices[4].face) + int(rollOfdice.dices[5].face);
+	}
+
 	// out of range
 	if(realpos > 11 or realpos < 0){
 		cout << "Invalid input: #" << pos
