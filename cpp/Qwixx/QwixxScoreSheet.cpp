@@ -1,39 +1,45 @@
 bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 	RollOfDice* row;
-	int realpos = pos;
-	switch (color) {
-		case Dice::Color::red:{
-			row = redRow.values;
-			realpos = int(rollOfdice) - 2; // 2 thourgh 12
-			break;
-		}
-		case Dice::Color::yellow:{
-			row = yellowRow.values;
-			realpos = int(rollOfdice) - 2; // 2 through 12
-			break;
-		}
-		case Dice::Color::green:{
-			row = greenRow.values;
-			realpos = 12 - int(rollOfdice); // 12 through 2
-			break;
-		}
-		case Dice::Color::blue:{
-			row = blueRow.values;
-			realpos = 12 - int(rollOfdice); // 12 through 2
-			break;
-		}
-	}
-
 	int rdWhiteDice = 0;
 	for(vector<Dice>::iterator it = rollOfdice.dices.begin(); it != rollOfdice.dices.end(); ++it){
 		if(it->diceColor == Dice::Color::white){
 			rdWhiteDice ++;
 		}
 	}
-	if(rdWhiteDice==2){
-		realpos = int(rollOfdice.dices[4].face) + int(rollOfdice.dices[5].face);
+
+	int temp = 0;
+	if(rdWhiteDice==2){ // Only the white dices
+		temp = int(rollOfdice.dices[4].face) + int(rollOfdice.dices[5].face);
+	}else{ // All the dices
+		temp = int(rollOfdice);
 	}
+
+	int realpos = 0;
+	switch (color) {
+		case Dice::Color::red:{
+			row = redRow.values;
+			realpos = temp - 2; // 2 thourgh 12
+			break;
+		}
+		case Dice::Color::yellow:{
+			row = yellowRow.values;
+			realpos = temp - 2; // 2 through 12
+			break;
+		}
+		case Dice::Color::green:{
+			row = greenRow.values;
+			realpos = 12 - temp; // 12 through 2
+			break;
+		}
+		case Dice::Color::blue:{
+			row = blueRow.values;
+			realpos = 12 - temp; // 12 through 2
+			break;
+		}
+	}
+
+
 
 	// out of range
 	if(realpos > 11 or realpos < 0){
