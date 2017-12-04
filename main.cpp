@@ -180,30 +180,34 @@ int main() {
 
 								activePlayer->active = true; // next player takes a turn i.e., becomes active
 								cout << "\n" << activePlayer->name << " it's YOUR turn!!" << endl;
-								RollOfDice whiteDice;
-								whiteDice.dices.push_back(Dice(Dice::Color::white));
-								whiteDice.dices.push_back(Dice(Dice::Color::white));
+								RollOfDice rd;
+								rd.dices.push_back(Dice(Dice::Color::white));
+								rd.dices.push_back(Dice(Dice::Color::white));
+
+
 								cout << "\nRolling white dice...\n .\\./.\\./.\\ ~~ [?]\n";
 								cout << "----------------------------------"<<endl;
-								cout << "WHITE #1: ["<<whiteDice.dices[0].face<<"]"<<endl;
-								cout << "WHITE #2: ["<<whiteDice.dices[1].face<<"]"<<endl<<endl;
-								cout << "SUM: "<<int(whiteDice)<<endl;
+								cout << "WHITE #1: ["<<rd.dices[0].face<<"]"<<endl;
+								cout << "WHITE #2: ["<<rd.dices[1].face<<"]"<<endl<<endl;
+								cout << "SUM: "<<int(rd)<<endl;
 								cout << "----------------------------------"<<endl;
 
+								cout<<activePlayer->scoreSheet<<endl;
+								activePlayer->inputBeforeRoll(rd);
 								for(vector<QwixxPlayer>::iterator i = players.begin(); i != players.end(); ++i){
+										if(!i->active){
 										cout<<i->scoreSheet<<endl;
-										i->inputBeforeRoll(whiteDice);
+										i->inputBeforeRoll(rd);
+									}
 								}
 
-								RollOfDice coloredDice;
-								coloredDice.dices.push_back(Dice(Dice::Color::red));
-								coloredDice.dices.push_back(Dice(Dice::Color::yellow));
-								coloredDice.dices.push_back(Dice(Dice::Color::blue));
-								coloredDice.dices.push_back(Dice(Dice::Color::green));
+								rd.dices.push_back(Dice(Dice::Color::red));
+								rd.dices.push_back(Dice(Dice::Color::yellow));
+								rd.dices.push_back(Dice(Dice::Color::blue));
+								rd.dices.push_back(Dice(Dice::Color::green));
 
 								cout<<endl<<"Rolling colored dice:"<<endl;
-								coloredDice.roll();
-								for(vector<Dice>::iterator it = coloredDice.dices.begin(); it != coloredDice.dices.end(); ++it){
+								for(vector<Dice>::iterator it = rd.dices.begin()+2; it != rd.dices.end(); ++it){
 									Dice d = *it;
 									switch(d.diceColor){
 										case 0:
@@ -216,13 +220,15 @@ int main() {
 											cout<<"BLUE"<<" ["<<d.face<<"]"<<endl;
 											break;
 										case 3:
-											cout<<"GREEN"<<" ["<<d.face<<"]"<<endl;
+											cout<<"GREEN"<<" ["<<d.face<<"]"<<endl<<endl;
 											break;
 									}
 
 								}
+								cout << "WHITE #1: ["<<rd.dices[0].face<<"]"<<endl;
+								cout << "WHITE #2: ["<<rd.dices[1].face<<"]"<<endl<<endl;
 
-								//inputafterroll
+								activePlayer->inputAfterRoll(rd);
 
 								if(!activePlayer->scoreSheet){ // End condition met by active player
 									cout << "The game will end as a result." << endl;
@@ -234,7 +240,7 @@ int main() {
 								for(inactivePlayer = players.begin(); inactivePlayer<players.end(); inactivePlayer++){
 									if(!inactivePlayer->active){
 										cout << inactivePlayer->scoreSheet << endl;
-										inactivePlayer->inputAfterRoll(whiteDice);
+										inactivePlayer->inputAfterRoll(rd);
 										if(!inactivePlayer->scoreSheet){ // End condition met by inactive player
 											cout << "The game will end as a result." << endl;
 											gameOver = true;
