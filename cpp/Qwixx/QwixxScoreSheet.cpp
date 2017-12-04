@@ -8,12 +8,7 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 		}
 	}
 
-	int temp = 0;
-	if(rdWhiteDice==2){ // Only the white dices
-		temp = int(rollOfdice.dices[0].face) + int(rollOfdice.dices[1].face);
-	}else{ // All the dices
-		temp = int(rollOfdice);
-	}
+	int temp = int(rollOfdice);
 
 	int realpos = 0;
 	switch (color) {
