@@ -33,7 +33,7 @@ QwixxRow<T, C> QwixxRow<T, C>::operator+= (RollOfDice rd){
 
 template<class T, Color C>
 ostream& QwixxRow<T, C>::operator<<(ostream& os){
-  if(this->rowColor == red){
+  if(C == red){
     //---- PRINTS RED ROW -----//
   	os << "\n\t----------------------------------------------------------- ";
   	os << "\nRed\t";
@@ -60,7 +60,7 @@ ostream& QwixxRow<T, C>::operator<<(ostream& os){
   	os << "\n\t----------------------------------------------------------- ";
 
   }
-  if(this->rowColor == yellow){
+  if(C == yellow){
     //---- PRINTS YELLOW ROW -----//
   	os << "\nYellow\t";
   	for(int i=2; i<14; ++i){
@@ -86,7 +86,7 @@ ostream& QwixxRow<T, C>::operator<<(ostream& os){
   	os << "\n\t----------------------------------------------------------- ";
 
   }
-  if(this->rowColor == green){
+  if(C == green){
     //---- PRINTS GREEN ROW -----//
   	os << "\nGreen\t";
   	int j=0;
@@ -113,7 +113,7 @@ ostream& QwixxRow<T, C>::operator<<(ostream& os){
   	os << "\n\t----------------------------------------------------------- ";
 
   }
-  if(this->rowColor == blue){
+  if(C == blue){
     //---- PRINTS BLUE ROW -----//
   	os << "\nBlue\t";
   	int j=0;

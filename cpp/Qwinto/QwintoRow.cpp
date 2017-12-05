@@ -6,7 +6,7 @@ RollOfDice& QwintoRow<C>::operator[] (int index){
 
 template<Color C>
 ostream& QwintoRow<C>::operator<< (ostream& os){
-  if(this->rowColor == red){
+  if(C == red){
     //---- PRINTS RED ROW -----//
     os << "\n\t          ------------------------------------------------- ";
   	os << "\nRed\t          ";
@@ -47,7 +47,7 @@ ostream& QwintoRow<C>::operator<< (ostream& os){
 
   	}
   }
-  if(this->rowColor == yellow){
+  if(C == yellow){
     //---- PRINTS YELLOW ROW -----//
   	os << "\n\t     ------------------------------------------------- ";
   	os << "\nYellow       ";
@@ -89,7 +89,7 @@ ostream& QwintoRow<C>::operator<< (ostream& os){
   	}
   	os << "\n";
   }
-  if(this->rowColor == blue){
+  if(C == blue){
     //---- PRINTS BLUE ROW -----//
   	os << "\t------------------------------------------------- ";
   	os << "\nBlue    ";

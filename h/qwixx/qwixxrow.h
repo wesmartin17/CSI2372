@@ -5,7 +5,6 @@ template<class T, Color C>
 class QwixxRow{
 
   public:
-    Color rowColor = C;
     RollOfDice values[12];
     RollOfDice& operator[] (const int index);
     QwixxRow<T, C> operator+= (RollOfDice rd);
