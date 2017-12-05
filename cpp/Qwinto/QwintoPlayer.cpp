@@ -24,7 +24,7 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 
     cout<<"\nRolling: "<<endl;
     for(vector<string>::iterator i = refinedSelection.begin(); i!= refinedSelection.end(); i++ ){
-      cout<<"["<<*i<<"  dice]\n";
+      cout<<"["<< static_cast<char>(toupper(((*i)[0])))<<"  ?]\n";
     }
     cout<<"Enter \"yes\" to confirm roll:"<<endl;
 
@@ -69,7 +69,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
   }
 
   cout<<name<<", you have two options:\n";
-  cout << "-Enter the row color and the column number (between 1 and 9) where you would like to place ["<< _rollOfDice << "] in. Enter \"done\" when finished (e.g. red 3 done)"<< endl;
+  cout << "-Enter the row color and the column number (between 1 and 9) where you would like to place ["<< int(_rollOfDice) << "] in. Enter \"done\" when finished (e.g. red 3 done)"<< endl;
   if(!active){
     cout <<"-Enter \"pass\" to skip with no penalty. Enter \"done\" when finished (e.g. pass done)" << endl;
   }

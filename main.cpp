@@ -122,7 +122,7 @@ int main() {
 				RollOfDice rd;
 				activePlayer->inputBeforeRoll(rd); // get input from active player before roll
 				rd.roll(); // roll the dice
-				cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n[" << int(rd) << "] !!\n"; // show result
+				cout << "\nRolling...\n .\\./.\\./.\\ ~~ [?]\n" << rd << " !!\n"; // show result
 				cout << "\nHere's what your sheet currently looks like: ";
 				cout << activePlayer->scoreSheet << endl; // print scoresheet of active player
 				cout << "Your rolled a [" << int(rd) << "]\n";
