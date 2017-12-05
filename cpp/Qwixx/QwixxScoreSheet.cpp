@@ -109,29 +109,3 @@ bool QwixxScoreSheet::notOperator(){
   // TODO finish notOperator
 	return false;
 }
-
-
-bool QwixxScoreSheet::twoRows(){
-
-	//TODO implement twoRoes
-	int zeroes = 0;
-	for(int i=0; i<9; i++){
-		if(redRow[i]==0){
-			zeroes += 1;
-		}
-	}
-
-	for(int i=0; i<9; i++){
-		if(yellowRow[i]==0){
-			zeroes += 1;
-		}
-	}
-
-	for(int i=0; i<9; i++){
-		if(blueRow[i]==0){
-			zeroes += 1;
-		}
-	}
-
-	return zeroes<=1;
-}

@@ -1,9 +1,4 @@
 template<class T, Color C>
-RollOfDice& QwixxRow<T, C>::operator[](int index){
-  return values[index];
-}
-
-template<class T, Color C>
 QwixxRow<T, C> QwixxRow<T, C>::operator+= (RollOfDice rd){
 
   // Passed dice colors dont include C

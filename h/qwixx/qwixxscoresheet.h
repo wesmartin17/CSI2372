@@ -12,7 +12,6 @@ class QwixxScoreSheet : public ScoreSheet<QwixxScoreSheet>{
     QwixxRow<list<RollOfDice>, blue> blueRow;
     QwixxScoreSheet(string _playerName) : ScoreSheet(_playerName){ };
     bool score(RollOfDice &rollOfdice, Color color, int pos=-1);
-    bool twoRows();
     bool notOperator();
     int setTotal();
     int calcTotal();

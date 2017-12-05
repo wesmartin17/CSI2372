@@ -34,7 +34,6 @@ class ScoreSheet{
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
 		// virtual ostream& print(ostream& os) = 0;
 		virtual bool score(RollOfDice &rollOfdice, Color color, int pos=-1) = 0;
-		virtual bool twoRows() = 0;
 		virtual int setTotal() = 0;
 		virtual int calcTotal() = 0;
 		virtual bool notOperator() = 0;
