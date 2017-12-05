@@ -1,13 +1,6 @@
 bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 
 	RollOfDice* row;
-	int rdWhiteDice = 0;
-	for(vector<Dice>::iterator it = rollOfdice.dices.begin(); it != rollOfdice.dices.end(); ++it){
-		if(it->diceColor == Color::white){
-			rdWhiteDice ++;
-		}
-	}
-
 	int temp = int(rollOfdice);
 
 	int realpos = 0;
@@ -97,7 +90,7 @@ ostream& QwixxScoreSheet::operator<<(ostream& os){
 	greenRow << os;
 	blueRow << os;
 	os << "\n\t----------------------------------------------------------- ";
-	
+
 	if(failedAttempts.size() > 0){
 		os << "\nFailed throws: ";
 		for(int i = 0; i<failedAttempts.size(); ++i){
