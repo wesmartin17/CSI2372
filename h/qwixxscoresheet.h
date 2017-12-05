@@ -9,6 +9,7 @@ class QwixxRow{
     Color rowColor = C;
     RollOfDice values[12];
     RollOfDice& operator[] (const int index);
+    QwixxRow<C> operator+= (RollOfDice rd);
     ostream& operator<< (ostream& os);
 
 };
@@ -16,6 +17,17 @@ class QwixxRow{
 template<Color C>
 RollOfDice& QwixxRow<C>::operator[](int index){
   return values[index];
+}
+
+template<Color C>
+QwixxRow<C> QwixxRow<C>::operator+= (RollOfDice rd){
+  // TODO make it actually throw exception
+  if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
+    cout<< "RowColorMissingException: Dice color combo is missing the requested row color!" << endl;
+  else if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
+    cout<< "WhiteDiceMissingException: Dice color combo is missing a white dice!" << endl;
+  values[int(rd)] = rd;
+  return *this;
 }
 
 template<Color C>
