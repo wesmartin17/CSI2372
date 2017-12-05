@@ -5,7 +5,7 @@ template<class T, Color C>
 class QwixxRow{
 
   public:
-    RollOfDice values[12];
+    RollOfDice values[13];
     QwixxRow<T, C>& operator+= (RollOfDice rd);
     ostream& operator<< (ostream& os);
 
