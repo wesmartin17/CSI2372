@@ -19,16 +19,16 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
       validSelection = true;
     }
     else if(input == "red")
-      if(scoreSheet.score(_rollOfDice,Color::red,int(_rollOfDice)))
+      if(scoreSheet.score(_rollOfDice,Color::red))
           validSelection = true;
     else if(input == "yellow")
-      if(scoreSheet.score(_rollOfDice,Color::yellow,int(_rollOfDice)))
+      if(scoreSheet.score(_rollOfDice,Color::yellow))
         validSelection = true;
     else if(input == "green")
-      if(scoreSheet.score(_rollOfDice,Color::green,int(_rollOfDice)))
+      if(scoreSheet.score(_rollOfDice,Color::green))
         validSelection = true;
     else if(input == "blue")
-      if(scoreSheet.score(_rollOfDice,Color::blue,int(_rollOfDice)))
+      if(scoreSheet.score(_rollOfDice,Color::blue))
         validSelection = true;
     else
       cout<<name<<", THAT WAS IN INVALID SELECTION!"<<endl<<endl;
