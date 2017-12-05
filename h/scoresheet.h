@@ -42,6 +42,6 @@ class ScoreSheet{
 };
 
 
-#include "qwintoscoresheet.h"
-#include "qwixxscoresheet.h"
+#include "qwinto/qwintoscoresheet.h"
+#include "qwixx/qwixxscoresheet.h"
 #endif

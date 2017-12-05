@@ -11,5 +11,5 @@ class QwixxPlayer : public Player{
 
 };
 
-#include "../cpp/Qwixx/QwixxPlayer.cpp"
+#include "../../cpp/Qwixx/QwixxPlayer.cpp"
 #endif

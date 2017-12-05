@@ -14,6 +14,6 @@ class Player{
     // virtual ~Player()=0;
 };
 
-#include "qwintoplayer.h"
-#include "qwixxplayer.h"
+#include "qwinto/qwintoplayer.h"
+#include "qwixx/qwixxplayer.h"
 #endif
