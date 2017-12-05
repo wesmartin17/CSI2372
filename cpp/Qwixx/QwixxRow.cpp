@@ -1,10 +1,10 @@
-template<Color C>
-RollOfDice& QwixxRow<C>::operator[](int index){
+template<class T, Color C>
+RollOfDice& QwixxRow<T, C>::operator[](int index){
   return values[index];
 }
 
-template<Color C>
-QwixxRow<C> QwixxRow<C>::operator+= (RollOfDice rd){
+template<class T, Color C>
+QwixxRow<T, C> QwixxRow<T, C>::operator+= (RollOfDice rd){
 
   // Passed dice colors dont include C
   if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
@@ -31,8 +31,8 @@ QwixxRow<C> QwixxRow<C>::operator+= (RollOfDice rd){
   return *this;
 }
 
-template<Color C>
-ostream& QwixxRow<C>::operator<<(ostream& os){
+template<class T, Color C>
+ostream& QwixxRow<T, C>::operator<<(ostream& os){
   if(this->rowColor == red){
     //---- PRINTS RED ROW -----//
   	os << "\n\t----------------------------------------------------------- ";

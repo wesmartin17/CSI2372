@@ -6,10 +6,10 @@
 class QwixxScoreSheet : public ScoreSheet<QwixxScoreSheet>{
 
   public:
-    QwixxRow<red> redRow;
-    QwixxRow<yellow> yellowRow;
-    QwixxRow<green> greenRow;
-    QwixxRow<blue> blueRow;
+    QwixxRow<vector<RollOfDice>, red> redRow;
+    QwixxRow<vector<RollOfDice>, yellow> yellowRow;
+    QwixxRow<list<RollOfDice>, green> greenRow;
+    QwixxRow<list<RollOfDice>, blue> blueRow;
     QwixxScoreSheet(string _playerName) : ScoreSheet(_playerName){ };
     bool score(RollOfDice &rollOfdice, Color color, int pos=-1);
     bool twoRows();

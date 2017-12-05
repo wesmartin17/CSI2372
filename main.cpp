@@ -2,6 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include <list>
 #include <ctime>
 #include <stdio.h>
 #include <functional>
