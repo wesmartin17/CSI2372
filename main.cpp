@@ -197,14 +197,18 @@ int main() {
 								cout << "WHITE #2: ["<<rd.dices[1].face<<"]"<<endl<<endl;
 								cout << "SUM: "<<int(wd)<<endl;
 								cout << "----------------------------------"<<endl;
+								cout<<activePlayer->scoreSheet<<endl;
+								activePlayer->inputBeforeRoll(wd);
 								for(vector<QwixxPlayer>::iterator i = players.begin(); i != players.end(); ++i){
-									cout<<i->scoreSheet<<endl;
-									i->inputBeforeRoll(wd);
+									if(!i->active){
+										cout<<i->scoreSheet<<endl;
+										i->inputBeforeRoll(wd);
+									}
 
 								}
 
 								cout << "\n" << activePlayer->name
-										<< ", it's you turn to choose a white dice (number 1 or number 2) as well as a colored dice to score their sum" << endl;
+										<< ", it's you turn to choose a white dice (number 1 or number 2) as well as a colored dice to score their sum." << endl << activePlayer->scoreSheet <<endl<<rd <<endl;
 								activePlayer->inputAfterRoll(rd);
 
 								if(!activePlayer->scoreSheet){ // End condition met by active player
@@ -216,8 +220,6 @@ int main() {
 								vector<QwixxPlayer>::iterator inactivePlayer;
 								for(inactivePlayer = players.begin(); inactivePlayer<players.end(); inactivePlayer++){
 									if(!inactivePlayer->active){
-										cout << inactivePlayer->scoreSheet << endl;
-										inactivePlayer->inputAfterRoll(rd);
 										if(!inactivePlayer->scoreSheet){ // End condition met by inactive player
 											cout << "The game will end as a result." << endl;
 											gameOver = true;

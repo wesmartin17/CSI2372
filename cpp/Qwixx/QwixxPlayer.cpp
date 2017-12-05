@@ -18,18 +18,26 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
       scoreSheet.failedAttempts.push_back(_rollOfDice);
       validSelection = true;
     }
-    else if(input == "red")
-      if(scoreSheet.score(_rollOfDice,Color::red))
+    else if(input == "red"){
+      if(scoreSheet.score(_rollOfDice,Color::red)){
           validSelection = true;
-    else if(input == "yellow")
-      if(scoreSheet.score(_rollOfDice,Color::yellow))
+      }
+    }
+    else if(input == "yellow"){
+      if(scoreSheet.score(_rollOfDice,Color::yellow)){
         validSelection = true;
-    else if(input == "green")
-      if(scoreSheet.score(_rollOfDice,Color::green))
+      }
+    }
+    else if(input == "green"){
+      if(scoreSheet.score(_rollOfDice,Color::green)){
         validSelection = true;
-    else if(input == "blue")
-      if(scoreSheet.score(_rollOfDice,Color::blue))
+      }
+    }
+    else if(input == "blue"){
+      if(scoreSheet.score(_rollOfDice,Color::blue)){
         validSelection = true;
+      }
+    }
     else
       cout<<name<<", THAT WAS IN INVALID SELECTION!"<<endl<<endl;
   }

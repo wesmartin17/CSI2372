@@ -51,15 +51,15 @@ ostream& operator<<(ostream& os,  RollOfDice& rd){
 
 	for(int i=0; i<rd.dices.size(); ++i){
 		if(rd.dices[i].diceColor == Color::red)
-			os << "[R "<< int(rd.dices[i].face) << "]\n";
+			os << "[RED "<< int(rd.dices[i].face) << "]\n";
 		else if(rd.dices[i].diceColor == Color::yellow)
-			os << "[Y "<< int(rd.dices[i].face) << "]\n";
+			os << "[YELLOW "<< int(rd.dices[i].face) << "]\n";
 		else if(rd.dices[i].diceColor == Color::green)
-			os << "[G "<< int(rd.dices[i].face) << "]\n";
+			os << "[GREEN "<< int(rd.dices[i].face) << "]\n";
 		else if(rd.dices[i].diceColor == Color::blue)
-			os << "[B "<< int(rd.dices[i].face) << "]\n";
+			os << "[BLUE "<< int(rd.dices[i].face) << "]\n";
 		else if(rd.dices[i].diceColor == Color::white)
-			os << "[W "<< int(rd.dices[i].face) << "]\n";
+			os << "[WHITE "<< int(rd.dices[i].face) << "]\n";
 	}
 	os << "Total: [" << int(rd) << "]\n";
 	return os;
