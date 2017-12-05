@@ -166,7 +166,7 @@ int QwintoScoreSheet::setTotal(){
 }
 
 
-bool QwintoScoreSheet::notOperator(){
+bool QwintoScoreSheet::operator!(){
 	if(failedAttempts.size() >= 4){
 		cout << "\nThis was your fourth and last failed throw :(" << endl;
 		return true;

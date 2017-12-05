@@ -24,9 +24,9 @@ class ScoreSheet{
 			return os;
 		};
 
-		friend bool operator not(T & sheet){
-			return sheet.notOperator();
-		};
+		// friend bool operator not(T & sheet){
+		// 	return not(sheet);
+		// };
 
 	public:
 		int totalScore=0;
@@ -36,7 +36,7 @@ class ScoreSheet{
 		virtual bool score(RollOfDice &rollOfdice, Color color, int pos=-1) = 0;
 		virtual int setTotal() = 0;
 		virtual int calcTotal() = 0;
-		virtual bool notOperator() = 0;
+		virtual bool operator!() = 0;
 		// virtual ~ScoreSheet()=0;
 };
 

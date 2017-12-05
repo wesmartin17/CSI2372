@@ -113,7 +113,7 @@ int QwixxScoreSheet::setTotal(){
 }
 
 
-bool QwixxScoreSheet::notOperator(){
+bool QwixxScoreSheet::operator!(){
 
 	if(failedAttempts.size() >= 4){
 		cout << "\nThis was your fourth and last failed throw :(" << endl;

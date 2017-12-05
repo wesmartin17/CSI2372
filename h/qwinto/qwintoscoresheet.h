@@ -14,6 +14,7 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     bool twoRows();
     int setTotal();
     int calcTotal();
+    bool operator!();
     ostream& operator<<(ostream& os);
 
 };
