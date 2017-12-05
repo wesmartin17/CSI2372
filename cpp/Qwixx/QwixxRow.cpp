@@ -1,5 +1,5 @@
 template<class T, Color C>
-QwixxRow<T, C> QwixxRow<T, C>::operator+= (RollOfDice rd){
+QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
 
   int realpos = 0;
 	switch (C) {
@@ -19,19 +19,18 @@ QwixxRow<T, C> QwixxRow<T, C>::operator+= (RollOfDice rd){
 
 
   // Passed dice is to be scored in a locked row
-  if(int(this->values[12]) != 0){
+  if(int(this->values[11]) != 0){
     throw std::invalid_argument("Dice combo can't be scored in a locked row!");
   }
 
   // Passed dice is to be scored left of double-white-dice score
-	// for(int i=0; i <= realpos; ++i){
-  //   cout << int(this->values[i].dices[0].face);
-	// 	// if(this->values[i].dices[0].diceColor==white and this->values[i].dices[1].diceColor==white){
-  //   //   throw std::invalid_argument("Dice combo can't be scored left of a double-white dice score!");
-	// 	// }
-	// }
+	for(int i=0; i < realpos-1; ++i){
+    if(values[i].dices.size() != 0)
+		  if((values[i].dices[0].diceColor==white) and (values[i].dices[1].diceColor==white))
+        throw std::invalid_argument("Dice combo can't be scored left of a double-white dice score!");
+	}
 
-  this->values[realpos] = rd;
+  values[realpos] = rd;
   return *this;
 }
 

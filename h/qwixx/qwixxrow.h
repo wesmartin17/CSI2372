@@ -6,7 +6,7 @@ class QwixxRow{
 
   public:
     RollOfDice values[12];
-    QwixxRow<T, C> operator+= (RollOfDice rd);
+    QwixxRow<T, C>& operator+= (RollOfDice rd);
     ostream& operator<< (ostream& os);
 
 };
