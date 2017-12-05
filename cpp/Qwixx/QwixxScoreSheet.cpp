@@ -115,10 +115,25 @@ int QwixxScoreSheet::setTotal(){
 
 bool QwixxScoreSheet::operator!(){
 
+	// Two locked rows
+	int locked = 0;
+	if(int(redRow.values[12]) != 0)
+		locked += 1;
+	if(int(yellowRow.values[12]) != 0)
+		locked += 1;
+	if(int(greenRow.values[12]) != 0)
+		locked += 1;
+	if(int(blueRow.values[12]) != 0)
+		locked += 1;
+
+	if(locked==2){
+		cout << "\nThis was your second row to get locked" << endl;
+		return true;
+	}
+
 	if(failedAttempts.size() >= 4){
 		cout << "\nThis was your fourth and last failed throw :(" << endl;
 		return true;
 	}
-  // TODO finish notOperator
 	return false;
 }

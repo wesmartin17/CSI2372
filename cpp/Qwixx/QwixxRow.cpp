@@ -1,12 +1,13 @@
 template<class T, Color C>
 QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
 
+  string color = "";
   int realpos = 0;
 	switch (C) {
-    case red : realpos = int(rd) - 2; break;
-		case yellow : realpos = int(rd) - 2; break;
-    case green : realpos = 12 - int(rd); break;
-    case blue : realpos = 12 - int(rd); break;
+    case red : realpos = int(rd) - 2; color = "red"; break;
+		case yellow : realpos = int(rd) - 2; color = "yellow";  break;
+    case green : realpos = 12 - int(rd); color = "green"; break;
+    case blue : realpos = 12 - int(rd); color = "blue";  break;
   }
 
   // Passed dice colors dont include C
@@ -44,6 +45,9 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
   if((rowCount>=5) and (int(values[11]) != 0)){
     values[12] = rd;
   }
+
+  cout << "\nSelected row is now locked\n"
+       << "["<< color << " dice] are now removed from the game\n" <<  endl;
 
   return *this;
 }
