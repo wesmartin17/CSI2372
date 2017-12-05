@@ -5,11 +5,10 @@ RollOfDice& QwixxRow<C>::operator[](int index){
 
 template<Color C>
 QwixxRow<C> QwixxRow<C>::operator+= (RollOfDice rd){
-  // TODO make it actually throw exception
   if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
-    cout<< "RowColorMissingException: Dice color combo is missing the requested row color!" << endl;
+    throw std::invalid_argument("Dice color combo is missing the requested row color!");
   else if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
-    cout<< "WhiteDiceMissingException: Dice color combo is missing a white dice!" << endl;
+    throw std::invalid_argument("Dice color combo is missing a white dice!");
   values[int(rd)] = rd;
   return *this;
 }

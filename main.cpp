@@ -98,7 +98,7 @@ int main() {
 	/*
 		main rountine area
 	*/
-  
+
 	int gameVersion = versionSelection(); // Ask player to choose a version
 	int numberOfPlayers = playersNumberSelection(); // Ask player to choose number of players
 
@@ -259,17 +259,40 @@ int main() {
 
 	// How to use QwixxRow += rd
 
-	/*
-	QwixxScoreSheet kc = QwixxScoreSheet("karim");
-	RollOfDice rd1 = RollOfDice::pair(Dice(Color::blue), Dice(Color::white));
-	RollOfDice rd2 = RollOfDice::pair(Dice(Color::white), Dice(Color::white));
-	RollOfDice rd3 = RollOfDice::pair(Dice(Color::red), Dice(Color::white));
-	RollOfDice rd4 = RollOfDice::pair(Dice(Color::blue), Dice(Color::blue));
 
-	kc.blueRow += rd1; // this is ok because 1x blue dice
-	kc.blueRow += rd2; // this is ok because 2x white dice
-	kc.blueRow += rd3; // this is not ok because no 1x blue dice and no 2x white dice
-	kc.blueRow += rd4; // this is not ok because the combo doesn't have at least 1x white dice
-	*/
+	// QwixxScoreSheet kc = QwixxScoreSheet("karim");
+  //
+	// RollOfDice rd1 = RollOfDice::pair(Dice(Color::blue), Dice(Color::white));
+	// try {// this is ok because 1x blue dice
+	// 	kc.blueRow += rd1;
+	// }
+	// catch( const std::invalid_argument& e ) {
+	//     cout << e.what() << endl;
+	// }
+  //
+	// RollOfDice rd2 = RollOfDice::pair(Dice(Color::white), Dice(Color::white));
+	// try { // this is ok because 2x white dice
+	// 	kc.blueRow += rd2;
+	// }
+	// catch( const std::invalid_argument& e ) {
+	// 		cout << e.what() << endl;
+	// }
+  //
+	// RollOfDice rd3 = RollOfDice::pair(Dice(Color::red), Dice(Color::white));
+	// try { // this is not ok because no 1x blue dice and no 2x white dice
+	// 	kc.blueRow += rd3;
+	// }
+	// catch( const std::invalid_argument& e ) {
+	//     cout << e.what() << endl;
+	// }
+  //
+	// RollOfDice rd4 = RollOfDice::pair(Dice(Color::blue), Dice(Color::blue));
+	// try {  // this is not ok because the combo doesn't have at least 1x white dice
+	// 	kc.blueRow += rd4;
+	// }
+	// catch( const std::invalid_argument& e ) {
+	// 		cout << e.what() << endl;
+	// }
+
 
 }
