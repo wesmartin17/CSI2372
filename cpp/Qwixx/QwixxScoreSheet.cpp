@@ -89,116 +89,15 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 	}
 
 
-ostream& QwixxScoreSheet::print(ostream& os){
+ostream& QwixxScoreSheet::operator<<(ostream& os){
 
+
+	redRow << os;
+	yellowRow << os;
+	greenRow << os;
+	blueRow << os;
 	os << "\n\t----------------------------------------------------------- ";
 
-	//---- PRINTS RED ROW -----//
-	os << "\nRed\t";
-	for(int i=2; i<14; ++i){
-    if(redRow[i-2] == 0){
-      if(i>9){ // for styling
-				if(i==13){
-					os << "| U  "; // last
-				}else{
-        	os << "| "<<i<<" "; // 10, 11, 12
-				}
-      }else{
-      	os << "| "<<i<<"  "; // 2-9
-      }
-    }else{
-			if(i==13){
-				os << "| L ";
-			}else{
-				os << "| XX ";
-			}
-    }
-
-	}
-	os << "\n\t----------------------------------------------------------- ";
-
-	//---- PRINTS YELLOW ROW -----//
-	os << "\nYellow\t";
-	for(int i=2; i<14; ++i){
-    if(yellowRow[i-2] == 0){
-      if(i>9){ // for styling
-				if(i==13){
-					os << "| U  "; // last
-				}else{
-        	os << "| "<<i<<" "; // 10, 11, 12
-				}
-      }else{
-      	os << "| "<<i<<"  "; // 2-9
-      }
-    }else{
-			if(i==13){
-				os << "| L ";
-			}else{
-				os << "| XX ";
-			}
-    }
-
-	}
-	os << "\n\t----------------------------------------------------------- ";
-
-	//---- PRINTS GREEN ROW -----//
-	os << "\nGreen\t";
-	int j=0;
-	for(int i=12; i>0; --i){
-    if(greenRow[j] == 0){
-      if(i>9){ // for styling
-      	os << "| "<<i<<" "; // 10, 11, 12
-      }else{
-				if(i==1){
-					os << "| U  "; // last
-				}else{
-      		os << "| "<<i<<"  "; // 2-9
-				}
-      }
-    }else{
-			if(i==13){
-				os << "| L ";
-			}else{
-				os << "| XX ";
-			}
-    }
-		++j;
-	}
-	os << "\n\t----------------------------------------------------------- ";
-
-	//---- PRINTS BLUE ROW -----//
-	os << "\nBlue\t";
-	j=0;
-	for(int i=12; i>0; --i){
-    if(blueRow[j] == 0){
-      if(i>9){ // for styling
-      	os << "| "<<i<<" "; // 10, 11, 12
-      }else{
-				if(i==1){
-					os << "| U  "; // last
-				}else{
-      		os << "| "<<i<<"  "; // 2-9
-				}
-      }
-    }else{
-			if(i==13){
-				os << "| L ";
-			}else{
-				os << "| XX ";
-			}
-    }
-		++j;
-	}
-	os << "\n\t----------------------------------------------------------- ";
-
-	//---- PRINTS FAILED THROWS -----//
-	if(failedAttempts.size() > 0){
-		os << "\nFailed throws: ";
-		for(int i = 0; i<failedAttempts.size(); ++i){
-			os << failedAttempts[i] << " ";
-		}
-	}
-	os << "\n";
 	return os;
 }
 

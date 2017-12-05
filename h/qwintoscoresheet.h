@@ -141,7 +141,6 @@ ostream& QwintoRow<C>::operator<< (ostream& os){
   		}
 
   	}
-  	os << "\n";
   }
   return os;
 }
@@ -158,8 +157,7 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     bool twoRows();
     int setTotal();
     int calcTotal();
-
-    ostream& print(ostream& os);
+    ostream& operator<<(ostream& os);
 
 };
 

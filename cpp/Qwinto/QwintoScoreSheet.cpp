@@ -29,13 +29,13 @@ bool QwintoScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 	}
 
 
-ostream& QwintoScoreSheet::print(ostream& os){
+ostream& QwintoScoreSheet::operator<<(ostream& os){
 
 	redRow << os;
 	yellowRow << os;
 	blueRow << os;
+	os << "\n\t------------------------------------------------- ";
 
-	os << "\t------------------------------------------------- ";
 	if(failedAttempts.size() > 0){
 		os << "\nFailed throws: ";
 		for(int i = 0; i<failedAttempts.size(); ++i){

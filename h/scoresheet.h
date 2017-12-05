@@ -11,12 +11,16 @@ class ScoreSheet{
 		string playerName;
 
 		friend ostream& operator<<(ostream& os, T & sheet){
+			// Prints name and score
 			os << "\nPlayer name: " << sheet.playerName;
 			int score = sheet.totalScore;
 			if(score != 0){
 				os << "\t Points: " << score;
 			}
-			sheet.print(os);
+
+			// Prints the rows
+			sheet << os;
+
 			return os;
 		};
 
@@ -28,7 +32,7 @@ class ScoreSheet{
 		int totalScore=0;
 		vector<RollOfDice> failedAttempts;
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
-		virtual ostream& print(ostream& os) = 0;
+		// virtual ostream& print(ostream& os) = 0;
 		virtual bool score(RollOfDice &rollOfdice, Color color, int pos=-1) = 0;
 		virtual bool twoRows() = 0;
 		virtual int setTotal() = 0;
