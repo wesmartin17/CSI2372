@@ -200,6 +200,7 @@ int main() {
 								for(vector<QwixxPlayer>::iterator i = players.begin(); i != players.end(); ++i){
 									cout<<i->scoreSheet<<endl;
 									i->inputBeforeRoll(wd);
+
 								}
 
 								cout << "\n" << activePlayer->name
@@ -270,6 +271,5 @@ int main() {
 	// catch( const std::invalid_argument& e ) {
 	// 		cout << e.what() << endl;
 	// }
-
 
 }

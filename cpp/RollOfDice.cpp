@@ -61,6 +61,6 @@ ostream& operator<<(ostream& os,  RollOfDice& rd){
 		else if(rd.dices[i].diceColor == Color::white)
 			os << "[W "<< int(rd.dices[i].face) << "]\n";
 	}
-	os << "Total: [" << int(rd) << "]";
+	os << "Total: [" << int(rd) << "]\n";
 	return os;
 }
