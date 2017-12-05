@@ -153,7 +153,7 @@ class QwintoScoreSheet : public ScoreSheet<QwintoScoreSheet>{
     QwintoRow<Color::yellow> yellowRow;
     QwintoRow<Color::blue> blueRow;
     QwintoScoreSheet(string _playerName) : ScoreSheet(_playerName) { };
-    bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1);
+    bool score(RollOfDice &rollOfdice, Color color, int pos=-1);
     bool notOperator();
     bool twoRows();
     int setTotal();

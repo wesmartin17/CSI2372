@@ -1,9 +1,9 @@
-bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
+bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 
 	RollOfDice* row;
 	int rdWhiteDice = 0;
 	for(vector<Dice>::iterator it = rollOfdice.dices.begin(); it != rollOfdice.dices.end(); ++it){
-		if(it->diceColor == Dice::Color::white){
+		if(it->diceColor == Color::white){
 			rdWhiteDice ++;
 		}
 	}
@@ -12,22 +12,22 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 
 	int realpos = 0;
 	switch (color) {
-		case Dice::Color::red:{
+		case Color::red:{
 			row = redRow.values;
 			realpos = temp - 2; // 2 thourgh 12
 			break;
 		}
-		case Dice::Color::yellow:{
+		case Color::yellow:{
 			row = yellowRow.values;
 			realpos = temp - 2; // 2 through 12
 			break;
 		}
-		case Dice::Color::green:{
+		case Color::green:{
 			row = greenRow.values;
 			realpos = 12 - temp; // 12 through 2
 			break;
 		}
-		case Dice::Color::blue:{
+		case Color::blue:{
 			row = blueRow.values;
 			realpos = 12 - temp; // 12 through 2
 			break;
@@ -53,7 +53,7 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
 	for(int i=0; i<=realpos; ++i){
 		int whiteCount = 0;
 		for(vector<Dice>::iterator it = row[realpos].dices.begin(); it != row[realpos].dices.end(); ++it){
-			if(it->diceColor == Dice::Color::white){
+			if(it->diceColor == Color::white){
 				whiteCount++;
 			}
 		}

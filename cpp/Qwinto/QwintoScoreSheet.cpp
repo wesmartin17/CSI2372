@@ -1,10 +1,10 @@
-bool QwintoScoreSheet::score(RollOfDice &rollOfdice, Dice::Color color, int pos){
+bool QwintoScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 
 	RollOfDice* row;
 	switch (color) {
-		case Dice::Color::red: row = redRow.values; break;
-		case Dice::Color::yellow: row = yellowRow.values; break;
-		case Dice::Color::blue: row = blueRow.values; break;
+		case Color::red: row = redRow.values; break;
+		case Color::yellow: row = yellowRow.values; break;
+		case Color::blue: row = blueRow.values; break;
 	}
 	if(pos > 8 or pos < 0){
 		cout << "Invalid input: #" << pos

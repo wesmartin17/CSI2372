@@ -3,7 +3,6 @@
 #include "rollofdice.h"
 
 
-enum Color { red, yellow, blue, green, white };
 
 template<class T>
 class ScoreSheet{
@@ -30,7 +29,7 @@ class ScoreSheet{
 		vector<RollOfDice> failedAttempts;
 		ScoreSheet(string _playerName) : playerName(_playerName) {};
 		virtual ostream& print(ostream& os) = 0;
-		virtual bool score(RollOfDice &rollOfdice, Dice::Color color, int pos=-1) = 0;
+		virtual bool score(RollOfDice &rollOfdice, Color color, int pos=-1) = 0;
 		virtual bool twoRows() = 0;
 		virtual int setTotal() = 0;
 		virtual int calcTotal() = 0;

@@ -32,17 +32,17 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
   }
 
   if(find(refinedSelection.begin(), refinedSelection.end(), "red") != refinedSelection.end()) {
-    Dice d1 = Dice(Dice::Color::red);
+    Dice d1 = Dice(Color::red);
     _rollOfDice.dices.push_back(d1);
   }
 
   if(find(refinedSelection.begin(), refinedSelection.end(), "yellow") != refinedSelection.end()) {
-    Dice d2 = Dice(Dice::Color::yellow);
+    Dice d2 = Dice(Color::yellow);
     _rollOfDice.dices.push_back(d2);
   }
 
   if(find(refinedSelection.begin(), refinedSelection.end(), "blue") != refinedSelection.end()) {
-    Dice d3 = Dice(Dice::Color::blue);
+    Dice d3 = Dice(Color::blue);
     _rollOfDice.dices.push_back(d3);
   }
 
@@ -56,13 +56,13 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
   for(vector<Dice>::iterator i = _rollOfDice.dices.begin(); i != _rollOfDice.dices.end(); ++i){
     Dice d = *i;
     switch(d.diceColor){
-      case Dice::Color::red :
+      case Color::red :
         hasRed = true;
         break;
-      case Dice::Color::blue :
+      case Color::blue :
         hasBlue = true;
         break;
-      case Dice::Color::yellow :
+      case Color::yellow :
         hasYellow = true;
         break;
     }
@@ -104,15 +104,15 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
 
       //cout<<"end-2: "<<selection.end()[-2]<<" end-1: "<<selection.end()[-1];
       if(selection.end()[-3] == "red" && hasRed){
-        if(scoreSheet.score(_rollOfDice,Dice::Color::red,x-1))
+        if(scoreSheet.score(_rollOfDice,Color::red,x-1))
           enteredValid = true;
       }
       else if(selection.end()[-3] == "blue" && hasBlue){
-        if(scoreSheet.score(_rollOfDice,Dice::Color::blue,x-1))
+        if(scoreSheet.score(_rollOfDice,Color::blue,x-1))
           enteredValid = true;
       }
       else if(selection.end()[-3] == "yellow" && hasYellow){
-        if(scoreSheet.score(_rollOfDice,Dice::Color::yellow,x-1))
+        if(scoreSheet.score(_rollOfDice,Color::yellow,x-1))
           enteredValid = true;
         else{
           cout<<"invalid entry"<<endl;

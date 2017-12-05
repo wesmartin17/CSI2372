@@ -181,8 +181,8 @@ int main() {
 								activePlayer->active = true; // next player takes a turn i.e., becomes active
 								cout << "\n" << activePlayer->name << " it's YOUR turn!!" << endl;
 								RollOfDice rd;
-								rd.dices.push_back(Dice(Dice::Color::white));
-								rd.dices.push_back(Dice(Dice::Color::white));
+								rd.dices.push_back(Dice(Color::white));
+								rd.dices.push_back(Dice(Color::white));
 
 
 								cout << "\nRolling white dice...\n .\\./.\\./.\\ ~~ [?]\n";
@@ -201,10 +201,10 @@ int main() {
 									}
 								}
 
-								rd.dices.push_back(Dice(Dice::Color::red));
-								rd.dices.push_back(Dice(Dice::Color::yellow));
-								rd.dices.push_back(Dice(Dice::Color::blue));
-								rd.dices.push_back(Dice(Dice::Color::green));
+								rd.dices.push_back(Dice(Color::red));
+								rd.dices.push_back(Dice(Color::yellow));
+								rd.dices.push_back(Dice(Color::blue));
+								rd.dices.push_back(Dice(Color::green));
 
 								cout<<endl<<"Rolling colored dice:"<<endl;
 								for(vector<Dice>::iterator it = rd.dices.begin()+2; it != rd.dices.end(); ++it){
