@@ -169,7 +169,6 @@ int main() {
 		// Announce winner.
 		cout << "Congradulations to " << winnerName << " for winning the game with " << winnerScore << " points!" << endl;
 
-
 	}else{//PLAYING QWIXX
 			vector<QwixxPlayer> players = createQwixxPlayers(numberOfPlayers);
 
@@ -251,7 +250,6 @@ int main() {
 								activePlayer->active = false; // mark player as inactive and go to next player
 							}
 				}
-
 	}
 
 	/*

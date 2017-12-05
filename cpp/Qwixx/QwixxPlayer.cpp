@@ -40,7 +40,7 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
   cout<<name<<", Please enter the name of the colored dice you would like to score (or type fail): "<<endl;
   bool validSelection = false, scored = false;
-  string input;
+  string input, color;
   int selectedColorDice;
   while(!scored){
     while(!validSelection){
@@ -53,18 +53,22 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
       else if(input == "red"){
         selectedColorDice = 0;
         validSelection = true;
+        color = input;
       }
       else if(input == "yellow"){
         selectedColorDice = 1;
         validSelection = true;
+        color = input;
       }
       else if(input == "green"){
         selectedColorDice = 2;
         validSelection = true;
+        color = input;
       }
       else if(input == "blue"){
         selectedColorDice = 3;
         validSelection = true;
+        color = input;
       }
       else{
         cout<<"INVALID SELECTION! (please type one of: red yellow green blue)";
@@ -74,10 +78,9 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
 
     validSelection = false;
 
+    int selection = 0;
     while(!validSelection){
       input = "";
-      int selection = 0;
-      // CHECK THIS NOT SURE IF WORKING
       cout << "Please enter 1 for white dice [" << _rollOfDice.dices[0].face <<"] or enter 2 for white dice ["<< _rollOfDice.dices[1].face << endl;
       cin >> input;
       stringstream asdf(input);
@@ -85,8 +88,15 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
         validSelection = true;
     }
 
-    // cout<<
+    RollOfDice pair = _rollOfDice.pair(_rollOfDice.dices[selection-1],_rollOfDice.dices[selectedColorDice+2]);
+    Color c = static_cast<Color>(selectedColorDice);
 
+    input = "";
+      cout<<"Type \"yes\" to confirm your move of "<<color<<", "<<int(pair);
+      cin>> input;
+      if(input == "yes")
+        if(scoreSheet.score(pair,c))
+          scored = true;
   }
 
 }
