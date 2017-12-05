@@ -42,44 +42,26 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 		return false;
 	}
 
-	// left of double-white-dice score
-	for(int i=0; i<=realpos; ++i){
-		int whiteCount = 0;
-		for(vector<Dice>::iterator it = row[realpos].dices.begin(); it != row[realpos].dices.end(); ++it){
-			if(it->diceColor == Color::white){
-				whiteCount++;
-			}
-		}
-		if(whiteCount>1){
-			cout << "Invalid input: #" << int(rollOfdice)
-				   << ":\nA cell in this row is right of cell #" << rollOfdice << " and holds a score by two white dice";
-			return false;
-		}
-	}
-
-	// locked row
-	if(row[12]!=0){
-		cout << "Invalid input: #" << int(rollOfdice)
-				<< "This row is locked because it contains 5 scores already";
+	// GOOD TO SCORE
+	try{
+		row += rollOfdice;
+	}catch(const invalid_argument& e ){
 		return false;
 	}
-
-	// GOOD TO SCORE
-	row[realpos] = rollOfdice;
+	return true;
 
 	// check if should lock row
-	int rowCount = 0;
-	for(int i=0; i<12; ++i){
-		if(row[i]!=0){
-			rowCount++;
-		}
-	}
-	if(rowCount==5){
-		row[12] = rollOfdice;
-	}
+	// int rowCount = 0;
+	// for(int i=0; i<12; ++i){
+	// 	if(row[i]!=0){
+	// 		rowCount++;
+	// 	}
+	// }
+	// if(rowCount==5){
+	// 	row[12] = rollOfdice;
+	// }
 
-	return true;
-	}
+}
 
 
 ostream& QwixxScoreSheet::operator<<(ostream& os){

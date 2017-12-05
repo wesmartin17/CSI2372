@@ -5,10 +5,28 @@ RollOfDice& QwixxRow<C>::operator[](int index){
 
 template<Color C>
 QwixxRow<C> QwixxRow<C>::operator+= (RollOfDice rd){
+
+  // Passed dice colors dont include C
   if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
     throw std::invalid_argument("Dice color combo is missing the requested row color!");
-  else if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
+
+  // Passed dice colors dont include at least 1x white
+  if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
     throw std::invalid_argument("Dice color combo is missing a white dice!");
+
+
+  // Passed dice is to be scored in a locked row
+  if(int(values[12]) != 0){
+    throw std::invalid_argument("Dice combo can't be scored in a locked row!");
+  }
+
+  // Passed dice is to be scored left of double-white-dice score
+	for(int i=0; i<=int(rd); ++i){
+		if(values[i].dices[0].diceColor==Color::white and values[i].dices[1].diceColor==Color::white){
+      throw std::invalid_argument("Dice combo can't be scored left of a double-white dice score!");
+		}
+	}
+
   values[int(rd)] = rd;
   return *this;
 }
