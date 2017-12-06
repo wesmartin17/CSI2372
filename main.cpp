@@ -94,6 +94,9 @@ vector<QwixxPlayer> createQwixxPlayers(int numberOfPlayers){
 	return players;
 }
 
+/*
+	Main routine for a game of Qwinto
+*/
 void playQwinto(int numberOfPlayers){
 	// Create Corresponding Players
 	vector<QwintoPlayer> players = createQwintoPlayers(numberOfPlayers);
@@ -158,6 +161,9 @@ void playQwinto(int numberOfPlayers){
 	return;
 }
 
+/*
+	Main routine for a game of Qwixx
+*/
 void playQwixx(int numberOfPlayers){
 	vector<QwixxPlayer> players = createQwixxPlayers(numberOfPlayers);
 	bool gameOver = false;
