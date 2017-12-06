@@ -185,8 +185,8 @@ int main() {
 								rd.dices.push_back(Dice(Color::white));
 								rd.dices.push_back(Dice(Color::red));
 								rd.dices.push_back(Dice(Color::yellow));
-								rd.dices.push_back(Dice(Color::blue));
 								rd.dices.push_back(Dice(Color::green));
+								rd.dices.push_back(Dice(Color::blue));
 								RollOfDice wd = RollOfDice::pair(rd.dices[0], rd.dices[1]);
 
 								rd.roll();

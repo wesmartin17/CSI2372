@@ -1,6 +1,6 @@
 #ifndef ROLLOFDICE_H_
 #define ROLLOFDICE_H_
-enum Color { red, yellow, blue, green, white };
+enum Color { red, yellow, green, blue, white };
 
 using namespace std;
 
