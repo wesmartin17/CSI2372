@@ -59,7 +59,7 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				return false;
 			}
 			catch(const FailedAttemptException& e ){
-				cout << "That was a failed attempt to score and it will be marked.";
+				cout << "\n[!]That was a failed attempt to score and it will be marked." << endl;
 				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
@@ -68,41 +68,11 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 
 	}
 
-
-
-
-	// out of range
-	// if(realpos > 11 or realpos < 0){
-	// 	cout << "Invalid input: #" << pos
-	// 						<< ":\nYou must select location cell number between 2 and 11" << endl;
-	// 	return false;
-	// }
-	// // taken
-	// if(int(row[realpos]) != 0){
-	// 	cout << "Invalid input: #" << pos
-	// 						<< ":\nCell #" << pos << " has been scored already" << endl;
-	// 	return false;
-	// }
-
-	// GOOD TO SCORE
-
-
-	// check if should lock row
-	// int rowCount = 0;
-	// for(int i=0; i<12; ++i){
-	// 	if(row[i]!=0){
-	// 		rowCount++;
-	// 	}
-	// }
-	// if(rowCount==5){
-	// 	row[12] = rollOfdice;
-	// }
 }
 
 
 
 ostream& QwixxScoreSheet::operator<<(ostream& os){
-
 
 	redRow << os;
 	yellowRow << os;
@@ -122,9 +92,38 @@ ostream& QwixxScoreSheet::operator<<(ostream& os){
 
 
 int QwixxScoreSheet::calcTotal(){
-  // TODO implement calcTotal
-
 	int total = 0;
+	// Red score
+	for(int i=0; i<12; ++i){
+		if(int(redRow.values[i]) != 0){
+			total += redRow.values[i];
+		}
+	}
+
+	// Yellow score
+	for(int i=0; i<12; ++i){
+		if(int(yellowRow.values[i]) != 0){
+			total += yellowRow.values[i];
+		}
+	}
+
+	// Green score
+	for(int i=0; i<12; ++i){
+		if(int(greenRow.values[i]) != 0){
+			total += greenRow.values[i];
+		}
+	}
+
+	// blue score
+	for(int i=0; i<12; ++i){
+		if(int(blueRow.values[i]) != 0){
+			total += blueRow.values[i];
+		}
+	}
+
+	// Failed attempts
+	total -= (failedAttempts.size()*5);
+
 	return total;
 }
 
