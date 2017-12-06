@@ -61,17 +61,16 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
   // Check if row should be locked
   int rowCount = 0; // Count scores
   for(int i=0; i<12; ++i){
-    if(values[i]!=0){
+    if(int(values[i]) != 0){
       rowCount++;
     }
   }
   // Check count
   if((rowCount>=5) and (int(values[11]) != 0)){
     values[12] = rd;
+    cout << "\n[!] Player locked selected row. ["<< color << " dice] will be removed from the game\n" <<  endl;
   }
 
-  cout << "\nSelected row is now locked\n"
-       << "["<< color << " dice] are now removed from the game\n" <<  endl;
 
   return *this;
 }
