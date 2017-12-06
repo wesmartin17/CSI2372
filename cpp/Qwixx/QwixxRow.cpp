@@ -10,19 +10,24 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
     case blue : realpos = 12 - int(rd); color = "blue";  break;
   }
 
-  // Passed dice colors dont include C
+  // Passed dice colors dont include 1x C dice
   if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
-    throw std::invalid_argument("Dice color combo is missing the requested row color!");
+    throw std::invalid_argument("Dice are missing a die of the requested row color!");
 
   // Passed dice colors dont include at least 1x white
   if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
-    throw std::invalid_argument("Dice color combo is missing a white dice!");
+    throw std::invalid_argument("Dice are missing a least one white dice!");
 
+  // Passed dice is to be scored in scored cell
+  if(int(this->values[realpos]) != 0){
+    throw std::invalid_argument("Dice combo can't be scored in an already scored spot!");
+  }
 
   // Passed dice is to be scored in a locked row
   if(int(this->values[12]) != 0){
     throw std::invalid_argument("Dice combo can't be scored in a locked row!");
   }
+
 
   // Passed dice is to be scored left of double-white-dice score
 	for(int i=0; i < realpos-1; ++i){
