@@ -6,7 +6,13 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 			try{
 				redRow += rollOfdice;
 				return true;
-			}catch(const invalid_argument& e ){
+			}
+			catch(const InvalidInputException& e ){
+				return false;
+			}
+			catch(const FailedAttemptException& e ){
+				cout << "That was a failed attempt to score and it will be marked.";
+				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
 			break;
@@ -16,7 +22,13 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				yellowRow += rollOfdice;
 				return true;
 
-			}catch(const invalid_argument& e ){
+			}
+			catch(const InvalidInputException& e ){
+				return false;
+			}
+			catch(const FailedAttemptException& e ){
+				cout << "That was a failed attempt to score and it will be marked.";
+				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
 			break;
@@ -26,7 +38,13 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				greenRow += rollOfdice;
 				return true;
 
-			}catch(const invalid_argument& e ){
+			}
+			catch(const InvalidInputException& e ){
+				return false;
+			}
+			catch(const FailedAttemptException& e ){
+				cout << "That was a failed attempt to score and it will be marked.";
+				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
 			break;
@@ -36,7 +54,13 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				blueRow += rollOfdice;
 				return true;
 
-			}catch(const invalid_argument& e ){
+			}
+			catch(const InvalidInputException& e ){
+				return false;
+			}
+			catch(const FailedAttemptException& e ){
+				cout << "That was a failed attempt to score and it will be marked.";
+				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
 			break;

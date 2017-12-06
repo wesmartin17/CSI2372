@@ -1,3 +1,22 @@
+class FailedAttemptException{
+public:
+    FailedAttemptException(string pMessage) : message(pMessage) {}
+    string what() { return message; }
+    ~FailedAttemptException() {}
+  private:
+          string message;
+};
+
+class InvalidInputException{
+public:
+    InvalidInputException(string pMessage) : message(pMessage) {}
+    string what() { return message; }
+    ~InvalidInputException() {}
+  private:
+          string message;
+};
+
+
 template<class T, Color C>
 QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
 
@@ -12,20 +31,20 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
 
   // Passed dice colors dont include 1x C dice
   if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
-    throw std::invalid_argument("Dice are missing a die of the requested row color!");
+    throw new InvalidInputException("Dice are missing a die of the requested row color!");
 
   // Passed dice colors dont include at least 1x white
   if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
-    throw std::invalid_argument("Dice are missing a least one white dice!");
+    throw new InvalidInputException("Dice are missing a least one white dice!");
 
   // Passed dice is to be scored in scored cell
   if(int(this->values[realpos]) != 0){
-    throw std::invalid_argument("Dice combo can't be scored in an already scored spot!");
+    throw new FailedAttemptException("Dice combo can't be scored in an already scored spot!");
   }
 
   // Passed dice is to be scored in a locked row
   if(int(this->values[12]) != 0){
-    throw std::invalid_argument("Dice combo can't be scored in a locked row!");
+    throw new FailedAttemptException("Dice combo can't be scored in a locked row!");
   }
 
 
@@ -33,7 +52,7 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
 	for(int i=0; i < realpos-1; ++i){
     if(values[i].dices.size() != 0)
 		  if((values[i].dices[0].diceColor==white) and (values[i].dices[1].diceColor==white))
-        throw std::invalid_argument("Dice combo can't be scored left of a double-white dice score!");
+        throw new FailedAttemptException("Dice combo can't be scored left of a double-white dice score!");
 	}
 
   // GOOD TO SCORE
