@@ -15,12 +15,13 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
     throw invalid_argument("This roll of dice is invalid!");
   }
 
-  if((int(rd)>12) or (int(rd)<0)){
+  if((int(rd) > 12) or (int(rd)<0)){
     throw invalid_argument("This roll of dice is invalid!");
   }
 
   // GOOD TO SCORE
   values[realpos] = rd;
+
   // Check if row should be locked
   int rowCount = 0; // Count scores
   for(int i=0; i<12; ++i){

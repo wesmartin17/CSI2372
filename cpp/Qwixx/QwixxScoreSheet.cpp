@@ -27,47 +27,32 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 	for(int i=0; i < realpos; ++i){
 		if(row[i].dices.size() != 0){
 			if((row[i].dices[0].diceColor==white) and (row[i].dices[1].diceColor==white)){
-				if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white)){
-					cout << "Dice combo can't be scored right of a double-white dice score!" << endl;
-					return false;
-				}else{
-					cout << "Dice combo can't be scored right of a double-white dice score!" << endl;
-					cout << "[!] This is a failed score and it will be recorded on your sheet." << endl;
-					failedAttempts.push_back(rd);
-					return true;
-				}
+				cout << "Dice combo can't be scored right of a double-white dice score!" << endl;
+				return false;
 			}
 		}
 	}
 
 	// Passed dice is to be scored in a scored cell
 	if(int(row[realpos]) != 0){
-		if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white)){
-			cout << "This position is taken" << endl;
-			return false;
-		}else{
-			cout << "This position is taken" << endl;
-			cout << "[!] This is a failed score and it will be recorded on your sheet." << endl;
-			failedAttempts.push_back(rd);
-			return true;
-		}
+		cout << "This position is taken" << endl;
+		return false;
 	}
 
   // Passed dice is to be scored in a locked row
   if(int(row[12]) != 0){
-		if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white)){
-			cout << "Dice combo can't be scored in a locked row!" << endl;
-			return false;
-		}else{
-			cout << "Dice combo can't be scored in a locked row!" << endl;
-			cout << "[!] This is a failed score and it will be recorded on your sheet." << endl;
-			failedAttempts.push_back(rd);
-			return true;
-		}
+		cout << "Dice combo can't be scored in a locked row!" << endl;
+		return false;
   }
 
 	try{
-		row += rd;
+
+		switch (C) {
+			case red : redRow += rd; break;
+			case yellow : yellowRow += rd; break;
+			case green : greenRow += rd; break;
+			case blue : blueRow += rd; break;
+		}
 	}catch(exception& e){
 		cout << e.what() << '\n';
 		return false;
@@ -164,7 +149,7 @@ ostream& QwixxScoreSheet::operator<<(ostream& os){
 	if(failedAttempts.size() > 0){
 		os << "\nFailed throws: ";
 		for(int i = 0; i<failedAttempts.size(); ++i){
-			os << failedAttempts[i] << " "<<endl;
+			os << "["<< int(failedAttempts[i]) << "], ";
 		}
 	}
 	os << "\n"<<endl;

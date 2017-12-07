@@ -234,7 +234,7 @@ int main() {
 	/*
 		main rountine area
 	*/
-
+  
 	int gameVersion = versionSelection(); // Ask player to choose a version
 	int numberOfPlayers = playersNumberSelection(); // Ask player to choose number of players
 
@@ -248,5 +248,6 @@ int main() {
 	/*
 		end of main routine area
 	*/
+
 
 }

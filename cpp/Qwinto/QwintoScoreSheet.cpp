@@ -39,7 +39,7 @@ ostream& QwintoScoreSheet::operator<<(ostream& os){
 	if(failedAttempts.size() > 0){
 		os << "\nFailed throws: ";
 		for(int i = 0; i<failedAttempts.size(); ++i){
-			os << failedAttempts[i] << " ";
+			os << "[" << int(failedAttempts[i]) << "] ";
 		}
 	}
 	os << "\n";
