@@ -23,15 +23,15 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 		return false;
 	}
 
-	// Passed dice is to be scored right of double-white-dice score
-	// for(int i=0; i < realpos; ++i){
-	// 	if(row[i].dices.size() != 0){
-	// 		if((row[i].dices[0].diceColor==white) and (row[i].dices[1].diceColor==white)){
-	// 			cout << "Dice combo can't be scored right of a double-white dice score!" << endl;
-	// 			return false;
-	// 		}
-	// 	}
-	// }
+	// Passed dice is to be scored left of the right-most score
+	for(int i=0; i < 11; ++i){
+		if(row[i].dices.size() != 0){
+			if(realpos < i){
+				cout << "Dice combo can't be scored to the left of the right-most score!" << endl;
+				return false;
+			}
+		}
+	}
 
 	// Passed dice is to be scored in a scored cell
 	if(int(row[realpos]) != 0){
