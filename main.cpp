@@ -221,11 +221,42 @@ void playQwixx(int numberOfPlayers){
 							cout << "[!] Blue die removed from the game." << endl;
 						}
 					}
+					if(!i->scoreSheet){ // End condition met by active player
+						cout << "The game will end as a result." << endl;
+						gameOver = true;
+						break;
+					}
 			}
 
 			cout << "\n" << activePlayer->name
 					<< ", it's you turn to choose a white dice (number 1 or number 2) as well as a colored dice to score their sum." << endl << activePlayer->scoreSheet <<endl<<rd <<endl;
 			activePlayer->inputAfterRoll(rd);
+			// Check if any rows are locked
+			if(int(activePlayer->scoreSheet.redRow[11])!=0){
+				if ( find(availableColors.begin(), availableColors.end(), red) != availableColors.end() ){
+					availableColors.erase(remove(availableColors.begin(), availableColors.end(), red), availableColors.end());
+					cout << "[!] Red die removed from the game." << endl;
+
+				}
+			}
+			if(int(activePlayer->scoreSheet.yellowRow[11])!=0){
+				if ( find(availableColors.begin(), availableColors.end(), yellow) != availableColors.end() ){
+					availableColors.erase(remove(availableColors.begin(), availableColors.end(), yellow), availableColors.end());
+					cout << "[!] Yellow die removed from the game." << endl;
+				}
+			}
+			if(int(activePlayer->scoreSheet.greenRow[11])!=0){
+				if ( find(availableColors.begin(), availableColors.end(), green) != availableColors.end() ){
+					availableColors.erase(remove(availableColors.begin(), availableColors.end(), green), availableColors.end());
+					cout << "[!] Green die removed from the game." << endl;
+				}
+			}
+			if(int(activePlayer->scoreSheet.blueRow[11])!=0){
+				if ( find(availableColors.begin(), availableColors.end(), blue) != availableColors.end() ){
+					availableColors.erase(remove(availableColors.begin(), availableColors.end(), blue), availableColors.end());
+					cout << "[!] Blue die removed from the game." << endl;
+				}
+			}
 
 			if(!activePlayer->scoreSheet){ // End condition met by active player
 				cout << "The game will end as a result." << endl;
