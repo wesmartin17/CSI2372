@@ -277,6 +277,25 @@ void playQwixx(int numberOfPlayers){
 			activePlayer->active = false; // mark player as inactive and go to next player
 		}
 	}
+	/*
+		GAME IS OVER
+	*/
+	QwixxPlayer winner = players[0]; // placeholder value
+	string winnerName = winner.name; // placeholder value
+	int winnerScore = -100; // placeholder value
+	int score = winnerScore; // placeholder value
+
+	for(int i = 0; i <numberOfPlayers; ++i){
+		score = players[i].scoreSheet.setTotal(); // Calculate score for each player
+		cout << players[i].scoreSheet; // Show score sheet for each player
+		if(winnerScore < score){
+			winnerScore = score;
+			winner = players[i];
+			winnerName = players[i].name;
+		}
+	}
+	// Announce winner.
+	cout << "Congradulations to " << winnerName << " for winning the game with " << winnerScore << " points!" << endl;
 	return;
 }
 

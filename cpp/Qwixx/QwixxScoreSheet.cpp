@@ -40,7 +40,7 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 	}
 
   // Passed dice is to be scored in a locked row
-  if(int(row[12]) != 0){
+  if(int(row[11]) != 0){
 		cout << "Dice combo can't be scored in a locked row!" << endl;
 		return false;
   }
@@ -59,80 +59,6 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 	}
 
 	return true;
-
-	// switch (color) {
-	// 	case Color::red:{
-	// 		try{
-	// 			redRow += rollOfdice;
-	// 			return true;
-	// 		}
-	// 		catch(InvalidInputException& e ){
-	// 			cout << e.what() << endl;
-	// 			return false;
-	// 		}
-	// 		catch(FailedAttemptException& e ){
-	// 			cout << e.what() << endl;
-	// 			cout << "[!] That was a failed attempt to score and it will be marked." << endl;
-	// 			failedAttempts.push_back(rollOfdice);
-	// 			return false;
-	// 		}
-	// 		break;
-	// 	}
-	// 	case Color::yellow:{
-	// 		try{
-	// 			yellowRow += rollOfdice;
-	// 			return true;
-  //
-	// 		}
-	// 		catch(InvalidInputException& e ){
-	// 			cout << e.what() << endl;
-	// 			return false;
-	// 		}
-	// 		catch(FailedAttemptException& e ){
-	// 			cout << e.what() << endl;
-	// 			cout << "That was a failed attempt to score and it will be marked." << endl;
-	// 			failedAttempts.push_back(rollOfdice);
-	// 			return false;
-	// 		}
-	// 		break;
-	// 	}
-	// 	case Color::green:{
-	// 		try{
-	// 			greenRow += rollOfdice;
-	// 			return true;
-	// 		}
-	// 		catch(InvalidInputException& e ){
-	// 			cout << e.what() << endl;
-	// 			return false;
-	// 		}
-	// 		catch(FailedAttemptException& e ){
-	// 			cout << e.what() << endl;
-	// 			cout << "[!] That was a failed attempt to score and it will be marked." << endl;
-	// 			failedAttempts.push_back(rollOfdice);
-	// 			return false;
-	// 		}
-	// 		break;
-	// 	}
-	// 	case Color::blue:{
-	// 		try{
-	// 			blueRow += rollOfdice;
-	// 			return true;
-  //
-	// 		}
-	// 		catch(InvalidInputException& e ){
-	// 			cout << e.what() << endl;
-	// 			return false;
-	// 		}
-	// 		catch(FailedAttemptException& e ){
-	// 			cout << e.what() << endl;
-	// 			cout << "\n[!]That was a failed attempt to score and it will be marked." << endl;
-	// 			failedAttempts.push_back(rollOfdice);
-	// 			return false;
-	// 		}
-	// 		break;
-	// 	}
-  //
-	// }
 
 }
 

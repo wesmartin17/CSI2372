@@ -109,7 +109,7 @@ ostream& QwixxRow<T, C>::operator<<(ostream& os){
   				}
         }
       }else{
-  			if(i==13){
+  			if(j==11){
   				os << "| L ";
   			}else{
   				os << "| XX ";
@@ -136,7 +136,7 @@ ostream& QwixxRow<T, C>::operator<<(ostream& os){
   				}
         }
       }else{
-  			if(i==13){
+  			if(j==11){
   				os << "| L ";
   			}else{
   				os << "| XX ";
