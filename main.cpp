@@ -171,6 +171,7 @@ void playQwixx(int numberOfPlayers){
 	//While end condition is not reached
 	while(!gameOver){
 		vector<QwixxPlayer>::iterator activePlayer; //Loop over players
+		//starts every player's turn
 		for(activePlayer = players.begin(); activePlayer<players.end(); activePlayer++){
 
 			activePlayer->active = true; // next player takes a turn i.e., becomes active

@@ -90,10 +90,10 @@ ostream& QwixxScoreSheet::operator<<(ostream& os){
 	if(failedAttempts.size() > 0){
 		os << "\nFailed throws: ";
 		for(int i = 0; i<failedAttempts.size(); ++i){
-			os << failedAttempts[i] << " ";
+			os << failedAttempts[i] << " "<<endl;
 		}
 	}
-	os << "\n";
+	os << "\n"<<endl;
 	return os;
 }
 

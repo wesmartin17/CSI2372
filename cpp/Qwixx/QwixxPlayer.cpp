@@ -46,12 +46,12 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 
 
 void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
-  bool validSelection = false, scored = false;
+  bool validSelection = false, scored = false, failed = false;
   string input, color;
   int selectedColorDice;
   while(!scored){
     cout<<name<<", Please enter the name of the colored dice you would like to score (or type fail): "<<endl;
-    
+
     validSelection = false;
     while(!validSelection){
       input = "";
@@ -59,6 +59,9 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
       if(input =="fail"){
         //TODO score a fail
         validSelection = true;
+        failed = true;
+        scored = true;
+        scoreSheet.failedAttempts.push_back(_rollOfDice);
       }
       if(input == "red"){
         selectedColorDice = 0;
@@ -85,36 +88,35 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice){
       }
 
     }
-
-    validSelection = false;
-
-    int selection = 0;
-    while(!validSelection){
-      input = "";
-      cout << "Please enter 1 for white dice [" << _rollOfDice.dices[0].face <<"] or enter 2 for white dice ["<< _rollOfDice.dices[1].face<<"]"<<endl;
-      cin >> input;
-      stringstream asdf(input);
-      if(asdf>>selection && (selection == 1 || selection == 2))
-        validSelection = true;
-    }
-
-    validSelection = false;
-
-    RollOfDice pair = _rollOfDice.pair(_rollOfDice.dices[selection-1],_rollOfDice.dices[selectedColorDice+2]);
-    Color c = static_cast<Color>(selectedColorDice);
-
-    input = "";
-      cout<<"Type \"yes\" to confirm your move of "<<color<<", "<<int(pair)<<endl;
-      cin>> input;
-      if(input == "yes"){
-        if(scoreSheet.score(pair,c)){
-          scored = true;
-        }
-        else{
-          cout<<"That is an invalid move"<<endl;
-        }
+      validSelection = false;
+    if(!failed){
+      int selection = 0;
+      while(!validSelection){
+        input = "";
+        cout << "Please enter 1 for white dice [" << _rollOfDice.dices[0].face <<"] or enter 2 for white dice ["<< _rollOfDice.dices[1].face<<"]"<<endl;
+        cin >> input;
+        stringstream asdf(input);
+        if(asdf>>selection && (selection == 1 || selection == 2))
+          validSelection = true;
       }
 
+      validSelection = false;
+
+      RollOfDice pair = _rollOfDice.pair(_rollOfDice.dices[selection-1],_rollOfDice.dices[selectedColorDice+2]);
+      Color c = static_cast<Color>(selectedColorDice);
+
+      input = "";
+        cout<<"Type \"yes\" to confirm your move of "<<color<<", "<<int(pair)<<endl;
+        cin>> input;
+        if(input == "yes"){
+          if(scoreSheet.score(pair,c)){
+            scored = true;
+          }
+          else{
+            cout<<"That is an invalid move"<<endl;
+          }
+        }
+    }
   }
 
 }
