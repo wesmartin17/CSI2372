@@ -2,22 +2,26 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice){
 
   bool validSelection = false;
 
-  cout<<name<<", Please enter the color you would like to enter the white dice ["<<int(_rollOfDice)<<"] in.";
-  if(!active)
-    cout<<"(Or you can pass)"<<endl;
-  else
-    cout<<"(Or you can fail)"<<endl;
-
   while(!validSelection){
-  string input = "";
+    cout<<name<<", Please enter the color you would like to enter the white dice ["<<int(_rollOfDice)<<"] in.";
+
+    if(active == true)
+      cout<<"(Or you can fail)"<<endl;
+    else
+      cout<<"(Or you can pass)"<<endl;
+
+    string input = "";
     cin>>input;
-    if(input == "pass" && !active){
-      validSelection = true;
-    }
-    else if (input == "fail" && active){
+
+    if (input == "fail" && active){
       scoreSheet.failedAttempts.push_back(_rollOfDice);
       validSelection = true;
     }
+
+    else if(input == "pass" && !active){
+      validSelection = true;
+    }
+
     if(input == "red"){
       if(scoreSheet.score(_rollOfDice,Color::red)){
           validSelection = true;

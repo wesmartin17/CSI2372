@@ -7,7 +7,7 @@ class Player{
 
   public:
     string name;
-    bool active;
+    bool active = false;
     Player(string _name){name = _name;};
     virtual void inputBeforeRoll(RollOfDice &_rollOfDice) = 0;
     virtual void inputAfterRoll(RollOfDice &_rollOfDice) = 0;
