@@ -55,7 +55,6 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 		}
 	}catch(exception& e){
 		cout << e.what() << '\n';
-		return false;
 	}
 
 	return true;
@@ -87,29 +86,29 @@ int QwixxScoreSheet::calcTotal(){
 	int total = 0;
 	// Red score
 	for(int i=0; i<12; ++i){
-		if(int(redRow.values[i]) != 0){
-			total += redRow.values[i];
+		if(int(redRow[i]) != 0){
+			total += redRow[i];
 		}
 	}
 
 	// Yellow score
 	for(int i=0; i<12; ++i){
-		if(int(yellowRow.values[i]) != 0){
-			total += yellowRow.values[i];
+		if(int(yellowRow[i]) != 0){
+			total += yellowRow[i];
 		}
 	}
 
 	// Green score
 	for(int i=0; i<12; ++i){
-		if(int(greenRow.values[i]) != 0){
-			total += greenRow.values[i];
+		if(int(greenRow[i]) != 0){
+			total += greenRow[i];
 		}
 	}
 
 	// blue score
 	for(int i=0; i<12; ++i){
-		if(int(blueRow.values[i]) != 0){
-			total += blueRow.values[i];
+		if(int(blueRow[i]) != 0){
+			total += blueRow[i];
 		}
 	}
 
