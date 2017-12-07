@@ -206,13 +206,13 @@ bool QwixxScoreSheet::operator!(){
 
 	// Two locked rows
 	int locked = 0;
-	if(int(redRow.values[12]) != 0)
+	if(int(redRow.values[11]) != 0)
 		locked += 1;
-	if(int(yellowRow.values[12]) != 0)
+	if(int(yellowRow.values[11]) != 0)
 		locked += 1;
-	if(int(greenRow.values[12]) != 0)
+	if(int(greenRow.values[11]) != 0)
 		locked += 1;
-	if(int(blueRow.values[12]) != 0)
+	if(int(blueRow.values[11]) != 0)
 		locked += 1;
 
 	if(locked==2){

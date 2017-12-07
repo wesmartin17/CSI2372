@@ -167,7 +167,7 @@ void playQwinto(int numberOfPlayers){
 void playQwixx(int numberOfPlayers){
 	vector<QwixxPlayer> players = createQwixxPlayers(numberOfPlayers);
 	bool gameOver = false;
-
+	vector<Color> availableColors = {red, yellow, green, blue};
 	//While end condition is not reached
 	while(!gameOver){
 		vector<QwixxPlayer>::iterator activePlayer; //Loop over players
@@ -179,10 +179,9 @@ void playQwixx(int numberOfPlayers){
 			RollOfDice rd;
 			rd.dices.push_back(Dice(Color::white));
 			rd.dices.push_back(Dice(Color::white));
-			rd.dices.push_back(Dice(Color::red));
-			rd.dices.push_back(Dice(Color::yellow));
-			rd.dices.push_back(Dice(Color::green));
-			rd.dices.push_back(Dice(Color::blue));
+			for(int i=0; i<availableColors.size(); ++i){
+				rd.dices.push_back(Dice(availableColors[i]));
+			}
 			RollOfDice wd = RollOfDice::pair(rd.dices[0], rd.dices[1]);
 
 			rd.roll();
@@ -193,14 +192,35 @@ void playQwixx(int numberOfPlayers){
 			cout << "WHITE #2: ["<<rd.dices[1].face<<"]"<<endl<<endl;
 			cout << "SUM: "<<int(wd)<<endl;
 			cout << "----------------------------------"<<endl;
-			cout<<activePlayer->scoreSheet<<endl;
-			activePlayer->inputBeforeRoll(wd);
 			for(vector<QwixxPlayer>::iterator i = players.begin(); i != players.end(); ++i){
-				if(!i->active){
-					cout<<i->scoreSheet<<endl;
+					cout<< i->scoreSheet <<endl;
 					i->inputBeforeRoll(wd);
-				}
+					// Check if any rows are locked
+					if(int(i->scoreSheet.redRow[11])!=0){
+						if ( find(availableColors.begin(), availableColors.end(), red) != availableColors.end() ){
+							availableColors.erase(remove(availableColors.begin(), availableColors.end(), red), availableColors.end());
+							cout << "[!] Red die removed from the game." << endl;
 
+						}
+					}
+					if(int(i->scoreSheet.yellowRow[11])!=0){
+						if ( find(availableColors.begin(), availableColors.end(), yellow) != availableColors.end() ){
+							availableColors.erase(remove(availableColors.begin(), availableColors.end(), yellow), availableColors.end());
+							cout << "[!] Yellow die removed from the game." << endl;
+						}
+					}
+					if(int(i->scoreSheet.greenRow[11])!=0){
+						if ( find(availableColors.begin(), availableColors.end(), green) != availableColors.end() ){
+							availableColors.erase(remove(availableColors.begin(), availableColors.end(), green), availableColors.end());
+							cout << "[!] Green die removed from the game." << endl;
+						}
+					}
+					if(int(i->scoreSheet.blueRow[11])!=0){
+						if ( find(availableColors.begin(), availableColors.end(), blue) != availableColors.end() ){
+							availableColors.erase(remove(availableColors.begin(), availableColors.end(), blue), availableColors.end());
+							cout << "[!] Blue die removed from the game." << endl;
+						}
+					}
 			}
 
 			cout << "\n" << activePlayer->name
@@ -234,7 +254,7 @@ int main() {
 	/*
 		main rountine area
 	*/
-  
+
 	int gameVersion = versionSelection(); // Ask player to choose a version
 	int numberOfPlayers = playersNumberSelection(); // Ask player to choose number of players
 
