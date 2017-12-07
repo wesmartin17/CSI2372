@@ -1,79 +1,153 @@
-bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
+bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 
+	string color;
+	RollOfDice* row;
+	int realpos = 0;
+	switch (C) {
+    case red : realpos = int(rd) - 2; color = "red"; row = redRow.values; break;
+		case yellow : realpos = int(rd) - 2; color = "yellow";row = yellowRow.values; break;
+    case green : realpos = 12 - int(rd); color = "green"; row = greenRow.values; break;
+    case blue : realpos = 12 - int(rd); color = "blue"; row = blueRow.values; break;
+  }
 
-	switch (color) {
-		case Color::red:{
-			try{
-				redRow += rollOfdice;
-				return true;
-			}
-			catch(InvalidInputException& e ){
-				cout << e.what() << endl;
-				return false;
-			}
-			catch(FailedAttemptException& e ){
-				cout << e.what() << endl;
-				cout << "[!] That was a failed attempt to score and it will be marked." << endl;
-				failedAttempts.push_back(rollOfdice);
-				return false;
-			}
-			break;
-		}
-		case Color::yellow:{
-			try{
-				yellowRow += rollOfdice;
-				return true;
-
-			}
-			catch(InvalidInputException& e ){
-				cout << e.what() << endl;
-				return false;
-			}
-			catch(FailedAttemptException& e ){
-				cout << e.what() << endl;
-				cout << "That was a failed attempt to score and it will be marked." << endl;
-				failedAttempts.push_back(rollOfdice);
-				return false;
-			}
-			break;
-		}
-		case Color::green:{
-			try{
-				greenRow += rollOfdice;
-				return true;
-			}
-			catch(InvalidInputException& e ){
-				cout << e.what() << endl;
-				return false;
-			}
-			catch(FailedAttemptException& e ){
-				cout << e.what() << endl;
-				cout << "[!] That was a failed attempt to score and it will be marked." << endl;
-				failedAttempts.push_back(rollOfdice);
-				return false;
-			}
-			break;
-		}
-		case Color::blue:{
-			try{
-				blueRow += rollOfdice;
-				return true;
-
-			}
-			catch(InvalidInputException& e ){
-				cout << e.what() << endl;
-				return false;
-			}
-			catch(FailedAttemptException& e ){
-				cout << e.what() << endl;
-				cout << "\n[!]That was a failed attempt to score and it will be marked." << endl;
-				failedAttempts.push_back(rollOfdice);
-				return false;
-			}
-			break;
-		}
-
+	// Passed dice colors dont include 1x C dice
+  if((rd.dices[0].diceColor != C) and (rd.dices[1].diceColor != C) and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white)){
+		 cout << "Dice are missing a die of the requested row color!" << endl;
+		 return false;
 	}
+
+
+  // Passed dice colors dont include at least 1x white
+  if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white){
+		cout << "Dice are missing a least one white dice!" << endl;
+		return false;
+	}
+
+	// Passed dice is to be scored right of double-white-dice score
+	for(int i=0; i < realpos; ++i){
+		if(row[i].dices.size() != 0){
+			if((row[i].dices[0].diceColor==white) and (row[i].dices[1].diceColor==white)){
+				if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white)){
+					cout << "Dice combo can't be scored right of a double-white dice score!" << endl;
+					return false;
+				}else{
+					cout << "Dice combo can't be scored right of a double-white dice score!" << endl;
+					cout << "[!] This is a failed score and it will be recorded on your sheet." << endl;
+					failedAttempts.push_back(rd);
+					return true;
+				}
+			}
+		}
+	}
+
+	// Passed dice is to be scored in a scored cell
+	if(int(row[realpos]) != 0){
+		if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white)){
+			cout << "This position is taken" << endl;
+			return false;
+		}else{
+			cout << "This position is taken" << endl;
+			cout << "[!] This is a failed score and it will be recorded on your sheet." << endl;
+			failedAttempts.push_back(rd);
+			return true;
+		}
+	}
+
+  // Passed dice is to be scored in a locked row
+  if(int(row[12]) != 0){
+		if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white)){
+			cout << "Dice combo can't be scored in a locked row!" << endl;
+			return false;
+		}else{
+			cout << "Dice combo can't be scored in a locked row!" << endl;
+			cout << "[!] This is a failed score and it will be recorded on your sheet." << endl;
+			failedAttempts.push_back(rd);
+			return true;
+		}
+  }
+
+	try{
+		row += rd;
+	}catch(exception& e){
+		cout << e.what() << '\n';
+		return false;
+	}
+
+	return true;
+
+	// switch (color) {
+	// 	case Color::red:{
+	// 		try{
+	// 			redRow += rollOfdice;
+	// 			return true;
+	// 		}
+	// 		catch(InvalidInputException& e ){
+	// 			cout << e.what() << endl;
+	// 			return false;
+	// 		}
+	// 		catch(FailedAttemptException& e ){
+	// 			cout << e.what() << endl;
+	// 			cout << "[!] That was a failed attempt to score and it will be marked." << endl;
+	// 			failedAttempts.push_back(rollOfdice);
+	// 			return false;
+	// 		}
+	// 		break;
+	// 	}
+	// 	case Color::yellow:{
+	// 		try{
+	// 			yellowRow += rollOfdice;
+	// 			return true;
+  //
+	// 		}
+	// 		catch(InvalidInputException& e ){
+	// 			cout << e.what() << endl;
+	// 			return false;
+	// 		}
+	// 		catch(FailedAttemptException& e ){
+	// 			cout << e.what() << endl;
+	// 			cout << "That was a failed attempt to score and it will be marked." << endl;
+	// 			failedAttempts.push_back(rollOfdice);
+	// 			return false;
+	// 		}
+	// 		break;
+	// 	}
+	// 	case Color::green:{
+	// 		try{
+	// 			greenRow += rollOfdice;
+	// 			return true;
+	// 		}
+	// 		catch(InvalidInputException& e ){
+	// 			cout << e.what() << endl;
+	// 			return false;
+	// 		}
+	// 		catch(FailedAttemptException& e ){
+	// 			cout << e.what() << endl;
+	// 			cout << "[!] That was a failed attempt to score and it will be marked." << endl;
+	// 			failedAttempts.push_back(rollOfdice);
+	// 			return false;
+	// 		}
+	// 		break;
+	// 	}
+	// 	case Color::blue:{
+	// 		try{
+	// 			blueRow += rollOfdice;
+	// 			return true;
+  //
+	// 		}
+	// 		catch(InvalidInputException& e ){
+	// 			cout << e.what() << endl;
+	// 			return false;
+	// 		}
+	// 		catch(FailedAttemptException& e ){
+	// 			cout << e.what() << endl;
+	// 			cout << "\n[!]That was a failed attempt to score and it will be marked." << endl;
+	// 			failedAttempts.push_back(rollOfdice);
+	// 			return false;
+	// 		}
+	// 		break;
+	// 	}
+  //
+	// }
 
 }
 

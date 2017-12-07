@@ -1,67 +1,26 @@
-class FailedAttemptException{
-public:
-    FailedAttemptException(string _message) : message(_message) {}
-    string what() { return message; }
-    ~FailedAttemptException() {}
-  private:
-          string message;
-};
-
-class InvalidInputException{
-public:
-    InvalidInputException(string _message) : message(_message) {}
-    string what() { return message; }
-    ~InvalidInputException() {}
-  private:
-          string message;
-};
-
-
 template<class T, Color C>
 QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
 
-  string color = "";
-  int realpos = 0;
+  string color;
+	RollOfDice* row;
+	int realpos = 0;
 	switch (C) {
     case red : realpos = int(rd) - 2; color = "red"; break;
-		case yellow : realpos = int(rd) - 2; color = "yellow";  break;
+		case yellow : realpos = int(rd) - 2; color = "yellow"; break;
     case green : realpos = 12 - int(rd); color = "green"; break;
-    case blue : realpos = 12 - int(rd); color = "blue";  break;
+    case blue : realpos = 12 - int(rd); color = "blue"; break;
   }
 
-  // Passed dice colors dont include 1x C dice
-  if(rd.dices[0].diceColor != C and rd.dices[1].diceColor != C and (rd.dices[0].diceColor != Color::white or rd.dices[1].diceColor != Color::white))
-    throw new InvalidInputException("Dice are missing a die of the requested row color!");
-
-  // Passed dice colors dont include at least 1x white
-  if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
-    throw new InvalidInputException("Dice are missing a least one white dice!");
-
-  // Passed dice is to be scored right of double-white-dice score
-  for(int i=0; i < realpos; ++i){
-    if(values[i].dices.size() != 0)
-    if((values[i].dices[0].diceColor==white) and (values[i].dices[1].diceColor==white))
-    throw new InvalidInputException("Dice combo can't be scored right of a double-white dice score!");
+  if(rd.dices.size()==0){
+    throw invalid_argument("This roll of dice is invalid!");
   }
 
-  // Passed dice is to be scored in scored cell
-  if(int(this->values[realpos]) != 0){
-    if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white))
-      throw new InvalidInputException("This position is taken");
-    else
-      throw new FailedAttemptException("Dice combo can't be scored in an already scored spot!");
+  if((int(rd)>12) or (int(rd)<0)){
+    throw invalid_argument("This roll of dice is invalid!");
   }
-
-  // Passed dice is to be scored in a locked row
-  if(int(this->values[12]) != 0){
-    throw new FailedAttemptException("Dice combo can't be scored in a locked row!");
-  }
-
-
 
   // GOOD TO SCORE
   values[realpos] = rd;
-
   // Check if row should be locked
   int rowCount = 0; // Count scores
   for(int i=0; i<12; ++i){
@@ -74,7 +33,6 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
     values[12] = rd;
     cout << "\n[!] Player locked selected row. ["<< color << " dice] will be removed from the game\n" <<  endl;
   }
-
 
   return *this;
 }
@@ -188,4 +146,10 @@ ostream& QwixxRow<T, C>::operator<<(ostream& os){
   }
 
   return os;
+}
+
+
+template<class T, Color C>
+RollOfDice& QwixxRow<T, C>::operator[] (int index){
+  return values[index];
 }
