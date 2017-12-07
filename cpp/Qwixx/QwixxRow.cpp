@@ -1,6 +1,6 @@
 class FailedAttemptException{
 public:
-    FailedAttemptException(string pMessage) : message(pMessage) {}
+    FailedAttemptException(string _message) : message(_message) {}
     string what() { return message; }
     ~FailedAttemptException() {}
   private:
@@ -9,7 +9,7 @@ public:
 
 class InvalidInputException{
 public:
-    InvalidInputException(string pMessage) : message(pMessage) {}
+    InvalidInputException(string _message) : message(_message) {}
     string what() { return message; }
     ~InvalidInputException() {}
   private:
@@ -37,9 +37,19 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
   if(rd.dices[0].diceColor != Color::white and rd.dices[1].diceColor != Color::white)
     throw new InvalidInputException("Dice are missing a least one white dice!");
 
+  // Passed dice is to be scored right of double-white-dice score
+  for(int i=0; i < realpos; ++i){
+    if(values[i].dices.size() != 0)
+    if((values[i].dices[0].diceColor==white) and (values[i].dices[1].diceColor==white))
+    throw new InvalidInputException("Dice combo can't be scored right of a double-white dice score!");
+  }
+
   // Passed dice is to be scored in scored cell
   if(int(this->values[realpos]) != 0){
-    throw new FailedAttemptException("Dice combo can't be scored in an already scored spot!");
+    if((rd.dices[0].diceColor==white) and (rd.dices[1].diceColor==white))
+      throw new InvalidInputException("This position is taken");
+    else
+      throw new FailedAttemptException("Dice combo can't be scored in an already scored spot!");
   }
 
   // Passed dice is to be scored in a locked row
@@ -48,12 +58,6 @@ QwixxRow<T, C>& QwixxRow<T, C>::operator+= (RollOfDice rd){
   }
 
 
-  // Passed dice is to be scored left of double-white-dice score
-	for(int i=0; i < realpos-1; ++i){
-    if(values[i].dices.size() != 0)
-		  if((values[i].dices[0].diceColor==white) and (values[i].dices[1].diceColor==white))
-        throw new FailedAttemptException("Dice combo can't be scored left of a double-white dice score!");
-	}
 
   // GOOD TO SCORE
   values[realpos] = rd;

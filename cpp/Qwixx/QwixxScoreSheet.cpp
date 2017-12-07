@@ -7,11 +7,13 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				redRow += rollOfdice;
 				return true;
 			}
-			catch(const InvalidInputException& e ){
+			catch(InvalidInputException& e ){
+				cout << e.what() << endl;
 				return false;
 			}
-			catch(const FailedAttemptException& e ){
-				cout << "That was a failed attempt to score and it will be marked.";
+			catch(FailedAttemptException& e ){
+				cout << e.what() << endl;
+				cout << "[!] That was a failed attempt to score and it will be marked." << endl;
 				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
@@ -23,11 +25,13 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				return true;
 
 			}
-			catch(const InvalidInputException& e ){
+			catch(InvalidInputException& e ){
+				cout << e.what() << endl;
 				return false;
 			}
-			catch(const FailedAttemptException& e ){
-				cout << "That was a failed attempt to score and it will be marked.";
+			catch(FailedAttemptException& e ){
+				cout << e.what() << endl;
+				cout << "That was a failed attempt to score and it will be marked." << endl;
 				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
@@ -37,13 +41,14 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 			try{
 				greenRow += rollOfdice;
 				return true;
-
 			}
-			catch(const InvalidInputException& e ){
+			catch(InvalidInputException& e ){
+				cout << e.what() << endl;
 				return false;
 			}
-			catch(const FailedAttemptException& e ){
-				cout << "That was a failed attempt to score and it will be marked.";
+			catch(FailedAttemptException& e ){
+				cout << e.what() << endl;
+				cout << "[!] That was a failed attempt to score and it will be marked." << endl;
 				failedAttempts.push_back(rollOfdice);
 				return false;
 			}
@@ -55,10 +60,12 @@ bool QwixxScoreSheet::score(RollOfDice &rollOfdice, Color color, int pos){
 				return true;
 
 			}
-			catch(const InvalidInputException& e ){
+			catch(InvalidInputException& e ){
+				cout << e.what() << endl;
 				return false;
 			}
-			catch(const FailedAttemptException& e ){
+			catch(FailedAttemptException& e ){
+				cout << e.what() << endl;
 				cout << "\n[!]That was a failed attempt to score and it will be marked." << endl;
 				failedAttempts.push_back(rollOfdice);
 				return false;
