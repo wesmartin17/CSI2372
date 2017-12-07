@@ -23,6 +23,18 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 		return false;
 	}
 
+	// Passed dice is to be scored in a locked row
+	if(int(row[11]) != 0){
+		cout << "Dice combo can't be scored in a locked row!" << endl;
+		return false;
+	}
+
+	// Passed dice is to be scored in a scored cell
+	if(int(row[realpos]) != 0){
+		cout << "This position is taken" << endl;
+		return false;
+	}
+
 	// Passed dice is to be scored left of the right-most score
 	for(int i=0; i < 11; ++i){
 		if(row[i].dices.size() != 0){
@@ -32,18 +44,6 @@ bool QwixxScoreSheet::score(RollOfDice &rd, Color C, int pos){
 			}
 		}
 	}
-
-	// Passed dice is to be scored in a scored cell
-	if(int(row[realpos]) != 0){
-		cout << "This position is taken" << endl;
-		return false;
-	}
-
-  // Passed dice is to be scored in a locked row
-  if(int(row[11]) != 0){
-		cout << "Dice combo can't be scored in a locked row!" << endl;
-		return false;
-  }
 
 	try{
 
